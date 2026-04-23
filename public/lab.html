@@ -6161,66 +6161,143 @@ body { margin:0; }
           }
           function runCharSim(eq){
             try{
+              if(!eq || !eq.trim()){
+                $('stepSimOutput').innerHTML = `<div class="feedback-wrong"><i class="fas fa-exclamation-circle"></i> Please enter a characteristic equation first.</div>`;
+                return;
+              }
+              // Pre-compute truth
+              const coeffs = parsePolynomial(eq);
+              const roots = findRoots(coeffs);
+              if(roots.length===0) throw new Error('No real roots found.');
+              const distinct = [...new Set(roots.map(r=>r.toFixed(4)))];
+              const cols = buildVectorsFromRoots(roots);
+              const n = roots.length;
+              const Mat = Array.from({length:n},(_,i)=>cols.map(c=>c[i]));
+              const truth = gaussianElimination(Mat);
+              const trueRank = truth.rank;
+              const trueDep = trueRank < n;
+
               const html = [];
+              // STEP 1 - Parse
               html.push(`<div class="sim-step s-1"><h3><span class="step-num">1</span> Parse the characteristic equation</h3>`);
               html.push(`<p>Input: <code>${eq}</code></p>`);
-              const coeffs = parsePolynomial(eq);
               html.push(`<p>Standard form: <strong style="font-family:monospace;">${fmtPoly(coeffs)} = 0</strong></p>`);
               html.push(`<p>Coefficients (high → low): <code>[${coeffs.join(', ')}]</code></p>`);
               html.push(`</div>`);
 
+              // STEP 2 - Eigenvalues
               html.push(`<div class="sim-step s-2"><h3><span class="step-num">2</span> Solve for eigenvalues λ</h3>`);
-              const roots = findRoots(coeffs);
-              if(roots.length===0) throw new Error('No real roots found.');
               html.push(`<p>Real roots: <strong style="color:#06b6d4;font-family:monospace;">${roots.map(r=>'λ='+r).join(',&nbsp; ')}</strong></p>`);
-              const distinct = [...new Set(roots.map(r=>r.toFixed(4)))];
               html.push(`<p>Distinct λ: <strong>${distinct.length}</strong> &nbsp;|&nbsp; Total (with multiplicity): <strong>${roots.length}</strong></p>`);
               html.push(`</div>`);
 
-              html.push(`<div class="sim-step s-3"><h3><span class="step-num">3</span> Build candidate eigenvector set</h3>`);
-              const cols = buildVectorsFromRoots(roots);
-              html.push(`<p>Distinct λ → independent basis vector. Repeated λ → reuse a previous vector (forces dependence).</p>`);
-              cols.forEach((v,i)=> html.push(`<p style="font-family:monospace;">v<sub>${i+1}</sub> (λ=${roots[i]}) = [${v.join(', ')}]<sup>T</sup></p>`));
-              html.push(`</div>`);
+              // STEP 3 - Hints
+              html.push(`<div class="hint-box"><h4><i class="fas fa-lightbulb"></i> Hints — analyse before answering</h4>`);
+              html.push(`<ul>
+                <li>The equation has <strong>${distinct.length} distinct</strong> root(s) out of <strong>${roots.length}</strong> total.</li>
+                <li><strong>Rule:</strong> distinct eigenvalues → independent eigenvectors. Repeated eigenvalues may force dependence.</li>
+                <li>If all roots are distinct, the corresponding eigenvectors are guaranteed to be <strong>linearly independent</strong>.</li>
+                <li>If a root repeats, expect the rank of the eigenvector matrix to <strong>drop below n</strong>.</li>
+                <li>The candidate matrix here will be <strong>${n}×${n}</strong>, so rank ≤ ${n}.</li>
+              </ul></div>`);
 
-              html.push(`<div class="sim-step s-4"><h3><span class="step-num">4</span> Form matrix A (vectors as columns)</h3>`);
-              const n = roots.length;
-              const Mat = Array.from({length:n},(_,i)=>cols.map(c=>c[i]));
-              html.push(matToHTML(Mat, `A is a ${n}×${n} matrix:`));
-              html.push(`</div>`);
-
-              html.push(`<div class="sim-step s-5"><h3><span class="step-num">5</span> Gaussian elimination — step by step</h3>`);
-              const {rref, steps, rank} = gaussianElimination(Mat);
-              steps.forEach((s,i)=>{
-                html.push(`<div class="sim-op">${i===0?'Initial matrix':'Op '+i+': '+s.op}</div>`);
-                html.push(matToHTML(s.M,''));
-              });
-              html.push(`<div style="margin-top:10px;">${matToHTML(rref,'Final RREF:')}</div>`);
-              html.push(`</div>`);
-
-              html.push(`<div class="sim-step s-6"><h3><span class="step-num">6</span> Compare rank with n</h3>`);
-              html.push(`<p>n = <strong>${n}</strong>, &nbsp;rank = <strong>${rank}</strong></p>`);
-              const dependent = rank < n;
-              const verdict = dependent ? 'LINEARLY DEPENDENT' : 'LINEARLY INDEPENDENT';
-              html.push(`<div class="verdict ${dependent?'dep':'ind'}">
-                <div class="v-icon"><i class="fas fa-${dependent?'unlink':'check'}"></i></div>
-                <div><strong style="font-size:1.15rem;">${verdict}</strong><br>
-                <span style="font-size:.95rem;">${dependent
-                  ? `Because rank (${rank}) &lt; n (${n}), the eigenvector set built from this characteristic equation is dependent (caused by repeated eigenvalues).`
-                  : `Because rank (${rank}) = n (${n}), the eigenvectors form an independent set — a basis of ℝ<sup>${n}</sup>.`}</span></div>
+              // STEP 4 - Ask user for rank
+              html.push(`<div class="interactive-step" id="charRankStep">
+                <h4><i class="fas fa-question-circle"></i> Step 3 — Predict the rank</h4>
+                <p style="color:#475569;">Based on the hints above, what do you think the rank of the eigenvector matrix will be?</p>
+                <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px;">
+                  <input type="number" id="charRankInput" class="sim-input" min="0" max="${n}" placeholder="Enter rank" style="width:140px;">
+                  <button class="sim-btn primary" id="submitCharRankBtn"><i class="fas fa-check"></i> Submit Rank</button>
+                </div>
+                <div id="charRankFeedback"></div>
               </div>`);
-              if(distinct.length < roots.length){
-                html.push(`<p style="margin-top:12px;color:#92400e;background:#fef3c7;padding:10px 14px;border-radius:8px;"><i class="fas fa-lightbulb"></i>
-                  The equation has <strong>repeated roots</strong>, which is why the set is dependent. Try an equation with all distinct roots.</p>`);
-              }
-              html.push(`</div>`);
+
               $('stepSimOutput').innerHTML = html.join('');
+
+              $('submitCharRankBtn').addEventListener('click', ()=>{
+                const ur = parseInt($('charRankInput').value);
+                if(isNaN(ur)){
+                  $('charRankFeedback').innerHTML = `<div class="feedback-wrong"><i class="fas fa-exclamation-circle"></i> Please enter a valid number.</div>`;
+                  return;
+                }
+                if(ur === trueRank){
+                  $('charRankFeedback').innerHTML = `<div class="feedback-correct"><i class="fas fa-check-circle"></i> Correct! Rank = ${trueRank}. Now predict the verdict.</div>`;
+                } else {
+                  $('charRankFeedback').innerHTML = `<div class="feedback-wrong"><i class="fas fa-times-circle"></i> Not quite — your answer was ${ur}, but the actual rank is <strong>${trueRank}</strong>. Use rank = ${trueRank} for the next step.</div>`;
+                }
+                showCharVerdictChoice(trueRank, n, distinct, roots, cols, Mat, truth, trueDep);
+              }, {once:true});
             } catch(err){
-              $('stepSimOutput').innerHTML = `<div style="color:#7f1d1d;padding:14px;background:#fee2e2;border-left:5px solid #ef4444;border-radius:10px;">
-                <strong><i class="fas fa-exclamation-triangle"></i> Error:</strong> ${err.message}<br>
+              $('stepSimOutput').innerHTML = `<div class="feedback-wrong">
+                <i class="fas fa-exclamation-triangle"></i> <strong>Error:</strong> ${err.message}<br>
                 Try a form like <code>x^3 - 6x^2 + 11x - 6 = 0</code> or <code>x^2 - 5x + 6 = 0</code>.</div>`;
             }
           }
+
+          function showCharVerdictChoice(trueRank, n, distinct, roots, cols, Mat, truth, trueDep){
+            const html = `
+              <div class="interactive-step" id="charVerdictStep">
+                <h4><i class="fas fa-balance-scale"></i> Step 4 — What's your verdict?</h4>
+                <p style="color:#475569;">You have rank = <strong>${trueRank}</strong> and n = <strong>${n}</strong>. Are the eigenvectors:</p>
+                <div class="choice-row">
+                  <button class="choice-btn dep" data-pick="dep"><i class="fas fa-unlink"></i> Linearly Dependent</button>
+                  <button class="choice-btn ind" data-pick="ind"><i class="fas fa-check"></i> Linearly Independent</button>
+                </div>
+                <div id="charVerdictFeedback"></div>
+              </div>`;
+            $('stepSimOutput').insertAdjacentHTML('beforeend', html);
+
+            document.querySelectorAll('#charVerdictStep .choice-btn').forEach(btn=>{
+              btn.addEventListener('click', ()=>{
+                const pick = btn.dataset.pick;
+                const correct = (pick==='dep' && trueDep) || (pick==='ind' && !trueDep);
+                $('charVerdictFeedback').innerHTML = correct
+                  ? `<div class="feedback-correct"><i class="fas fa-trophy"></i> Excellent! That's correct. Here's the full step-by-step solution:</div>`
+                  : `<div class="feedback-wrong"><i class="fas fa-times-circle"></i> Not quite. The correct answer is <strong>${trueDep?'Linearly Dependent':'Linearly Independent'}</strong>. See the detailed solution below.</div>`;
+                document.querySelectorAll('#charVerdictStep .choice-btn').forEach(b=>b.disabled=true);
+                revealCharSolution(distinct, roots, cols, n, Mat, truth, trueDep);
+              }, {once:true});
+            });
+          }
+
+          function revealCharSolution(distinct, roots, cols, n, Mat, truth, dependent){
+            const {rref, steps, rank} = truth;
+            const html = [];
+            html.push(`<div class="sim-step s-3"><h3><span class="step-num">5</span> Build candidate eigenvector set</h3>`);
+            html.push(`<p>Distinct λ → independent basis vector. Repeated λ → reuse a previous vector (forces dependence).</p>`);
+            cols.forEach((v,i)=> html.push(`<p style="font-family:monospace;">v<sub>${i+1}</sub> (λ=${roots[i]}) = [${v.join(', ')}]<sup>T</sup></p>`));
+            html.push(`</div>`);
+
+            html.push(`<div class="sim-step s-4"><h3><span class="step-num">6</span> Form matrix A (vectors as columns)</h3>`);
+            html.push(matToHTML(Mat, `A is a ${n}×${n} matrix:`));
+            html.push(`</div>`);
+
+            html.push(`<div class="sim-step s-5"><h3><span class="step-num">7</span> Gaussian elimination — step by step</h3>`);
+            steps.forEach((s,i)=>{
+              html.push(`<div class="sim-op">${i===0?'Initial matrix':'Op '+i+': '+s.op}</div>`);
+              html.push(matToHTML(s.M,''));
+            });
+            html.push(`<div style="margin-top:10px;">${matToHTML(rref,'Final RREF:')}</div>`);
+            html.push(`</div>`);
+
+            html.push(`<div class="sim-step s-6"><h3><span class="step-num">8</span> Conclusion</h3>`);
+            html.push(`<p>n = <strong>${n}</strong>, &nbsp;rank = <strong>${rank}</strong></p>`);
+            const verdict = dependent ? 'LINEARLY DEPENDENT' : 'LINEARLY INDEPENDENT';
+            html.push(`<div class="verdict ${dependent?'dep':'ind'}">
+              <div class="v-icon"><i class="fas fa-${dependent?'unlink':'check'}"></i></div>
+              <div><strong style="font-size:1.15rem;">${verdict}</strong><br>
+              <span style="font-size:.95rem;">${dependent
+                ? `Because rank (${rank}) &lt; n (${n}), the eigenvector set built from this characteristic equation is dependent (caused by repeated eigenvalues).`
+                : `Because rank (${rank}) = n (${n}), the eigenvectors form an independent set — a basis of ℝ<sup>${n}</sup>.`}</span></div>
+            </div>`);
+            if(distinct.length < roots.length){
+              html.push(`<p style="margin-top:12px;color:#92400e;background:#fef3c7;padding:10px 14px;border-radius:8px;"><i class="fas fa-lightbulb"></i>
+                The equation has <strong>repeated roots</strong>, which is why the set is dependent. Try an equation with all distinct roots.</p>`);
+            }
+            html.push(`</div>`);
+            $('stepSimOutput').insertAdjacentHTML('beforeend', html.join(''));
+          }
+
           $('runStepSimBtn').addEventListener('click', ()=> runCharSim($('charEqInput').value));
           document.querySelectorAll('[data-eq]').forEach(b=>{
             b.addEventListener('click', ()=>{ $('charEqInput').value = b.dataset.eq; runCharSim(b.dataset.eq); });
