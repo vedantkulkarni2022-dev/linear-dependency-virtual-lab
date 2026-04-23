@@ -5776,17 +5776,21 @@ body { margin:0; }
           function matToHTML(M, label){
             if(!M || !M.length){ return ''; }
             const n = M.length, m = M[0].length;
-            let h = `<div style="margin:8px 0;"><strong>${label}</strong><table style="border-collapse:collapse;margin-top:6px;">`;
+            let h = '';
+            if(label) h += `<span class="mlabel">${label}</span>`;
+            h += `<table class="sim-mat">`;
             for(let i=0;i<n;i++){
               h += '<tr>';
               for(let j=0;j<m;j++){
                 const v = M[i][j];
-                const s = Math.abs(v)<1e-9?'0':(Number.isInteger(v)?v:(+v.toFixed(4)).toString());
-                h += `<td style="border:1px solid #aac;padding:6px 12px;text-align:center;font-family:monospace;min-width:38px;">${s}</td>`;
+                const isZero = Math.abs(v)<1e-9;
+                const s = isZero?'0':(Number.isInteger(v)?v:(+v.toFixed(4)).toString());
+                const cls = isZero ? 'zero' : '';
+                h += `<td class="${cls}">${s}</td>`;
               }
               h += '</tr>';
             }
-            h += '</table></div>';
+            h += '</table>';
             return h;
           }
           function gaussianElimination(A){
