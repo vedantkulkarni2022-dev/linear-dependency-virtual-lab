@@ -5730,6 +5730,41 @@ body { margin:0; }
       .preset-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
       .preset-row .sim-btn{font-size:.85rem;padding:8px 14px;}
 
+      /* Hint / interactive flow */
+      .hint-box{
+        background:linear-gradient(135deg,#fef9c3,#fde68a);
+        border-left:5px solid #f59e0b;border-radius:12px;
+        padding:14px 18px;margin:14px 0;color:#78350f;
+        animation:slideIn .35s ease both;
+      }
+      .hint-box h4{margin:0 0 8px 0;color:#92400e;display:flex;align-items:center;gap:8px;font-size:1rem;}
+      .hint-box ul{margin:6px 0 0 22px;padding:0;}
+      .hint-box li{margin:4px 0;}
+      .interactive-step{
+        background:#fff;border-radius:12px;padding:16px 18px;margin:14px 0;
+        border:2px dashed #4f46e5;animation:slideIn .35s ease both;
+      }
+      .interactive-step h4{margin:0 0 10px 0;color:#4f46e5;font-size:1.05rem;}
+      .choice-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;}
+      .choice-btn{
+        flex:1;min-width:200px;padding:14px 18px;border-radius:12px;cursor:pointer;
+        border:2px solid #cbd5e1;background:#fff;font-weight:600;font-size:1rem;
+        color:#1e293b;transition:all .2s;display:flex;align-items:center;gap:10px;justify-content:center;
+      }
+      .choice-btn:hover{border-color:#4f46e5;background:#eef2ff;transform:translateY(-2px);}
+      .choice-btn.dep:hover{border-color:#ef4444;background:#fee2e2;color:#7f1d1d;}
+      .choice-btn.ind:hover{border-color:#22c55e;background:#dcfce7;color:#14532d;}
+      .feedback-correct{
+        background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-left:5px solid #22c55e;
+        color:#14532d;padding:12px 16px;border-radius:10px;margin:12px 0;font-weight:600;
+        animation:popIn .35s ease both;
+      }
+      .feedback-wrong{
+        background:linear-gradient(135deg,#fee2e2,#fecaca);border-left:5px solid #ef4444;
+        color:#7f1d1d;padding:12px 16px;border-radius:10px;margin:12px 0;font-weight:600;
+        animation:popIn .35s ease both;
+      }
+
       @keyframes slideIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
       @keyframes popIn{from{opacity:0;transform:scale(.95);}to{opacity:1;transform:scale(1);}}
     </style>
