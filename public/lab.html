@@ -5371,6 +5371,33 @@ body { margin:0; }
 </section>
 <section class="spa-page page-pretest" data-page="pretest" hidden>
 
+    <style>
+      /* === Friendlier Pretest / Posttest UX === */
+      .test-progress-bar{
+        height:8px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin:14px 0 18px;
+        box-shadow:inset 0 1px 3px rgba(0,0,0,.06);
+      }
+      .test-progress-bar > div{
+        height:100%;background:linear-gradient(90deg,#4f46e5,#06b6d4);
+        width:0;transition:width .35s ease;border-radius:999px;
+      }
+      .test-progress-label{display:flex;justify-content:space-between;font-size:.9rem;color:#475569;margin-bottom:-6px;}
+      .question-container{animation:fadeUp .25s ease both;}
+      .option{transition:all .18s ease;cursor:pointer;}
+      .option:hover{transform:translateX(4px);}
+      .option.selected{box-shadow:0 0 0 3px rgba(79,70,229,.18);}
+      .option.correct{background:#dcfce7 !important;border-color:#22c55e !important;}
+      .option.incorrect{background:#fee2e2 !important;border-color:#ef4444 !important;}
+      .q-nav-btn{transition:all .18s ease;}
+      .q-nav-btn.active{transform:scale(1.08);box-shadow:0 4px 10px -3px rgba(79,70,229,.5);}
+      .q-nav-btn.answered:not(.active){background:#dcfce7;border-color:#22c55e;color:#166534;}
+      .solution-panel{animation:fadeUp .35s ease both;}
+      .step{animation:fadeUp .25s ease both;}
+      .test-btn{transition:all .18s ease;}
+      .test-btn:not(:disabled):hover{transform:translateY(-2px);}
+      @keyframes fadeUp{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+    </style>
+
     <!-- Header with Navigation -->
     <header>
         <div class="container header-container">
