@@ -5270,394 +5270,92 @@ body { margin:0; }
             </button>
         </div>
         
-        <!-- Main Content -->
+        <!-- Main Content (concise but complete) -->
         <div class="theory-container">
-            <!-- Basic Concepts Section -->
             <div class="theory-section active" id="basic-concepts">
-                <h2 class="section-title">
-                    <i class="fas fa-brain"></i> Basic Concepts
-                </h2>
-                
+                <h2 class="section-title"><i class="fas fa-brain"></i> Core Idea</h2>
                 <div class="theory-content">
                     <p>
-                        Linear dependence and independence are fundamental concepts in linear algebra that describe 
-                        relationships between vectors in a vector space. These concepts help us understand whether 
-                        vectors provide unique information or if some vectors are redundant combinations of others.
+                        A set of vectors <strong>{v₁, v₂, …, vₖ}</strong> is <strong>linearly independent</strong>
+                        if no vector can be written as a combination of the others — each one points in a genuinely
+                        new direction. If at least one can be written as a combination of the others, the set is
+                        <strong>linearly dependent</strong> (it carries redundant information).
                     </p>
-                    
                     <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-lightbulb"></i> Intuitive Understanding
-                        </div>
-                        <p>
-                            <strong>Linear Independence:</strong> A set of vectors is linearly independent if no vector 
-                            in the set can be written as a linear combination of the others. Each vector adds a new 
-                            "direction" or dimension.
-                        </p>
-                        <p>
-                            <strong>Linear Dependence:</strong> A set is linearly dependent if at least one vector 
-                            can be expressed as a linear combination of the others. This means there's redundancy 
-                            in the information provided by the vectors.
-                        </p>
-                    </div>
-                    
-                    <div class="key-points">
-                        <div class="key-point">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <strong>Vector Space:</strong> A collection of vectors that can be added together and 
-                                multiplied by scalars (real numbers) while satisfying certain axioms.
-                            </div>
-                        </div>
-                        
-                        <div class="key-point">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <strong>Linear Combination:</strong> An expression constructed from a set of vectors by 
-                                multiplying each vector by a scalar and adding the results.
-                            </div>
-                        </div>
-                        
-                        <div class="key-point">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <strong>Span:</strong> The set of all possible linear combinations of a given set of vectors. 
-                                The span of linearly independent vectors forms a basis for a subspace.
-                            </div>
-                        </div>
+                        <div class="definition-title"><i class="fas fa-pen-fancy"></i> Formal Definition</div>
+                        <p>The set is <strong>linearly dependent</strong> iff there exist scalars c₁,…,cₖ
+                            <em>not all zero</em> with</p>
+                        <div class="formula-box"><div class="formula">c₁v₁ + c₂v₂ + … + cₖvₖ = 0</div></div>
+                        <p>It is <strong>linearly independent</strong> iff the only solution is the
+                            trivial one c₁ = c₂ = … = cₖ = 0.</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Formal Definitions Section -->
-            <div class="theory-section" id="definitions">
-                <h2 class="section-title">
-                    <i class="fas fa-graduation-cap"></i> Formal Definitions
-                </h2>
-                
-                <div class="theory-content">
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-pen-fancy"></i> Definition 1: Linear Combination
-                        </div>
-                        <p>
-                            Given vectors <strong>v₁, v₂, ..., vₖ</strong> in a vector space V over a field F (typically ℝ), 
-                            a <strong>linear combination</strong> of these vectors is any vector of the form:
-                        </p>
-                        <div class="formula-box">
-                            <div class="formula">
-                                c₁v₁ + c₂v₂ + ... + cₖvₖ
-                            </div>
-                            where c₁, c₂, ..., cₖ ∈ F are scalars.
-                        </div>
-                    </div>
-                    
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-pen-fancy"></i> Definition 2: Linear Dependence
-                        </div>
-                        <p>
-                            A set of vectors {v₁, v₂, ..., vₖ} is <strong>linearly dependent</strong> if there exist scalars 
-                            c₁, c₂, ..., cₖ, not all zero, such that:
-                        </p>
-                        <div class="formula-box">
-                            <div class="formula">
-                                c₁v₁ + c₂v₂ + ... + cₖvₖ = 0
-                            </div>
-                            where 0 is the zero vector.
-                        </div>
-                    </div>
-                    
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-pen-fancy"></i> Definition 3: Linear Independence
-                        </div>
-                        <p>
-                            A set of vectors {v₁, v₂, ..., vₖ} is <strong>linearly independent</strong> if the only solution to:
-                        </p>
-                        <div class="formula-box">
-                            <div class="formula">
-                                c₁v₁ + c₂v₂ + ... + cₖvₖ = 0
-                            </div>
-                            is c₁ = c₂ = ... = cₖ = 0.
-                        </div>
-                        <p>
-                            This is called the <strong>trivial solution</strong>.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Theorems Section -->
-            <div class="theory-section" id="theorems">
-                <h2 class="section-title">
-                    <i class="fas fa-certificate"></i> Important Theorems
-                </h2>
-                
+
+            <div class="theory-section active" id="theorems">
+                <h2 class="section-title"><i class="fas fa-certificate"></i> Key Results</h2>
                 <div class="theory-content">
                     <div class="theorem-box">
-                        <div class="theorem-number">Theorem 1</div>
-                        <div class="theorem-title">
-                            <i class="fas fa-theorem"></i> Criterion for Linear Dependence
-                        </div>
-                        <p>
-                            A set of vectors {v₁, v₂, ..., vₙ} in ℝⁿ is linearly dependent if and only if 
-                            the determinant of the matrix formed by these vectors as columns (or rows) is zero.
-                        </p>
-                        <div class="formula-box">
-                            <div class="formula">
-                                det([v₁ v₂ ... vₙ]) = 0 ⇔ {v₁, v₂, ..., vₙ} is linearly dependent
-                            </div>
-                        </div>
+                        <div class="theorem-title"><i class="fas fa-check"></i> Rank Test (general)</div>
+                        <p>Form matrix A with the vectors as columns. Then</p>
+                        <div class="formula-box"><div class="formula">
+                            rank(A) = n  ⇒  Independent &nbsp;&nbsp; | &nbsp;&nbsp; rank(A) &lt; n  ⇒  Dependent
+                        </div></div>
+                        <p>where n is the number of vectors.</p>
                     </div>
-                    
                     <div class="theorem-box">
-                        <div class="theorem-number">Theorem 2</div>
-                        <div class="theorem-title">
-                            <i class="fas fa-theorem"></i> Rank and Linear Independence
-                        </div>
-                        <p>
-                            The rank of a matrix A equals the maximum number of linearly independent column vectors 
-                            (or row vectors) of A. For a set of m vectors in ℝⁿ:
-                        </p>
-                        <div class="formula-box">
-                            <div class="formula">
-                                rank(A) = number of linearly independent vectors
-                            </div>
-                        </div>
-                        <p>
-                            Vectors are linearly independent if and only if rank(A) = m (number of vectors).
-                        </p>
+                        <div class="theorem-title"><i class="fas fa-calculator"></i> Determinant Test (square only)</div>
+                        <p>For n vectors in ℝⁿ: det(A) ≠ 0 ⇒ independent; det(A) = 0 ⇒ dependent.</p>
                     </div>
-                    
                     <div class="theorem-box">
-                        <div class="theorem-number">Theorem 3</div>
-                        <div class="theorem-title">
-                            <i class="fas fa-theorem"></i> Basis and Dimension
-                        </div>
-                        <p>
-                            A set of vectors in a vector space V is a <strong>basis</strong> for V if:
-                        </p>
-                        <ol style="margin-left: 20px; margin-top: 10px;">
-                            <li>The vectors are linearly independent</li>
-                            <li>The vectors span V (every vector in V can be written as their linear combination)</li>
-                        </ol>
-                        <p>
-                            The <strong>dimension</strong> of V is the number of vectors in any basis for V.
-                        </p>
+                        <div class="theorem-title"><i class="fas fa-info-circle"></i> Useful Facts</div>
+                        <p>• Any set containing the <strong>zero vector</strong> is dependent.<br>
+                           • In ℝⁿ, more than n vectors are <strong>always dependent</strong>.<br>
+                           • A <strong>basis</strong> of ℝⁿ is any independent set of exactly n vectors.</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Detection Methods Section -->
-            <div class="theory-section" id="methods">
-                <h2 class="section-title">
-                    <i class="fas fa-cogs"></i> Detection Methods
-                </h2>
-                
-                <div class="theory-content">
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-search"></i> Method 1: Gaussian Elimination (Row Reduction)
-                        </div>
-                        <p>
-                            The most general method for determining linear dependence/independence involves 
-                            creating a matrix with the vectors as columns and performing Gaussian elimination 
-                            to find its row echelon form.
-                        </p>
-                        <div class="key-points">
-                            <div class="key-point">
-                                <i class="fas fa-list-ol"></i>
-                                <div>
-                                    <strong>Step 1:</strong> Form matrix A with given vectors as columns
-                                </div>
-                            </div>
-                            
-                            <div class="key-point">
-                                <i class="fas fa-filter"></i>
-                                <div>
-                                    <strong>Step 2:</strong> Reduce A to row echelon form using elementary row operations
-                                </div>
-                            </div>
-                            
-                            <div class="key-point">
-                                <i class="fas fa-chart-line"></i>
-                                <div>
-                                    <strong>Step 3:</strong> Count the number of pivot positions (non-zero rows)
-                                </div>
-                            </div>
-                            
-                            <div class="key-point">
-                                <i class="fas fa-balance-scale"></i>
-                                <div>
-                                    <strong>Step 4:</strong> Compare rank with number of vectors
-                                    <br>• If rank = number of vectors → Linearly Independent
-                                    <br>• If rank < number of vectors → Linearly Dependent
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-calculator"></i> Method 2: Determinant Method (for Square Matrices)
-                        </div>
-                        <p>
-                            For n vectors in ℝⁿ (square matrix), compute the determinant:
-                        </p>
-                        <div class="formula-box">
-                            <div class="formula">
-                                • det ≠ 0 → Vectors are linearly independent
-                                <br>• det = 0 → Vectors are linearly dependent
-                            </div>
-                        </div>
-                        <div class="example-box">
-                            <div class="example-title">
-                                <i class="fas fa-vial"></i> Example
-                            </div>
-                            <p>For vectors v₁ = (1, 2), v₂ = (3, 4) in ℝ²:</p>
-                            <div class="matrix-container">
-                                <div class="matrix-title">Matrix A = [v₁ v₂]</div>
-                                <table class="matrix">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>4</td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <p>det(A) = (1×4) - (3×2) = 4 - 6 = -2 ≠ 0</p>
-                            <p><strong>Conclusion:</strong> v₁ and v₂ are linearly independent.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Geometric View Section -->
-            <div class="theory-section" id="geometric">
-                <h2 class="section-title">
-                    <i class="fas fa-shapes"></i> Geometric Interpretation
-                </h2>
-                
-                <div class="theory-content">
-                    <div class="geometric-visualization">
-                        <h3>Visualizing Linear Dependence in ℝ² and ℝ³</h3>
-                        <div class="visualization-placeholder">
-                            <i class="fas fa-cube fa-3x" style="color: #3498db; margin-right: 15px;"></i>
-                            <div>
-                                <p>Geometric visualization would appear here</p>
-                                <p style="font-size: 0.9rem;">(In an interactive version, this would show 2D/3D plots)</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-draw-polygon"></i> In ℝ² (2D Plane)
-                        </div>
-                        <p>
-                            • <strong>Two vectors:</strong> Linearly dependent if they lie on the same line through the origin
-                            <br>• <strong>Three or more vectors:</strong> Always linearly dependent (ℝ² has dimension 2)
-                        </p>
-                        <div class="example-box">
-                            <div class="example-title">
-                                <i class="fas fa-example"></i> Examples in ℝ²
-                            </div>
-                            <p><strong>Independent:</strong> v₁ = (1,0), v₂ = (0,1) → Form a coordinate system</p>
-                            <p><strong>Dependent:</strong> v₁ = (1,2), v₂ = (2,4) → v₂ = 2·v₁ (collinear)</p>
-                        </div>
-                    </div>
-                    
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-cube"></i> In ℝ³ (3D Space)
-                        </div>
-                        <p>
-                            • <strong>Two vectors:</strong> Independent unless they're collinear
-                            <br>• <strong>Three vectors:</strong> Dependent if they lie in the same plane through the origin
-                            <br>• <strong>Four or more vectors:</strong> Always linearly dependent (ℝ³ has dimension 3)
-                        </p>
-                        <div class="example-box">
-                            <div class="example-title">
-                                <i class="fas fa-example"></i> Examples in ℝ³
-                            </div>
-                            <p><strong>Independent:</strong> (1,0,0), (0,1,0), (0,0,1) → Standard basis for ℝ³</p>
-                            <p><strong>Dependent:</strong> (1,2,3), (2,4,6), (3,6,9) → All are scalar multiples</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Applications Section -->
-            <div class="theory-section" id="applications">
-                <h2 class="section-title">
-                    <i class="fas fa-rocket"></i> Real-World Applications
-                </h2>
-                
+
+            <div class="theory-section active" id="methods">
+                <h2 class="section-title"><i class="fas fa-cogs"></i> Method — Gaussian Elimination</h2>
                 <div class="theory-content">
                     <div class="key-points">
-                        <div class="key-point">
-                            <i class="fas fa-desktop"></i>
-                            <div>
-                                <strong>Computer Graphics & Game Development:</strong>
-                                <br>• Basis vectors for coordinate systems and transformations
-                                <br>• Checking if normal vectors are independent for proper lighting
-                                <br>• Collision detection using vector independence
-                            </div>
-                        </div>
-                        
-                        <div class="key-point">
-                            <i class="fas fa-chart-line"></i>
-                            <div>
-                                <strong>Data Science & Machine Learning:</strong>
-                                <br>• Principal Component Analysis (PCA) - finding independent directions of variance
-                                <br>• Feature selection - removing linearly dependent features
-                                <br>• Dimensionality reduction techniques
-                            </div>
-                        </div>
-                        
-                        <div class="key-point">
-                            <i class="fas fa-cogs"></i>
-                            <div>
-                                <strong>Engineering & Physics:</strong>
-                                <br>• Structural analysis - checking force independence
-                                <br>• Circuit analysis - independent loop equations
-                                <br>• Control systems - state variable independence
-                            </div>
-                        </div>
-                        
-                        <div class="key-point">
-                            <i class="fas fa-shield-alt"></i>
-                            <div>
-                                <strong>Cryptography & Coding Theory:</strong>
-                                <br>• Error-correcting codes (linear codes)
-                                <br>• Cryptographic algorithms based on linear algebra
-                                <br>• Signal processing - independent frequency components
-                            </div>
-                        </div>
-                        
-                        <div class="key-point">
-                            <i class="fas fa-microscope"></i>
-                            <div>
-                                <strong>Scientific Computing:</strong>
-                                <br>• Solving systems of linear equations
-                                <br>• Numerical stability analysis
-                                <br>• Condition number of matrices (related to near-dependence)
-                            </div>
-                        </div>
+                        <div class="key-point"><i class="fas fa-1"></i><div>Build matrix A with the vectors as columns (or rows).</div></div>
+                        <div class="key-point"><i class="fas fa-2"></i><div>Reduce A to row-echelon form using elementary row operations (swap, scale, add multiple of one row to another).</div></div>
+                        <div class="key-point"><i class="fas fa-3"></i><div>Count non-zero rows = rank.</div></div>
+                        <div class="key-point"><i class="fas fa-4"></i><div>Compare with n: rank = n → Independent; rank &lt; n → Dependent.</div></div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-title"><i class="fas fa-vial"></i> Quick Example</div>
+                        <p>v₁=(1,2), v₂=(2,4) in ℝ². det = 1·4 − 2·2 = 0 ⇒ <strong>Dependent</strong> (v₂ = 2·v₁).</p>
+                        <p>v₁=(1,0), v₂=(0,1). det = 1 ≠ 0 ⇒ <strong>Independent</strong> — the standard basis of ℝ².</p>
                     </div>
                 </div>
             </div>
-            
+
+            <div class="theory-section active" id="geometric">
+                <h2 class="section-title"><i class="fas fa-shapes"></i> Geometric Picture</h2>
+                <div class="theory-content">
+                    <p>• Two vectors are dependent iff they lie on the <strong>same line</strong> through the origin.<br>
+                       • Three vectors in ℝ³ are dependent iff they lie in the <strong>same plane</strong> through the origin.<br>
+                       • Independent vectors span a subspace whose dimension equals their count.</p>
+                </div>
+            </div>
+
+            <div class="theory-section active" id="applications">
+                <h2 class="section-title"><i class="fas fa-rocket"></i> Why It Matters</h2>
+                <div class="theory-content">
+                    <p>Used in PCA &amp; feature selection (ML), basis construction (graphics), independent loop
+                       equations (circuits), error-correcting codes, and any system of linear equations where we
+                       need to know if information is redundant.</p>
+                </div>
+            </div>
+
             <!-- Bottom Navigation -->
             <div class="bottom-navigation">
                 <a href="index.html" class="nav-btn prev">
                     <i class="fas fa-arrow-left"></i> Previous: Home
                 </a>
-                
                 <a href="pretest.html" class="nav-btn next">
                     Next: Pretest <i class="fas fa-arrow-right"></i>
                 </a>
