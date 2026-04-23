@@ -2,25 +2,30 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Linear Dependence Calculator - Virtual Lab" },
+      {
+        name: "description",
+        content:
+          "Interactive virtual lab for testing linear dependence and independence of vectors with step-by-step Gaussian elimination and characteristic-equation simulation.",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <iframe
+      src="/lab.html"
+      title="Linear Dependence Calculator Virtual Lab"
+      style={{
+        position: "fixed",
+        inset: 0,
+        width: "100vw",
+        height: "100vh",
+        border: "none",
+      }}
+    />
+  );
 }
