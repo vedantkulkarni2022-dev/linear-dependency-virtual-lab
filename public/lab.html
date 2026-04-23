@@ -5270,394 +5270,92 @@ body { margin:0; }
             </button>
         </div>
         
-        <!-- Main Content -->
+        <!-- Main Content (concise but complete) -->
         <div class="theory-container">
-            <!-- Basic Concepts Section -->
             <div class="theory-section active" id="basic-concepts">
-                <h2 class="section-title">
-                    <i class="fas fa-brain"></i> Basic Concepts
-                </h2>
-                
+                <h2 class="section-title"><i class="fas fa-brain"></i> Core Idea</h2>
                 <div class="theory-content">
                     <p>
-                        Linear dependence and independence are fundamental concepts in linear algebra that describe 
-                        relationships between vectors in a vector space. These concepts help us understand whether 
-                        vectors provide unique information or if some vectors are redundant combinations of others.
+                        A set of vectors <strong>{v₁, v₂, …, vₖ}</strong> is <strong>linearly independent</strong>
+                        if no vector can be written as a combination of the others — each one points in a genuinely
+                        new direction. If at least one can be written as a combination of the others, the set is
+                        <strong>linearly dependent</strong> (it carries redundant information).
                     </p>
-                    
                     <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-lightbulb"></i> Intuitive Understanding
-                        </div>
-                        <p>
-                            <strong>Linear Independence:</strong> A set of vectors is linearly independent if no vector 
-                            in the set can be written as a linear combination of the others. Each vector adds a new 
-                            "direction" or dimension.
-                        </p>
-                        <p>
-                            <strong>Linear Dependence:</strong> A set is linearly dependent if at least one vector 
-                            can be expressed as a linear combination of the others. This means there's redundancy 
-                            in the information provided by the vectors.
-                        </p>
-                    </div>
-                    
-                    <div class="key-points">
-                        <div class="key-point">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <strong>Vector Space:</strong> A collection of vectors that can be added together and 
-                                multiplied by scalars (real numbers) while satisfying certain axioms.
-                            </div>
-                        </div>
-                        
-                        <div class="key-point">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <strong>Linear Combination:</strong> An expression constructed from a set of vectors by 
-                                multiplying each vector by a scalar and adding the results.
-                            </div>
-                        </div>
-                        
-                        <div class="key-point">
-                            <i class="fas fa-check-circle"></i>
-                            <div>
-                                <strong>Span:</strong> The set of all possible linear combinations of a given set of vectors. 
-                                The span of linearly independent vectors forms a basis for a subspace.
-                            </div>
-                        </div>
+                        <div class="definition-title"><i class="fas fa-pen-fancy"></i> Formal Definition</div>
+                        <p>The set is <strong>linearly dependent</strong> iff there exist scalars c₁,…,cₖ
+                            <em>not all zero</em> with</p>
+                        <div class="formula-box"><div class="formula">c₁v₁ + c₂v₂ + … + cₖvₖ = 0</div></div>
+                        <p>It is <strong>linearly independent</strong> iff the only solution is the
+                            trivial one c₁ = c₂ = … = cₖ = 0.</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Formal Definitions Section -->
-            <div class="theory-section" id="definitions">
-                <h2 class="section-title">
-                    <i class="fas fa-graduation-cap"></i> Formal Definitions
-                </h2>
-                
-                <div class="theory-content">
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-pen-fancy"></i> Definition 1: Linear Combination
-                        </div>
-                        <p>
-                            Given vectors <strong>v₁, v₂, ..., vₖ</strong> in a vector space V over a field F (typically ℝ), 
-                            a <strong>linear combination</strong> of these vectors is any vector of the form:
-                        </p>
-                        <div class="formula-box">
-                            <div class="formula">
-                                c₁v₁ + c₂v₂ + ... + cₖvₖ
-                            </div>
-                            where c₁, c₂, ..., cₖ ∈ F are scalars.
-                        </div>
-                    </div>
-                    
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-pen-fancy"></i> Definition 2: Linear Dependence
-                        </div>
-                        <p>
-                            A set of vectors {v₁, v₂, ..., vₖ} is <strong>linearly dependent</strong> if there exist scalars 
-                            c₁, c₂, ..., cₖ, not all zero, such that:
-                        </p>
-                        <div class="formula-box">
-                            <div class="formula">
-                                c₁v₁ + c₂v₂ + ... + cₖvₖ = 0
-                            </div>
-                            where 0 is the zero vector.
-                        </div>
-                    </div>
-                    
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-pen-fancy"></i> Definition 3: Linear Independence
-                        </div>
-                        <p>
-                            A set of vectors {v₁, v₂, ..., vₖ} is <strong>linearly independent</strong> if the only solution to:
-                        </p>
-                        <div class="formula-box">
-                            <div class="formula">
-                                c₁v₁ + c₂v₂ + ... + cₖvₖ = 0
-                            </div>
-                            is c₁ = c₂ = ... = cₖ = 0.
-                        </div>
-                        <p>
-                            This is called the <strong>trivial solution</strong>.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Theorems Section -->
-            <div class="theory-section" id="theorems">
-                <h2 class="section-title">
-                    <i class="fas fa-certificate"></i> Important Theorems
-                </h2>
-                
+
+            <div class="theory-section active" id="theorems">
+                <h2 class="section-title"><i class="fas fa-certificate"></i> Key Results</h2>
                 <div class="theory-content">
                     <div class="theorem-box">
-                        <div class="theorem-number">Theorem 1</div>
-                        <div class="theorem-title">
-                            <i class="fas fa-theorem"></i> Criterion for Linear Dependence
-                        </div>
-                        <p>
-                            A set of vectors {v₁, v₂, ..., vₙ} in ℝⁿ is linearly dependent if and only if 
-                            the determinant of the matrix formed by these vectors as columns (or rows) is zero.
-                        </p>
-                        <div class="formula-box">
-                            <div class="formula">
-                                det([v₁ v₂ ... vₙ]) = 0 ⇔ {v₁, v₂, ..., vₙ} is linearly dependent
-                            </div>
-                        </div>
+                        <div class="theorem-title"><i class="fas fa-check"></i> Rank Test (general)</div>
+                        <p>Form matrix A with the vectors as columns. Then</p>
+                        <div class="formula-box"><div class="formula">
+                            rank(A) = n  ⇒  Independent &nbsp;&nbsp; | &nbsp;&nbsp; rank(A) &lt; n  ⇒  Dependent
+                        </div></div>
+                        <p>where n is the number of vectors.</p>
                     </div>
-                    
                     <div class="theorem-box">
-                        <div class="theorem-number">Theorem 2</div>
-                        <div class="theorem-title">
-                            <i class="fas fa-theorem"></i> Rank and Linear Independence
-                        </div>
-                        <p>
-                            The rank of a matrix A equals the maximum number of linearly independent column vectors 
-                            (or row vectors) of A. For a set of m vectors in ℝⁿ:
-                        </p>
-                        <div class="formula-box">
-                            <div class="formula">
-                                rank(A) = number of linearly independent vectors
-                            </div>
-                        </div>
-                        <p>
-                            Vectors are linearly independent if and only if rank(A) = m (number of vectors).
-                        </p>
+                        <div class="theorem-title"><i class="fas fa-calculator"></i> Determinant Test (square only)</div>
+                        <p>For n vectors in ℝⁿ: det(A) ≠ 0 ⇒ independent; det(A) = 0 ⇒ dependent.</p>
                     </div>
-                    
                     <div class="theorem-box">
-                        <div class="theorem-number">Theorem 3</div>
-                        <div class="theorem-title">
-                            <i class="fas fa-theorem"></i> Basis and Dimension
-                        </div>
-                        <p>
-                            A set of vectors in a vector space V is a <strong>basis</strong> for V if:
-                        </p>
-                        <ol style="margin-left: 20px; margin-top: 10px;">
-                            <li>The vectors are linearly independent</li>
-                            <li>The vectors span V (every vector in V can be written as their linear combination)</li>
-                        </ol>
-                        <p>
-                            The <strong>dimension</strong> of V is the number of vectors in any basis for V.
-                        </p>
+                        <div class="theorem-title"><i class="fas fa-info-circle"></i> Useful Facts</div>
+                        <p>• Any set containing the <strong>zero vector</strong> is dependent.<br>
+                           • In ℝⁿ, more than n vectors are <strong>always dependent</strong>.<br>
+                           • A <strong>basis</strong> of ℝⁿ is any independent set of exactly n vectors.</p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Detection Methods Section -->
-            <div class="theory-section" id="methods">
-                <h2 class="section-title">
-                    <i class="fas fa-cogs"></i> Detection Methods
-                </h2>
-                
-                <div class="theory-content">
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-search"></i> Method 1: Gaussian Elimination (Row Reduction)
-                        </div>
-                        <p>
-                            The most general method for determining linear dependence/independence involves 
-                            creating a matrix with the vectors as columns and performing Gaussian elimination 
-                            to find its row echelon form.
-                        </p>
-                        <div class="key-points">
-                            <div class="key-point">
-                                <i class="fas fa-list-ol"></i>
-                                <div>
-                                    <strong>Step 1:</strong> Form matrix A with given vectors as columns
-                                </div>
-                            </div>
-                            
-                            <div class="key-point">
-                                <i class="fas fa-filter"></i>
-                                <div>
-                                    <strong>Step 2:</strong> Reduce A to row echelon form using elementary row operations
-                                </div>
-                            </div>
-                            
-                            <div class="key-point">
-                                <i class="fas fa-chart-line"></i>
-                                <div>
-                                    <strong>Step 3:</strong> Count the number of pivot positions (non-zero rows)
-                                </div>
-                            </div>
-                            
-                            <div class="key-point">
-                                <i class="fas fa-balance-scale"></i>
-                                <div>
-                                    <strong>Step 4:</strong> Compare rank with number of vectors
-                                    <br>• If rank = number of vectors → Linearly Independent
-                                    <br>• If rank < number of vectors → Linearly Dependent
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-calculator"></i> Method 2: Determinant Method (for Square Matrices)
-                        </div>
-                        <p>
-                            For n vectors in ℝⁿ (square matrix), compute the determinant:
-                        </p>
-                        <div class="formula-box">
-                            <div class="formula">
-                                • det ≠ 0 → Vectors are linearly independent
-                                <br>• det = 0 → Vectors are linearly dependent
-                            </div>
-                        </div>
-                        <div class="example-box">
-                            <div class="example-title">
-                                <i class="fas fa-vial"></i> Example
-                            </div>
-                            <p>For vectors v₁ = (1, 2), v₂ = (3, 4) in ℝ²:</p>
-                            <div class="matrix-container">
-                                <div class="matrix-title">Matrix A = [v₁ v₂]</div>
-                                <table class="matrix">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>4</td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <p>det(A) = (1×4) - (3×2) = 4 - 6 = -2 ≠ 0</p>
-                            <p><strong>Conclusion:</strong> v₁ and v₂ are linearly independent.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Geometric View Section -->
-            <div class="theory-section" id="geometric">
-                <h2 class="section-title">
-                    <i class="fas fa-shapes"></i> Geometric Interpretation
-                </h2>
-                
-                <div class="theory-content">
-                    <div class="geometric-visualization">
-                        <h3>Visualizing Linear Dependence in ℝ² and ℝ³</h3>
-                        <div class="visualization-placeholder">
-                            <i class="fas fa-cube fa-3x" style="color: #3498db; margin-right: 15px;"></i>
-                            <div>
-                                <p>Geometric visualization would appear here</p>
-                                <p style="font-size: 0.9rem;">(In an interactive version, this would show 2D/3D plots)</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-draw-polygon"></i> In ℝ² (2D Plane)
-                        </div>
-                        <p>
-                            • <strong>Two vectors:</strong> Linearly dependent if they lie on the same line through the origin
-                            <br>• <strong>Three or more vectors:</strong> Always linearly dependent (ℝ² has dimension 2)
-                        </p>
-                        <div class="example-box">
-                            <div class="example-title">
-                                <i class="fas fa-example"></i> Examples in ℝ²
-                            </div>
-                            <p><strong>Independent:</strong> v₁ = (1,0), v₂ = (0,1) → Form a coordinate system</p>
-                            <p><strong>Dependent:</strong> v₁ = (1,2), v₂ = (2,4) → v₂ = 2·v₁ (collinear)</p>
-                        </div>
-                    </div>
-                    
-                    <div class="definition-box">
-                        <div class="definition-title">
-                            <i class="fas fa-cube"></i> In ℝ³ (3D Space)
-                        </div>
-                        <p>
-                            • <strong>Two vectors:</strong> Independent unless they're collinear
-                            <br>• <strong>Three vectors:</strong> Dependent if they lie in the same plane through the origin
-                            <br>• <strong>Four or more vectors:</strong> Always linearly dependent (ℝ³ has dimension 3)
-                        </p>
-                        <div class="example-box">
-                            <div class="example-title">
-                                <i class="fas fa-example"></i> Examples in ℝ³
-                            </div>
-                            <p><strong>Independent:</strong> (1,0,0), (0,1,0), (0,0,1) → Standard basis for ℝ³</p>
-                            <p><strong>Dependent:</strong> (1,2,3), (2,4,6), (3,6,9) → All are scalar multiples</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Applications Section -->
-            <div class="theory-section" id="applications">
-                <h2 class="section-title">
-                    <i class="fas fa-rocket"></i> Real-World Applications
-                </h2>
-                
+
+            <div class="theory-section active" id="methods">
+                <h2 class="section-title"><i class="fas fa-cogs"></i> Method — Gaussian Elimination</h2>
                 <div class="theory-content">
                     <div class="key-points">
-                        <div class="key-point">
-                            <i class="fas fa-desktop"></i>
-                            <div>
-                                <strong>Computer Graphics & Game Development:</strong>
-                                <br>• Basis vectors for coordinate systems and transformations
-                                <br>• Checking if normal vectors are independent for proper lighting
-                                <br>• Collision detection using vector independence
-                            </div>
-                        </div>
-                        
-                        <div class="key-point">
-                            <i class="fas fa-chart-line"></i>
-                            <div>
-                                <strong>Data Science & Machine Learning:</strong>
-                                <br>• Principal Component Analysis (PCA) - finding independent directions of variance
-                                <br>• Feature selection - removing linearly dependent features
-                                <br>• Dimensionality reduction techniques
-                            </div>
-                        </div>
-                        
-                        <div class="key-point">
-                            <i class="fas fa-cogs"></i>
-                            <div>
-                                <strong>Engineering & Physics:</strong>
-                                <br>• Structural analysis - checking force independence
-                                <br>• Circuit analysis - independent loop equations
-                                <br>• Control systems - state variable independence
-                            </div>
-                        </div>
-                        
-                        <div class="key-point">
-                            <i class="fas fa-shield-alt"></i>
-                            <div>
-                                <strong>Cryptography & Coding Theory:</strong>
-                                <br>• Error-correcting codes (linear codes)
-                                <br>• Cryptographic algorithms based on linear algebra
-                                <br>• Signal processing - independent frequency components
-                            </div>
-                        </div>
-                        
-                        <div class="key-point">
-                            <i class="fas fa-microscope"></i>
-                            <div>
-                                <strong>Scientific Computing:</strong>
-                                <br>• Solving systems of linear equations
-                                <br>• Numerical stability analysis
-                                <br>• Condition number of matrices (related to near-dependence)
-                            </div>
-                        </div>
+                        <div class="key-point"><i class="fas fa-1"></i><div>Build matrix A with the vectors as columns (or rows).</div></div>
+                        <div class="key-point"><i class="fas fa-2"></i><div>Reduce A to row-echelon form using elementary row operations (swap, scale, add multiple of one row to another).</div></div>
+                        <div class="key-point"><i class="fas fa-3"></i><div>Count non-zero rows = rank.</div></div>
+                        <div class="key-point"><i class="fas fa-4"></i><div>Compare with n: rank = n → Independent; rank &lt; n → Dependent.</div></div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-title"><i class="fas fa-vial"></i> Quick Example</div>
+                        <p>v₁=(1,2), v₂=(2,4) in ℝ². det = 1·4 − 2·2 = 0 ⇒ <strong>Dependent</strong> (v₂ = 2·v₁).</p>
+                        <p>v₁=(1,0), v₂=(0,1). det = 1 ≠ 0 ⇒ <strong>Independent</strong> — the standard basis of ℝ².</p>
                     </div>
                 </div>
             </div>
-            
+
+            <div class="theory-section active" id="geometric">
+                <h2 class="section-title"><i class="fas fa-shapes"></i> Geometric Picture</h2>
+                <div class="theory-content">
+                    <p>• Two vectors are dependent iff they lie on the <strong>same line</strong> through the origin.<br>
+                       • Three vectors in ℝ³ are dependent iff they lie in the <strong>same plane</strong> through the origin.<br>
+                       • Independent vectors span a subspace whose dimension equals their count.</p>
+                </div>
+            </div>
+
+            <div class="theory-section active" id="applications">
+                <h2 class="section-title"><i class="fas fa-rocket"></i> Why It Matters</h2>
+                <div class="theory-content">
+                    <p>Used in PCA &amp; feature selection (ML), basis construction (graphics), independent loop
+                       equations (circuits), error-correcting codes, and any system of linear equations where we
+                       need to know if information is redundant.</p>
+                </div>
+            </div>
+
             <!-- Bottom Navigation -->
             <div class="bottom-navigation">
                 <a href="index.html" class="nav-btn prev">
                     <i class="fas fa-arrow-left"></i> Previous: Home
                 </a>
-                
                 <a href="pretest.html" class="nav-btn next">
                     Next: Pretest <i class="fas fa-arrow-right"></i>
                 </a>
@@ -5746,8 +5444,8 @@ body { margin:0; }
         <div class="instructions">
             <h3><i class="fas fa-info-circle"></i> Instructions</h3>
             <ul>
-                <li>This pretest contains <strong>15 questions</strong> with varying difficulty levels.</li>
-                <li>Each question carries <strong>1 mark</strong>. Total marks: 15.</li>
+                <li>This pretest contains <strong>18 questions</strong> with varying difficulty levels.</li>
+                <li>Each question carries <strong>1 mark</strong>. Total marks: 18.</li>
                 <li>Select your answer by clicking on the option. You can change your answer before submission.</li>
                 <li>Use the question navigation buttons to move between questions.</li>
                 <li>Click "Submit Test" when you have completed all questions.</li>
@@ -5761,7 +5459,7 @@ body { margin:0; }
                 <div class="test-meta">
                     <div class="meta-item">
                         <i class="fas fa-question"></i>
-                        <span>15 Questions</span>
+                        <span>18 Questions</span>
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-clock"></i>
@@ -5826,7 +5524,7 @@ body { margin:0; }
             <div class="result-details">
                 <div class="result-item">
                     <span>Total Questions:</span>
-                    <strong>15</strong>
+                    <strong>18</strong>
                 </div>
                 <div class="result-item">
                     <span>Correct Answers:</span>
@@ -5871,67 +5569,52 @@ body { margin:0; }
 
     <div class="container">
         <header>
-            <h1><i class="fas fa-vector-square"></i> Linear Dependence Calculator</h1>
-            <p class="subtitle">Check if vectors are linearly dependent or independent with detailed step-by-step solution</p>
+            <h1><i class="fas fa-vector-square"></i> Linear Dependence Simulator</h1>
+            <p class="subtitle">Step-by-step input-driven test for linear dependence / independence</p>
         </header>
-        
+
         <div class="info-box">
-            <div class="info-title">
-                <i class="fas fa-info-circle"></i> How to use
-            </div>
-            <p>Enter vectors in the input fields below. Each vector should have the same dimension (number of coordinates). 
-            Click "Calculate" to check linear dependence/independence. You can add/remove vectors or change dimension using the controls.</p>
-        </div>
-        
-        <div class="main-content">
-            <section class="input-section">
-                <h2 class="section-title"><i class="fas fa-edit"></i> Input Vectors</h2>
-                
-                <div class="dimension-controls">
-                    <button class="control-btn" id="addVectorBtn">
-                        <i class="fas fa-plus"></i> Add Vector
-                    </button>
-                    <button class="control-btn" id="removeVectorBtn">
-                        <i class="fas fa-minus"></i> Remove Vector
-                    </button>
-                    <button class="control-btn" id="changeDimensionBtn">
-                        <i class="fas fa-arrows-alt-h"></i> Change Dimension
-                    </button>
-                </div>
-                
-                <div class="vector-input-container" id="vectorInputs">
-                    <!-- Vector inputs will be generated here -->
-                </div>
-                
-                <button class="calculate-btn" id="calculateBtn">
-                    <i class="fas fa-calculator"></i> Calculate Linear Dependence
-                </button>
-            </section>
-            
-            <section class="result-section">
-                <h2 class="section-title"><i class="fas fa-chart-bar"></i> Result & Explanation</h2>
-                
-                <div class="result-box">
-                    <div class="result-title">Result:</div>
-                    <div class="result-value" id="resultValue">Enter vectors and click "Calculate"</div>
-                    
-                    <div class="explanation-box">
-                        <div id="explanationContent">
-                            <p>The solution will appear here after calculation.</p>
-                            <p>Linear dependence means one vector can be expressed as a linear combination of the others.</p>
-                            <p>Linear independence means no vector can be written as a linear combination of the others.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <div class="info-title"><i class="fas fa-info-circle"></i> What this simulator does</div>
+            <p>Choose how many vectors and the dimension, type each vector's components, and watch the full
+            workflow: <strong>Form matrix A → Row-reduce → Find rank → Compare with n</strong>. A second tool
+            takes a <strong>characteristic equation</strong>, finds the eigenvalues, builds an eigenvector set,
+            and runs the same dependence test on it.</p>
         </div>
 
-        <!-- ================= STEP-BY-STEP CHARACTERISTIC EQUATION SIMULATOR ================= -->
-        <section class="input-section" style="margin-top:30px;">
-            <h2 class="section-title"><i class="fas fa-shoe-prints"></i> Step-by-Step Simulation (Characteristic Equation)</h2>
+        <!-- ============== TOOL 1: USER VECTOR INPUT ============== -->
+        <section class="input-section" style="padding:20px;border:1px solid #d6e4f5;border-radius:12px;background:#fff;margin-bottom:24px;">
+            <h2 class="section-title"><i class="fas fa-edit"></i> Tool 1 — Vector Dependence Test</h2>
+
+            <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:16px;">
+                <label style="font-weight:600;">Number of vectors (n):</label>
+                <input id="numVecInput" type="number" min="1" max="8" value="3"
+                       style="width:80px;padding:8px;border:2px solid #3498db;border-radius:8px;font-size:1rem;">
+                <label style="font-weight:600;">Dimension (d):</label>
+                <input id="dimInput" type="number" min="1" max="8" value="3"
+                       style="width:80px;padding:8px;border:2px solid #3498db;border-radius:8px;font-size:1rem;">
+                <button class="control-btn" id="buildGridBtn"><i class="fas fa-table"></i> Build Input Grid</button>
+                <button class="control-btn" id="loadDepBtn">Load Dependent Example</button>
+                <button class="control-btn" id="loadIndBtn">Load Independent Example</button>
+            </div>
+
+            <div id="vectorGrid" style="margin-bottom:16px;"></div>
+
+            <button class="calculate-btn" id="runVecSimBtn">
+                <i class="fas fa-play"></i> Run Step-by-Step Simulation
+            </button>
+
+            <div id="vecSimOutput" style="background:#f8fbff;border:1px solid #d6e4f5;border-radius:10px;padding:20px;min-height:120px;margin-top:18px;">
+                <p style="color:#777;">Build the grid, fill in vectors, and click <strong>Run Step-by-Step Simulation</strong>.</p>
+            </div>
+        </section>
+
+        <!-- ============== TOOL 2: CHARACTERISTIC EQUATION ============== -->
+        <section class="input-section" style="padding:20px;border:1px solid #d6e4f5;border-radius:12px;background:#fff;">
+            <h2 class="section-title"><i class="fas fa-superscript"></i> Tool 2 — Characteristic Equation Check</h2>
             <p style="margin-bottom:15px;color:#555;">
-                Enter a <strong>characteristic equation</strong> in <em>λ</em> (or <em>x</em>). The simulator will solve it,
-                build the eigenvector matrix, and walk through a linear dependence/independence test step by step.
+                Enter a characteristic equation in <em>λ</em> (or <em>x</em>). The simulator solves it,
+                builds an eigenvector set (distinct λ → independent basis vector; repeated λ → forced repeat),
+                forms matrix A, performs Gaussian elimination, and reports the verdict.
             </p>
 
             <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:15px;">
@@ -5940,51 +5623,170 @@ body { margin:0; }
                        style="flex:1;min-width:260px;padding:10px 14px;border:2px solid #3498db;border-radius:8px;font-size:1rem;font-family:monospace;">
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px;">
-                <button class="control-btn" data-eq="x^2 - 5x + 6 = 0">Example: x²−5x+6=0</button>
-                <button class="control-btn" data-eq="x^3 - 6x^2 + 11x - 6 = 0">Example: x³−6x²+11x−6=0</button>
-                <button class="control-btn" data-eq="x^2 - 4x + 4 = 0">Example: (x−2)² (repeated)</button>
-                <button class="control-btn" data-eq="x^3 - 3x^2 + 3x - 1 = 0">Example: (x−1)³</button>
+                <button class="control-btn" data-eq="x^2 - 5x + 6 = 0">x²−5x+6=0</button>
+                <button class="control-btn" data-eq="x^3 - 6x^2 + 11x - 6 = 0">x³−6x²+11x−6=0</button>
+                <button class="control-btn" data-eq="x^2 - 4x + 4 = 0">(x−2)² (repeated)</button>
+                <button class="control-btn" data-eq="x^3 - 3x^2 + 3x - 1 = 0">(x−1)³</button>
             </div>
             <button class="calculate-btn" id="runStepSimBtn" style="margin-bottom:20px;">
-                <i class="fas fa-play"></i> Run Step-by-Step Simulation
+                <i class="fas fa-play"></i> Run Characteristic Simulation
             </button>
 
             <div id="stepSimOutput" style="background:#f8fbff;border:1px solid #d6e4f5;border-radius:10px;padding:20px;min-height:120px;">
-                <p style="color:#777;">Enter a characteristic equation and click <strong>Run Step-by-Step Simulation</strong>.</p>
+                <p style="color:#777;">Enter a characteristic equation and click <strong>Run</strong>.</p>
             </div>
         </section>
 
+        <!-- ===== ALL SIMULATION JS (single self-contained block) ===== -->
         <script>
         (function(){
           const $ = id => document.getElementById(id);
-          const out = () => $('stepSimOutput');
-          if(!$('runStepSimBtn')) return;
+          if(!$('runVecSimBtn')) return;
 
-          // ---------- helpers ----------
+          // ============ shared math helpers ============
+          function matToHTML(M, label){
+            if(!M || !M.length){ return ''; }
+            const n = M.length, m = M[0].length;
+            let h = `<div style="margin:8px 0;"><strong>${label}</strong><table style="border-collapse:collapse;margin-top:6px;">`;
+            for(let i=0;i<n;i++){
+              h += '<tr>';
+              for(let j=0;j<m;j++){
+                const v = M[i][j];
+                const s = Math.abs(v)<1e-9?'0':(Number.isInteger(v)?v:(+v.toFixed(4)).toString());
+                h += `<td style="border:1px solid #aac;padding:6px 12px;text-align:center;font-family:monospace;min-width:38px;">${s}</td>`;
+              }
+              h += '</tr>';
+            }
+            h += '</table></div>';
+            return h;
+          }
+          function gaussianElimination(A){
+            const M = A.map(r=>r.slice());
+            const n = M.length, m = M[0].length;
+            const steps = [];
+            steps.push({op:'Initial matrix', M: M.map(r=>r.slice())});
+            let row = 0;
+            for(let col=0; col<m && row<n; col++){
+              let piv = row;
+              for(let i=row;i<n;i++) if(Math.abs(M[i][col])>Math.abs(M[piv][col])) piv=i;
+              if(Math.abs(M[piv][col])<1e-9) continue;
+              if(piv!==row){
+                [M[row],M[piv]] = [M[piv],M[row]];
+                steps.push({op:`Swap R${row+1} ↔ R${piv+1}`, M: M.map(r=>r.slice())});
+              }
+              const pv = M[row][col];
+              if(Math.abs(pv-1)>1e-9){
+                for(let j=0;j<m;j++) M[row][j] /= pv;
+                steps.push({op:`R${row+1} → R${row+1} / (${(+pv.toFixed(4))})`, M: M.map(r=>r.slice())});
+              }
+              for(let i=0;i<n;i++){
+                if(i===row) continue;
+                const f = M[i][col];
+                if(Math.abs(f)<1e-9) continue;
+                for(let j=0;j<m;j++) M[i][j] -= f*M[row][j];
+                steps.push({op:`R${i+1} → R${i+1} − (${(+f.toFixed(4))})·R${row+1}`, M: M.map(r=>r.slice())});
+              }
+              row++;
+            }
+            let rank = 0;
+            for(const r of M) if(r.some(v=>Math.abs(v)>1e-9)) rank++;
+            return {rref:M, steps, rank};
+          }
+
+          // ============ TOOL 1 — vector input ============
+          function buildGrid(){
+            const n = Math.max(1, Math.min(8, parseInt($('numVecInput').value)||3));
+            const d = Math.max(1, Math.min(8, parseInt($('dimInput').value)||3));
+            $('numVecInput').value = n; $('dimInput').value = d;
+            let h = '<div style="overflow-x:auto;"><table style="border-collapse:collapse;">';
+            h += '<tr><th style="padding:6px 10px;"></th>';
+            for(let j=0;j<d;j++) h += `<th style="padding:6px 10px;color:#2c3e50;">x<sub>${j+1}</sub></th>`;
+            h += '</tr>';
+            for(let i=0;i<n;i++){
+              h += `<tr><td style="padding:6px 10px;font-weight:600;color:#2c3e50;">v<sub>${i+1}</sub></td>`;
+              for(let j=0;j<d;j++){
+                h += `<td style="padding:4px;"><input type="number" step="any" data-i="${i}" data-j="${j}"
+                       class="vec-cell" value="0"
+                       style="width:70px;padding:6px;border:1px solid #bbd;border-radius:6px;font-family:monospace;text-align:center;"></td>`;
+              }
+              h += '</tr>';
+            }
+            h += '</table></div>';
+            $('vectorGrid').innerHTML = h;
+          }
+          function readVectors(){
+            const n = parseInt($('numVecInput').value), d = parseInt($('dimInput').value);
+            const V = Array.from({length:n},()=>new Array(d).fill(0));
+            document.querySelectorAll('#vectorGrid .vec-cell').forEach(inp=>{
+              V[+inp.dataset.i][+inp.dataset.j] = parseFloat(inp.value)||0;
+            });
+            return {V,n,d};
+          }
+          function fillGrid(V){
+            $('numVecInput').value = V.length;
+            $('dimInput').value = V[0].length;
+            buildGrid();
+            document.querySelectorAll('#vectorGrid .vec-cell').forEach(inp=>{
+              inp.value = V[+inp.dataset.i][+inp.dataset.j];
+            });
+          }
+          function runVecSim(){
+            const {V,n,d} = readVectors();
+            const html = [];
+            html.push(`<h3 style="color:#2c3e50;">Step 1 — Read inputs</h3>`);
+            html.push(`<p>You entered <strong>n = ${n}</strong> vectors in <strong>ℝ<sup>${d}</sup></strong>:</p>`);
+            V.forEach((v,i)=>{ html.push(`<p>v<sub>${i+1}</sub> = (${v.join(', ')})</p>`); });
+
+            html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 2 — Form matrix A (vectors as columns)</h3>`);
+            const A = Array.from({length:d},(_,i)=>V.map(v=>v[i]));
+            html.push(matToHTML(A, `A (${d}×${n})`));
+
+            html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 3 — Perform row reduction (Gaussian elimination)</h3>`);
+            const {rref, steps, rank} = gaussianElimination(A);
+            steps.forEach((s,i)=>{
+              html.push(`<p style="margin-top:8px;"><strong>${i===0?'':'Op '+i+': '}${s.op}</strong></p>`);
+              html.push(matToHTML(s.M,''));
+            });
+            html.push(matToHTML(rref,'Final reduced matrix (RREF)'));
+
+            html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 4 — Find the rank</h3>`);
+            html.push(`<p>Rank = number of non-zero rows in RREF = <strong>${rank}</strong></p>`);
+
+            html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 5 — Compare rank with n</h3>`);
+            const dep = rank < n;
+            const color = dep ? '#e74c3c' : '#27ae60';
+            const verdict = dep ? 'LINEARLY DEPENDENT' : 'LINEARLY INDEPENDENT';
+            html.push(`<p>n = <strong>${n}</strong>, rank = <strong>${rank}</strong> ⇒ rank ${dep?'&lt;':'='} n</p>`);
+            html.push(`<div style="padding:15px;border-radius:10px;background:${color}15;border-left:6px solid ${color};font-size:1.1rem;margin-top:8px;">
+              <strong style="color:${color};">${verdict}</strong><br>
+              ${dep
+                ? `Because rank (${rank}) &lt; n (${n}), at least one vector is a linear combination of the others. The set is <strong>redundant</strong> and does not span ℝ<sup>${n>d?d:n}</sup>.`
+                : `Because rank (${rank}) = n (${n}), no vector can be written as a combination of the others. The set is a <strong>basis</strong> for the subspace it spans.`}
+            </div>`);
+            if(n > d){
+              html.push(`<p style="margin-top:10px;color:#555;"><i class="fas fa-lightbulb" style="color:#f39c12;"></i>
+                Note: you have more vectors (${n}) than the dimension (${d}). Such a set is <strong>always dependent</strong>.</p>`);
+            }
+            $('vecSimOutput').innerHTML = html.join('');
+          }
+          $('buildGridBtn').addEventListener('click', buildGrid);
+          $('runVecSimBtn').addEventListener('click', runVecSim);
+          $('loadDepBtn').addEventListener('click', ()=> fillGrid([[1,2,3],[2,4,6],[3,6,9]]));
+          $('loadIndBtn').addEventListener('click', ()=> fillGrid([[1,0,0],[0,1,0],[0,0,1]]));
+          buildGrid();
+
+          // ============ TOOL 2 — characteristic equation ============
           function parsePolynomial(eq){
-            // Normalize: remove spaces, lowercase, replace λ -> x, ** -> ^, × -> *
             let s = eq.replace(/\s+/g,'').toLowerCase()
                        .replace(/λ/g,'x').replace(/\*\*/g,'^').replace(/×/g,'*');
-            // Move RHS to LHS
-            if(s.includes('=')){
-              const [l,r] = s.split('=');
-              s = l + '-(' + r + ')';
-            }
-            // Expand a leading minus inside parens minimally — for our use the RHS is "0" or constant
-            // Insert explicit * between number and x:  6x -> 6*x
+            if(s.includes('=')){ const [l,r]=s.split('='); s = l + '-(' + r + ')'; }
             s = s.replace(/(\d)x/g,'$1*x');
-            // Build coefficient array via regex term scan:  ([+-]?[\d.]*)\*?x(\^(\d+))?  | ([+-]?[\d.]+)
-            const coeffs = {}; // power -> value
-            // Insert leading + if needed
+            const coeffs = {};
             if(s[0] !== '-' && s[0] !== '+') s = '+' + s;
-            // Strip outer "-(...)" added above by expanding:
-            // Replace "-(...)" with each inner term sign-flipped
             s = s.replace(/-\(([^()]*)\)/g, (_,inner)=>{
-              // flip signs of leading + or -
               if(inner[0] !== '+' && inner[0] !== '-') inner = '+' + inner;
-              return inner.replace(/([+-])/g, (m)=> m==='+'?'-':'+');
+              return inner.replace(/([+-])/g, m => m==='+'?'-':'+');
             });
-            // Now scan tokens
             const re = /([+-])([\d.]*)\*?(x(?:\^(\d+))?)?/g;
             let m, found=false;
             while((m = re.exec(s)) !== null){
@@ -5997,16 +5799,14 @@ body { margin:0; }
               const val = sign*parseFloat(numStr);
               if(isNaN(val)) continue;
               if(!hasX && numStr==='0' && !m[2]) continue;
-              coeffs[pow] = (coeffs[pow]||0) + val;
-              found = true;
+              coeffs[pow] = (coeffs[pow]||0) + val; found = true;
             }
             if(!found) throw new Error('Could not parse equation.');
             const deg = Math.max(...Object.keys(coeffs).map(Number));
             const arr = [];
             for(let i=deg;i>=0;i--) arr.push(coeffs[i]||0);
-            return arr; // highest degree first
+            return arr;
           }
-
           function fmtPoly(c){
             const deg = c.length-1;
             return c.map((v,i)=>{
@@ -6019,23 +5819,17 @@ body { margin:0; }
               return s + av + xp;
             }).join('').replace(/^ \+ /,'') || '0';
           }
-
-          // Find all real roots numerically (durand-kerner-ish + simple scan + deflation for rationals)
           function findRoots(coeffs){
             const roots = [];
             let poly = coeffs.slice();
-            // Try integer roots in [-20,20] (rational root style)
             const tryDeflate = (r)=>{
-              // synthetic division
               const out = [poly[0]];
               for(let i=1;i<poly.length;i++) out.push(poly[i] + out[i-1]*r);
               const rem = out.pop();
               if(Math.abs(rem) < 1e-6){ poly = out; return true; }
               return false;
             };
-            const evalAt = (r)=>{
-              let v=0; for(const c of poly) v = v*r + c; return v;
-            };
+            const evalAt = (r)=>{ let v=0; for(const c of poly) v = v*r + c; return v; };
             let guard = 0;
             while(poly.length>2 && guard<50){
               guard++;
@@ -6044,19 +5838,16 @@ body { margin:0; }
                 if(Math.abs(evalAt(r))<1e-6){ foundRoot = r; break; }
               }
               if(foundRoot===null){
-                // bisection scan
                 let prev = evalAt(-50), prevX=-50;
                 for(let x=-49.5;x<=50;x+=0.5){
                   const v = evalAt(x);
                   if(prev*v < 0){
-                    // bisect
-                    let lo=prevX, hi=x, flo=prev, fhi=v;
+                    let lo=prevX, hi=x, flo=prev;
                     for(let k=0;k<60;k++){
                       const mid=(lo+hi)/2, fm=evalAt(mid);
-                      if(flo*fm<0){hi=mid;fhi=fm;} else {lo=mid;flo=fm;}
+                      if(flo*fm<0){hi=mid;} else {lo=mid;flo=fm;}
                     }
-                    foundRoot = (lo+hi)/2;
-                    break;
+                    foundRoot = (lo+hi)/2; break;
                   }
                   prev=v; prevX=x;
                 }
@@ -6065,185 +5856,96 @@ body { margin:0; }
               roots.push(foundRoot);
               tryDeflate(foundRoot);
             }
-            // remaining quadratic / linear
             if(poly.length===3){
               const [a,b,c]=poly, d=b*b-4*a*c;
               if(d>=-1e-9){
                 const sd=Math.sqrt(Math.max(d,0));
                 roots.push((-b+sd)/(2*a)); roots.push((-b-sd)/(2*a));
               }
-            } else if(poly.length===2){
-              roots.push(-poly[1]/poly[0]);
-            }
-            // Round near-integers
+            } else if(poly.length===2){ roots.push(-poly[1]/poly[0]); }
             return roots.map(r => Math.abs(r-Math.round(r))<1e-4 ? Math.round(r) : +r.toFixed(4));
           }
-
-          // Build a sample matrix from roots: diag-ish basis — for demo, use eigenvectors
-          // For each distinct eigenvalue λi we generate column vector e_i; for repeated we duplicate.
-          function buildVectors(roots){
+          function buildVectorsFromRoots(roots){
             const n = roots.length;
-            const cols = [];
-            const seen = {};
+            const cols = []; const seen = {};
             for(let i=0;i<n;i++){
-              const r = roots[i];
-              const key = r.toFixed(4);
-              const dup = seen[key]||0;
-              seen[key] = dup+1;
-              // distinct -> standard basis e_i; repeated -> duplicate previous (creates dependence)
+              const r = roots[i]; const key = r.toFixed(4);
+              const dup = seen[key]||0; seen[key] = dup+1;
               const v = new Array(n).fill(0);
               if(dup===0){ v[i] = 1; }
               else {
-                // copy previous column with same eigenvalue (forces dependence)
                 const prevIdx = cols.findIndex((_,k)=> roots[k].toFixed(4)===key);
                 for(let k=0;k<n;k++) v[k] = cols[prevIdx][k];
               }
               cols.push(v);
             }
-            return cols; // array of column vectors
+            return cols;
           }
-
-          function matToHTML(M, label){
-            const n = M.length, m = M[0].length;
-            let h = `<div style="margin:10px 0;"><strong>${label}</strong><table style="border-collapse:collapse;margin-top:6px;">`;
-            for(let i=0;i<n;i++){
-              h += '<tr>';
-              for(let j=0;j<m;j++){
-                const v = M[i][j];
-                const s = Math.abs(v)<1e-9?'0':(Number.isInteger(v)?v:v.toFixed(3));
-                h += `<td style="border:1px solid #aac;padding:6px 12px;text-align:center;font-family:monospace;">${s}</td>`;
-              }
-              h += '</tr>';
-            }
-            h += '</table></div>';
-            return h;
-          }
-
-          function gaussianElimination(A){
-            const M = A.map(r=>r.slice());
-            const n = M.length, m = M[0].length;
-            const steps = [];
-            let row = 0;
-            for(let col=0; col<m && row<n; col++){
-              // find pivot
-              let piv = row;
-              for(let i=row;i<n;i++) if(Math.abs(M[i][col])>Math.abs(M[piv][col])) piv=i;
-              if(Math.abs(M[piv][col])<1e-9) continue;
-              if(piv!==row){
-                [M[row],M[piv]] = [M[piv],M[row]];
-                steps.push({op:`Swap R${row+1} ↔ R${piv+1}`, M: M.map(r=>r.slice())});
-              }
-              // normalize
-              const pv = M[row][col];
-              if(Math.abs(pv-1)>1e-9){
-                for(let j=0;j<m;j++) M[row][j] /= pv;
-                steps.push({op:`R${row+1} → R${row+1} / ${pv.toFixed(3)}`, M: M.map(r=>r.slice())});
-              }
-              // eliminate
-              for(let i=0;i<n;i++){
-                if(i===row) continue;
-                const f = M[i][col];
-                if(Math.abs(f)<1e-9) continue;
-                for(let j=0;j<m;j++) M[i][j] -= f*M[row][j];
-                steps.push({op:`R${i+1} → R${i+1} − (${f.toFixed(3)})·R${row+1}`, M: M.map(r=>r.slice())});
-              }
-              row++;
-            }
-            // rank = number of nonzero rows
-            let rank = 0;
-            for(const r of M) if(r.some(v=>Math.abs(v)>1e-9)) rank++;
-            return {rref:M, steps, rank};
-          }
-
-          function transpose(M){
-            const n=M.length, m=M[0].length;
-            const T = Array.from({length:m},()=>new Array(n).fill(0));
-            for(let i=0;i<n;i++) for(let j=0;j<m;j++) T[j][i]=M[i][j];
-            return T;
-          }
-
-          function run(eq){
+          function runCharSim(eq){
             try{
               const html = [];
-              html.push(`<h3 style="color:#2c3e50;"><i class="fas fa-1"></i> Step 1 — Read & parse the characteristic equation</h3>`);
+              html.push(`<h3 style="color:#2c3e50;">Step 1 — Parse the characteristic equation</h3>`);
               html.push(`<p>Input: <code>${eq}</code></p>`);
               const coeffs = parsePolynomial(eq);
               html.push(`<p>Standard form: <strong>${fmtPoly(coeffs)} = 0</strong></p>`);
-              html.push(`<p>Coefficient vector (high → low degree): <code>[${coeffs.join(', ')}]</code></p>`);
+              html.push(`<p>Coefficients (high → low): <code>[${coeffs.join(', ')}]</code></p>`);
 
-              html.push(`<h3 style="color:#2c3e50;margin-top:18px;"><i class="fas fa-2"></i> Step 2 — Solve for the roots (eigenvalues λ)</h3>`);
+              html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 2 — Solve for eigenvalues λ</h3>`);
               const roots = findRoots(coeffs);
               if(roots.length===0) throw new Error('No real roots found.');
-              html.push(`<p>Real roots found: <strong>${roots.map(r=>'λ='+r).join(',&nbsp; ')}</strong></p>`);
+              html.push(`<p>Real roots: <strong>${roots.map(r=>'λ='+r).join(',&nbsp; ')}</strong></p>`);
               const distinct = [...new Set(roots.map(r=>r.toFixed(4)))];
-              html.push(`<p>Distinct eigenvalues: <strong>${distinct.length}</strong> &nbsp;|&nbsp; Total (with multiplicity): <strong>${roots.length}</strong></p>`);
+              html.push(`<p>Distinct λ: <strong>${distinct.length}</strong> | Total (with multiplicity): <strong>${roots.length}</strong></p>`);
 
-              html.push(`<h3 style="color:#2c3e50;margin-top:18px;"><i class="fas fa-3"></i> Step 3 — Build candidate eigenvector set</h3>`);
-              const cols = buildVectors(roots);
-              html.push(`<p>For each eigenvalue we attach a representative vector. Distinct eigenvalues get independent basis vectors; repeated eigenvalues reuse the previous vector (which is what produces dependence).</p>`);
-              cols.forEach((v,i)=>{
-                html.push(`<p>v<sub>${i+1}</sub> (for λ=${roots[i]}) = <code>[${v.join(', ')}]<sup>T</sup></code></p>`);
-              });
+              html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 3 — Build candidate eigenvector set</h3>`);
+              const cols = buildVectorsFromRoots(roots);
+              html.push(`<p>Distinct λ → independent basis vector. Repeated λ → reuse the previous vector (forces dependence).</p>`);
+              cols.forEach((v,i)=> html.push(`<p>v<sub>${i+1}</sub> (λ=${roots[i]}) = [${v.join(', ')}]<sup>T</sup></p>`));
 
-              html.push(`<h3 style="color:#2c3e50;margin-top:18px;"><i class="fas fa-4"></i> Step 4 — Form matrix A (vectors as columns)</h3>`);
-              // rows of A from columns
-              const A = transpose(cols); // cols is array of column-vectors; transpose treats them as rows -> need actual matrix
-              // Build A directly: A[i][j] = cols[j][i]
+              html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 4 — Form matrix A (vectors as columns)</h3>`);
               const n = roots.length;
               const Mat = Array.from({length:n},(_,i)=>cols.map(c=>c[i]));
               html.push(matToHTML(Mat, `A (${n}×${n})`));
 
-              html.push(`<h3 style="color:#2c3e50;margin-top:18px;"><i class="fas fa-5"></i> Step 5 — Apply Gaussian elimination</h3>`);
+              html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 5 — Gaussian elimination</h3>`);
               const {rref, steps, rank} = gaussianElimination(Mat);
-              if(steps.length===0){
-                html.push(`<p>Matrix already in reduced form.</p>`);
-              } else {
-                steps.forEach((s,i)=>{
-                  html.push(`<p style="margin-top:10px;"><strong>Op ${i+1}:</strong> ${s.op}</p>`);
-                  html.push(matToHTML(s.M,'Resulting matrix'));
-                });
-              }
+              steps.forEach((s,i)=>{
+                html.push(`<p style="margin-top:8px;"><strong>${i===0?'':'Op '+i+': '}${s.op}</strong></p>`);
+                html.push(matToHTML(s.M,''));
+              });
               html.push(matToHTML(rref,'Final RREF'));
 
-              html.push(`<h3 style="color:#2c3e50;margin-top:18px;"><i class="fas fa-6"></i> Step 6 — Compare rank with number of vectors</h3>`);
-              html.push(`<p>Number of vectors n = <strong>${n}</strong></p>`);
-              html.push(`<p>Rank(A) = <strong>${rank}</strong> (count of non-zero rows in RREF)</p>`);
-
-              html.push(`<h3 style="color:#2c3e50;margin-top:18px;"><i class="fas fa-flag-checkered"></i> Step 7 — Conclusion</h3>`);
+              html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 6 — Compare rank with n</h3>`);
+              html.push(`<p>n = <strong>${n}</strong>, rank = <strong>${rank}</strong></p>`);
               const dependent = rank < n;
               const color = dependent ? '#e74c3c' : '#27ae60';
               const verdict = dependent ? 'LINEARLY DEPENDENT' : 'LINEARLY INDEPENDENT';
-              html.push(`<div style="padding:15px;border-radius:10px;background:${color}15;border-left:6px solid ${color};font-size:1.15rem;">
+              html.push(`<div style="padding:15px;border-radius:10px;background:${color}15;border-left:6px solid ${color};font-size:1.1rem;margin-top:8px;">
                 <strong style="color:${color};">${verdict}</strong><br>
                 ${dependent
-                  ? `Because rank (${rank}) &lt; number of vectors (${n}), at least one vector is a linear combination of the others. Geometrically, the vectors do not span ℝ<sup>${n}</sup>.`
-                  : `Because rank (${rank}) = number of vectors (${n}), no vector can be expressed as a combination of the others. The set is a basis of ℝ<sup>${n}</sup>.`}
+                  ? `Because rank (${rank}) &lt; n (${n}), the eigenvector set built from this characteristic equation is dependent (caused by repeated eigenvalues).`
+                  : `Because rank (${rank}) = n (${n}), the eigenvectors form an independent set — a basis of ℝ<sup>${n}</sup>.`}
               </div>`);
-
               if(distinct.length < roots.length){
-                html.push(`<p style="margin-top:12px;color:#555;"><i class="fas fa-lightbulb" style="color:#f39c12;"></i>
-                  Note: the characteristic equation has <strong>repeated roots</strong>, which is why the constructed eigenvector set turned out dependent. Try one of the equations with all-distinct roots to see an independent set.</p>`);
+                html.push(`<p style="margin-top:10px;color:#555;"><i class="fas fa-lightbulb" style="color:#f39c12;"></i>
+                  The equation has <strong>repeated roots</strong>, which is why the set is dependent. Try one with all distinct roots.</p>`);
               }
-
-              out().innerHTML = html.join('');
+              $('stepSimOutput').innerHTML = html.join('');
             } catch(err){
-              out().innerHTML = `<div style="color:#c0392b;padding:12px;background:#fdecea;border-radius:8px;">
+              $('stepSimOutput').innerHTML = `<div style="color:#c0392b;padding:12px;background:#fdecea;border-radius:8px;">
                 <strong>Error:</strong> ${err.message}<br>
                 Try a form like <code>x^3 - 6x^2 + 11x - 6 = 0</code> or <code>x^2 - 5x + 6 = 0</code>.</div>`;
             }
           }
-
-          $('runStepSimBtn').addEventListener('click', ()=> run($('charEqInput').value));
+          $('runStepSimBtn').addEventListener('click', ()=> runCharSim($('charEqInput').value));
           document.querySelectorAll('[data-eq]').forEach(b=>{
-            b.addEventListener('click', ()=>{ $('charEqInput').value = b.dataset.eq; run(b.dataset.eq); });
+            b.addEventListener('click', ()=>{ $('charEqInput').value = b.dataset.eq; runCharSim(b.dataset.eq); });
           });
         })();
         </script>
-        <!-- ================= END STEP-BY-STEP SIMULATOR ================= -->
 
         <footer>
-            <p>Linear Dependence Calculator | Created for GitHub Pages | Uses Gaussian Elimination Method</p>
-            <p>Vectors are considered linearly dependent if the determinant of the matrix is zero OR if Gaussian elimination reveals free variables.</p>
+            <p>Linear Dependence Simulator | Step-by-step row reduction + characteristic equation check</p>
         </footer>
     </div>
 
@@ -6322,8 +6024,8 @@ body { margin:0; }
         <div class="instructions">
             <h3><i class="fas fa-info-circle"></i> Instructions</h3>
             <ul>
-                <li>This posttest contains <strong>15 advanced-level questions</strong> to test your mastery.</li>
-                <li>Each question carries <strong>2 marks</strong>. Total marks: 30.</li>
+                <li>This posttest contains <strong>20 advanced-level questions</strong> to test your mastery.</li>
+                <li>Each question carries <strong>1 mark</strong>. Total marks: 20.</li>
                 <li>Questions involve proofs, theoretical concepts, and complex applications.</li>
                 <li>Select your answer by clicking on the option. You can change your answer before submission.</li>
                 <li>Click "Submit Test" when you have completed all questions.</li>
@@ -6337,7 +6039,7 @@ body { margin:0; }
                 <div class="test-meta">
                     <div class="meta-item">
                         <i class="fas fa-question"></i>
-                        <span>15 Questions</span>
+                        <span>20 Questions</span>
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-clock"></i>
@@ -6345,7 +6047,7 @@ body { margin:0; }
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-star"></i>
-                        <span>Total Marks: 30</span>
+                        <span>Total Marks: 20</span>
                     </div>
                 </div>
                 <div class="timer" id="timer">
@@ -6402,7 +6104,7 @@ body { margin:0; }
             <div class="result-details">
                 <div class="result-item">
                     <span>Total Questions:</span>
-                    <strong>15</strong>
+                    <strong>20</strong>
                 </div>
                 <div class="result-item">
                     <span>Correct Answers:</span>
@@ -8024,538 +7726,137 @@ try{
 
         // Pretest Questions Data (10 Easy + 5 Hard)
         const pretestQuestions = [
-            // Easy Questions (1-5)
-            {
-                id: 1,
-                difficulty: 'easy',
-                question: "Which of the following is the correct definition of linear dependence for a set of vectors {v₁, v₂, ..., vₖ}?",
-                options: [
-                    "There exist scalars c₁, c₂, ..., cₖ, all zero, such that c₁v₁ + c₂v₂ + ... + cₖvₖ = 0",
-                    "There exist scalars c₁, c₂, ..., cₖ, not all zero, such that c₁v₁ + c₂v₂ + ... + cₖvₖ = 0",
-                    "For any scalars c₁, c₂, ..., cₖ, we have c₁v₁ + c₂v₂ + ... + cₖvₖ = 0",
-                    "There exists exactly one scalar c such that cv₁ = 0"
-                ],
-                correctAnswer: 1,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Understand the definition",
-                        content: "Linear dependence means there exists a non-trivial linear combination (not all coefficients zero) that equals the zero vector."
-                    },
-                    {
-                        title: "Step 2: Trivial vs Non-trivial solution",
-                        content: "Trivial solution: c₁ = c₂ = ... = cₖ = 0 (always works). Non-trivial: at least one cᵢ ≠ 0."
-                    },
-                    {
-                        title: "Step 3: Mathematical formulation",
-                        content: "Vectors are linearly dependent if ∃ c₁, c₂, ..., cₖ, not all zero, such that Σcᵢvᵢ = 0."
-                    },
-                    {
-                        title: "Step 4: Conclusion",
-                        content: "Option B is the correct formal definition of linear dependence."
-                    }
-                ],
-                marks: 1
-            },
-            {
-                id: 2,
-                difficulty: 'easy',
-                question: "Consider the vectors v₁ = (1, 2) and v₂ = (2, 4) in ℝ². What is their relationship?",
-                options: [
-                    "Linearly independent because they are not equal",
-                    "Linearly dependent because v₂ = 2v₁",
-                    "Linearly independent because they have different magnitudes",
-                    "Linearly dependent because both are non-zero"
-                ],
-                correctAnswer: 1,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Compare the vectors",
-                        content: "v₁ = (1, 2), v₂ = (2, 4). Check if one is a scalar multiple of the other."
-                    },
-                    {
-                        title: "Step 2: Find scalar relationship",
-                        content: "2 × v₁ = 2 × (1, 2) = (2, 4) = v₂"
-                    },
-                    {
-                        title: "Step 3: Apply dependence criterion",
-                        content: "If v₂ = kv₁ for some scalar k, then vectors are linearly dependent."
-                    },
-                    {
-                        title: "Step 4: Conclusion",
-                        content: "Since v₂ = 2v₁, the vectors are linearly dependent."
-                    }
-                ],
-                marks: 1
-            },
-            {
-                id: 3,
-                difficulty: 'easy',
-                question: "Which of the following sets of vectors in ℝ³ is linearly independent?",
-                options: [
-                    "{(1,0,0), (0,1,0), (0,0,1)}",
-                    "{(1,2,3), (2,4,6), (3,6,9)}",
-                    "{(1,1,1), (2,2,2), (3,3,3)}",
-                    "{(1,0,0), (2,0,0), (3,0,0)}"
-                ],
-                correctAnswer: 0,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Analyze each set",
-                        content: "Set A: Standard basis vectors. Set B: v₂ = 2v₁, v₃ = 3v₁. Set C: All are scalar multiples. Set D: All on x-axis."
-                    },
-                    {
-                        title: "Step 2: Check for scalar multiples",
-                        content: "In sets B, C, D, each vector is a scalar multiple of others. In set A, no vector is a multiple of another."
-                    },
-                    {
-                        title: "Step 3: Determinant test for set A",
-                        content: "Matrix [[1,0,0],[0,1,0],[0,0,1]] has determinant = 1 ≠ 0, so independent."
-                    },
-                    {
-                        title: "Step 4: Conclusion",
-                        content: "Only set A (standard basis) contains linearly independent vectors."
-                    }
-                ],
-                marks: 1
-            },
-            {
-                id: 4,
-                difficulty: 'easy',
-                question: "For a square matrix A, which condition implies that its column vectors are linearly independent?",
-                options: [
-                    "det(A) = 0",
-                    "det(A) ≠ 0",
-                    "A is symmetric",
-                    "A has zero eigenvalues"
-                ],
-                correctAnswer: 1,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Recall the theorem",
-                        content: "For an n×n matrix A, its column vectors are linearly independent if and only if det(A) ≠ 0."
-                    },
-                    {
-                        title: "Step 2: Understand the reasoning",
-                        content: "det(A) = 0 means the columns span less than n dimensions, indicating dependence."
-                    },
-                    {
-                        title: "Step 3: Counter-examples",
-                        content: "A symmetric matrix can have det = 0 (dependent) or det ≠ 0 (independent). Zero eigenvalues imply det = 0."
-                    },
-                    {
-                        title: "Step 4: Conclusion",
-                        content: "Column vectors are linearly independent if and only if the determinant is non-zero."
-                    }
-                ],
-                marks: 1
-            },
-            {
-                id: 5,
-                difficulty: 'easy',
-                question: "What is the maximum number of linearly independent vectors possible in ℝ²?",
-                options: [
-                    "1",
-                    "2",
-                    "3",
-                    "Unlimited"
-                ],
-                correctAnswer: 1,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Understand dimension concept",
-                        content: "The dimension of a vector space is the maximum number of linearly independent vectors it can contain."
-                    },
-                    {
-                        title: "Step 2: Dimension of ℝ²",
-                        content: "ℝ² is a 2-dimensional vector space over ℝ."
-                    },
-                    {
-                        title: "Step 3: Apply the theorem",
-                        content: "In an n-dimensional space, you can have at most n linearly independent vectors."
-                    },
-                    {
-                        title: "Step 4: Example",
-                        content: "(1,0) and (0,1) are linearly independent in ℝ². Any third vector will be a linear combination of these two."
-                    },
-                    {
-                        title: "Step 5: Conclusion",
-                        content: "Maximum number of linearly independent vectors in ℝ² is 2."
-                    }
-                ],
-                marks: 1
-            },
-            // Medium Questions (6-10)
-            {
-                id: 6,
-                difficulty: 'medium',
-                question: "If a set contains the zero vector 0, what can we say about its linear dependence?",
-                options: [
-                    "Always independent",
-                    "Always dependent",
-                    "Depends on other vectors",
-                    "Zero vector doesn't affect dependence"
-                ],
-                correctAnswer: 1,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Consider set with zero vector",
-                        content: "Let S = {0, v₁, v₂, ..., vₖ} contain the zero vector."
-                    },
-                    {
-                        title: "Step 2: Construct non-trivial combination",
-                        content: "Take c₀ = 1 (coefficient for zero vector) and c₁ = c₂ = ... = cₖ = 0."
-                    },
-                    {
-                        title: "Step 3: Verify the combination",
-                        content: "1·0 + 0·v₁ + 0·v₂ + ... + 0·vₖ = 0"
-                    },
-                    {
-                        title: "Step 4: Check if non-trivial",
-                        content: "This is a non-trivial combination (c₀ = 1 ≠ 0) that equals the zero vector."
-                    },
-                    {
-                        title: "Step 5: Conclusion",
-                        content: "Any set containing the zero vector is automatically linearly dependent."
-                    }
-                ],
-                marks: 1
-            },
-            {
-                id: 7,
-                difficulty: 'medium',
-                question: "Given vectors v₁ = (1, 0, 1), v₂ = (0, 1, 1), v₃ = (1, 1, 2). Which statement is true?",
-                options: [
-                    "They are linearly independent",
-                    "They are linearly dependent because v₃ = v₁ + v₂",
-                    "They are linearly dependent because v₁ = v₂",
-                    "We need more information to determine"
-                ],
-                correctAnswer: 1,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Check vector relationships",
-                        content: "v₁ = (1,0,1), v₂ = (0,1,1), v₃ = (1,1,2)"
-                    },
-                    {
-                        title: "Step 2: Compute v₁ + v₂",
-                        content: "v₁ + v₂ = (1+0, 0+1, 1+1) = (1, 1, 2) = v₃"
-                    },
-                    {
-                        title: "Step 3: Form linear combination",
-                        content: "v₁ + v₂ - v₃ = (0,0,0) or equivalently v₃ = v₁ + v₂"
-                    },
-                    {
-                        title: "Step 4: Check coefficients",
-                        content: "1·v₁ + 1·v₂ + (-1)·v₃ = 0 with coefficients not all zero (1,1,-1)"
-                    },
-                    {
-                        title: "Step 5: Conclusion",
-                        content: "Since v₃ = v₁ + v₂, the vectors are linearly dependent."
-                    }
-                ],
-                marks: 1
-            },
-            {
-                id: 8,
-                difficulty: 'medium',
-                question: "What does the rank of a matrix tell us about linear independence of its columns?",
-                options: [
-                    "Rank equals the number of linearly dependent columns",
-                    "Rank equals the number of linearly independent columns",
-                    "Rank has no relation to linear independence",
-                    "Rank equals the determinant of the matrix"
-                ],
-                correctAnswer: 1,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Definition of rank",
-                        content: "The rank of a matrix is the maximum number of linearly independent column vectors."
-                    },
-                    {
-                        title: "Step 2: Relationship with independence",
-                        content: "rank(A) = dimension of column space = number of linearly independent columns"
-                    },
-                    {
-                        title: "Step 3: Example verification",
-                        content: "If rank = 3, there are 3 linearly independent columns. If rank < number of columns, columns are dependent."
-                    },
-                    {
-                        title: "Step 4: Connection to solutions",
-                        content: "rank(A) also equals number of pivot positions in row echelon form."
-                    },
-                    {
-                        title: "Step 5: Conclusion",
-                        content: "The rank of a matrix equals the number of its linearly independent column vectors."
-                    }
-                ],
-                marks: 1
-            },
-            {
-                id: 9,
-                difficulty: 'medium',
-                question: "Consider the matrix A = [[1, 2], [3, 6]]. Are its column vectors linearly independent?",
-                options: [
-                    "Yes, because they are different",
-                    "No, because the second column is twice the first",
-                    "Yes, because the matrix is square",
-                    "No, because the determinant is positive"
-                ],
-                correctAnswer: 1,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Identify column vectors",
-                        content: "Column 1: (1,3), Column 2: (2,6)"
-                    },
-                    {
-                        title: "Step 2: Check scalar multiple",
-                        content: "2 × (1,3) = (2,6), so column 2 = 2 × column 1"
-                    },
-                    {
-                        title: "Step 3: Calculate determinant",
-                        content: "det(A) = (1×6) - (2×3) = 6 - 6 = 0"
-                    },
-                    {
-                        title: "Step 4: Apply determinant test",
-                        content: "For 2×2 matrix, columns independent if det ≠ 0. Here det = 0, so dependent."
-                    },
-                    {
-                        title: "Step 5: Conclusion",
-                        content: "Columns are linearly dependent because one is a scalar multiple of the other."
-                    }
-                ],
-                marks: 1
-            },
-            {
-                id: 10,
-                difficulty: 'medium',
-                question: "Which method is NOT used to determine linear dependence of vectors?",
-                options: [
-                    "Gaussian elimination",
-                    "Calculating the determinant",
-                    "Checking if any vector is the zero vector",
-                    "Finding the matrix trace"
-                ],
-                correctAnswer: 3,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Review standard methods",
-                        content: "1) Gaussian elimination (find rank), 2) Determinant test, 3) Check for zero vector, 4) Direct comparison for scalar multiples."
-                    },
-                    {
-                        title: "Step 2: Understand matrix trace",
-                        content: "Trace = sum of diagonal elements. Useful for eigenvalues, characteristic polynomial, but not for checking linear dependence."
-                    },
-                    {
-                        title: "Step 3: Counterexample",
-                        content: "A = [[1,2],[2,4]] (trace=5, dependent) and B = [[2,0],[0,3]] (trace=5, independent). Same trace, different dependence."
-                    },
-                    {
-                        title: "Step 4: Why trace doesn't work",
-                        content: "Trace doesn't capture relationships between columns. It's invariant under some operations but not related to linear independence."
-                    },
-                    {
-                        title: "Step 5: Conclusion",
-                        content: "Finding the matrix trace cannot determine linear dependence of vectors."
-                    }
-                ],
-                marks: 1
-            },
-            // Hard Questions (11-15)
-            {
-                id: 11,
-                difficulty: 'hard',
-                question: "For what values of k are the vectors v₁ = (1, 2, 3), v₂ = (4, 5, 6), v₃ = (7, 8, k) linearly independent in ℝ³?",
-                options: [
-                    "k = 9",
-                    "k ≠ 9",
-                    "k = 10",
-                    "k ≠ 10"
-                ],
-                correctAnswer: 1,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Form the matrix",
-                        content: "A = [[1, 4, 7], [2, 5, 8], [3, 6, k]]"
-                    },
-                    {
-                        title: "Step 2: Calculate determinant",
-                        content: "det(A) = 1(5k - 48) - 4(2k - 24) + 7(12 - 15)"
-                    },
-                    {
-                        title: "Step 3: Simplify determinant",
-                        content: "det(A) = (5k - 48) - 4(2k - 24) + 7(-3) = 5k - 48 - 8k + 96 - 21 = -3k + 27"
-                    },
-                    {
-                        title: "Step 4: Set condition for independence",
-                        content: "Vectors independent ⇔ det(A) ≠ 0 ⇔ -3k + 27 ≠ 0 ⇔ k ≠ 9"
-                    },
-                    {
-                        title: "Step 5: Conclusion",
-                        content: "The vectors are linearly independent for all k ≠ 9."
-                    }
-                ],
-                marks: 1
-            },
-            {
-                id: 12,
-                difficulty: 'hard',
-                question: "Determine if the vectors v₁ = (1, 1, 0, 0), v₂ = (0, 1, 1, 0), v₃ = (0, 0, 1, 1), v₄ = (1, 0, 0, 1) in ℝ⁴ are linearly independent.",
-                options: [
-                    "Yes, they form a basis for ℝ⁴",
-                    "No, they are linearly dependent",
-                    "Only three of them are independent",
-                    "Cannot be determined without calculation"
-                ],
-                correctAnswer: 0,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Form 4×4 matrix",
-                        content: "A = [[1, 0, 0, 1], [1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1]]"
-                    },
-                    {
-                        title: "Step 2: Compute determinant",
-                        content: "Using cofactor expansion or row reduction:"
-                    },
-                    {
-                        title: "Step 3: Row reduction method",
-                        content: "R₂ → R₂ - R₁: [[1,0,0,1],[0,1,0,-1],[0,1,1,0],[0,0,1,1]]"
-                    },
-                    {
-                        title: "Step 4: Continue reduction",
-                        content: "R₃ → R₃ - R₂: [[1,0,0,1],[0,1,0,-1],[0,0,1,1],[0,0,1,1]]"
-                    },
-                    {
-                        title: "Step 5: Final reduction and conclusion",
-                        content: "R₄ → R₄ - R₃: [[1,0,0,1],[0,1,0,-1],[0,0,1,1],[0,0,0,0]] → Rank = 3, so dependent"
-                    },
-                    {
-                        title: "Step 6: Correct calculation",
-                        content: "Actually, continuing properly gives rank = 4. The vectors are independent and form a basis for ℝ⁴."
-                    }
-                ],
-                marks: 1
-            },
-            {
-                id: 13,
-                difficulty: 'hard',
-                question: "If {v₁, v₂, v₃} is a linearly independent set in ℝⁿ, which of the following sets must also be linearly independent?",
-                options: [
-                    "{v₁ + v₂, v₂ + v₃, v₃ + v₁}",
-                    "{v₁ - v₂, v₂ - v₃, v₃ - v₁}",
-                    "{2v₁, 3v₂, 5v₃}",
-                    "All of the above"
-                ],
-                correctAnswer: 2,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Analyze each set",
-                        content: "Let's test each transformation for preserving linear independence."
-                    },
-                    {
-                        title: "Step 2: Check set A: {v₁+v₂, v₂+v₃, v₃+v₁}",
-                        content: "Consider: (v₁+v₂) - (v₂+v₃) + (v₃+v₁) = 2v₁ ≠ 0. Actually, (v₁+v₂) - (v₂+v₃) + (v₃+v₁) = 2v₁. But check: (v₁+v₂) + (v₃+v₁) - (v₂+v₃) = 2v₁. Need proper test."
-                    },
-                    {
-                        title: "Step 3: Better approach - matrix transformation",
-                        content: "Set A corresponds to transformation matrix [[1,1,0],[0,1,1],[1,0,1]]. Its determinant = 2 ≠ 0, so independent."
-                    },
-                    {
-                        title: "Step 4: Check set B: {v₁-v₂, v₂-v₃, v₃-v₁}",
-                        content: "(v₁-v₂) + (v₂-v₃) + (v₃-v₁) = 0, so dependent. Matrix [[1,-1,0],[0,1,-1],[-1,0,1]] has det = 0."
-                    },
-                    {
-                        title: "Step 5: Check set C: {2v₁, 3v₂, 5v₃}",
-                        content: "Scalar multiples of independent vectors remain independent. Matrix [[2,0,0],[0,3,0],[0,0,5]] has det = 30 ≠ 0."
-                    },
-                    {
-                        title: "Step 6: Conclusion",
-                        content: "Only set C must always be independent. Set B is always dependent. Set A is usually independent but not always."
-                    }
-                ],
-                marks: 1
-            },
-            {
-                id: 14,
-                difficulty: 'hard',
-                question: "Find the dimension of the subspace spanned by vectors: v₁ = (1, 2, -1, 3), v₂ = (2, 4, -2, 6), v₃ = (1, 3, 2, 5), v₄ = (2, 5, 1, 8) in ℝ⁴.",
-                options: [
-                    "1",
-                    "2",
-                    "3",
-                    "4"
-                ],
-                correctAnswer: 2,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Form matrix with vectors as columns",
-                        content: "A = [[1,2,1,2],[2,4,3,5],[-1,-2,2,1],[3,6,5,8]]"
-                    },
-                    {
-                        title: "Step 2: Perform Gaussian elimination",
-                        content: "R₂ → R₂ - 2R₁: [[1,2,1,2],[0,0,1,1],[-1,-2,2,1],[3,6,5,8]]"
-                    },
-                    {
-                        title: "Step 3: Continue elimination",
-                        content: "R₃ → R₃ + R₁: [[1,2,1,2],[0,0,1,1],[0,0,3,3],[3,6,5,8]]"
-                    },
-                    {
-                        title: "Step 4: Further simplification",
-                        content: "R₄ → R₄ - 3R₁: [[1,2,1,2],[0,0,1,1],[0,0,3,3],[0,0,2,2]]"
-                    },
-                    {
-                        title: "Step 5: Final reduction",
-                        content: "R₃ → R₃ - 3R₂, R₄ → R₄ - 2R₂: [[1,2,1,2],[0,0,1,1],[0,0,0,0],[0,0,0,0]]"
-                    },
-                    {
-                        title: "Step 6: Count pivot columns",
-                        content: "Two pivot columns (columns 1 and 3), so rank = 2."
-                    },
-                    {
-                        title: "Step 7: Conclusion",
-                        content: "Dimension of spanned subspace = rank = 2. Note: v₂ = 2v₁, v₄ = v₁ + v₃."
-                    }
-                ],
-                marks: 1
-            },
-            {
-                id: 15,
-                difficulty: 'hard',
-                question: "Which of the following statements about linear dependence in ℂ³ (complex vector space) is FALSE?",
-                options: [
-                    "If vectors are linearly dependent in ℝ³, they are also dependent in ℂ³",
-                    "If vectors are linearly independent in ℝ³, they are also independent in ℂ³",
-                    "The set {(1,i,0), (i,1,0), (0,0,1)} is linearly independent",
-                    "A set of 4 vectors in ℂ³ can be linearly independent"
-                ],
-                correctAnswer: 3,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Analyze statement A",
-                        content: "True. If Σcᵢvᵢ = 0 with real cᵢ not all zero, same holds in ℂ."
-                    },
-                    {
-                        title: "Step 2: Analyze statement B",
-                        content: "True. If only trivial solution with real coefficients, same holds with complex coefficients (real ⊂ complex)."
-                    },
-                    {
-                        title: "Step 3: Analyze statement C",
-                        content: "Check: c₁(1,i,0) + c₂(i,1,0) + c₃(0,0,1) = 0. System: c₁ + ic₂ = 0, ic₁ + c₂ = 0, c₃ = 0. Solve: From first, c₁ = -ic₂. Substitute: i(-ic₂) + c₂ = c₂ + c₂ = 2c₂ = 0 ⇒ c₂ = 0 ⇒ c₁ = 0. So independent."
-                    },
-                    {
-                        title: "Step 4: Analyze statement D",
-                        content: "False. ℂ³ has dimension 3 over ℂ. Maximum independent vectors = 3 (by dimension theorem). 4 vectors must be dependent."
-                    },
-                    {
-                        title: "Step 5: Dimension consideration",
-                        content: "ℂ³ as complex vector space has dimension 3. As real vector space it has dimension 6, but question refers to ℂ³ as complex space."
-                    },
-                    {
-                        title: "Step 6: Conclusion",
-                        content: "Statement D is false because in any n-dimensional space, more than n vectors must be linearly dependent."
-                    }
-                ],
-                marks: 1
-            }
+          { id:1, difficulty:'easy', marks:1,
+            question:"A vector in 3D space is represented as:",
+            options:["One number","Two numbers","Three numbers","Infinite numbers"],
+            correctAnswer:2,
+            solutionSteps:[
+              {title:"Concept",content:"A vector in ℝ³ has exactly 3 coordinates (x, y, z) — one per dimension."},
+              {title:"Why",content:"Each coordinate locates the tip of the vector along an axis of the 3D space."},
+              {title:"Answer",content:"Three numbers — option C."}]},
+          { id:2, difficulty:'easy', marks:1,
+            question:"Which of the following is a valid vector in ℝ²?",
+            options:["(1, 2, 3)","(4, −1)","(5)","(0, 1, 2, 3)"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Concept",content:"A vector in ℝ² has exactly 2 components."},
+              {title:"Check",content:"(1,2,3) is in ℝ³, (5) is a scalar, (0,1,2,3) is in ℝ⁴. Only (4,−1) is in ℝ²."},
+              {title:"Answer",content:"Option B."}]},
+          { id:3, difficulty:'easy', marks:1,
+            question:"What is the result of (1,2) + (3,4)?",
+            options:["(4,6)","(3,8)","(4,4)","(1,6)"],
+            correctAnswer:0,
+            solutionSteps:[
+              {title:"Rule",content:"Vector addition is component-wise: (a,b)+(c,d) = (a+c, b+d)."},
+              {title:"Compute",content:"(1+3, 2+4) = (4, 6)."},
+              {title:"Answer",content:"Option A."}]},
+          { id:4, difficulty:'easy', marks:1,
+            question:"Scalar multiplication: 2 × (1, −3) = ?",
+            options:["(2, −6)","(3, −3)","(2, −3)","(1, −6)"],
+            correctAnswer:0,
+            solutionSteps:[
+              {title:"Rule",content:"k·(a,b) = (k·a, k·b)."},
+              {title:"Compute",content:"2·1 = 2 and 2·(−3) = −6, so result is (2,−6)."},
+              {title:"Answer",content:"Option A."}]},
+          { id:5, difficulty:'easy', marks:1,
+            question:"The zero vector is:",
+            options:["(1,1,1)","(0,0,0)","(−1,−1,−1)","Any vector"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Definition",content:"The zero vector has every component equal to 0."},
+              {title:"Answer",content:"(0,0,0) — option B."}]},
+          { id:6, difficulty:'medium', marks:1,
+            question:"A system of linear equations can have:",
+            options:["Only one solution","No solution","Infinite solutions","All of the above"],
+            correctAnswer:3,
+            solutionSteps:[
+              {title:"Three cases",content:"Linear systems are exactly one of: unique solution, no solution (inconsistent), or infinitely many solutions (dependent)."},
+              {title:"Answer",content:"All of the above — option D."}]},
+          { id:7, difficulty:'medium', marks:1,
+            question:"A matrix with 3 rows and 2 columns is called:",
+            options:["2×3","3×2","3×3","2×2"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Convention",content:"Matrix size is written rows × columns."},
+              {title:"Answer",content:"3×2 — option B."}]},
+          { id:8, difficulty:'medium', marks:1,
+            question:"The identity matrix has:",
+            options:["All zeros","All ones","1s on diagonal, 0s elsewhere","Random values"],
+            correctAnswer:2,
+            solutionSteps:[
+              {title:"Definition",content:"Iₙ has 1 on the main diagonal and 0 elsewhere; it acts as multiplicative identity."},
+              {title:"Answer",content:"Option C."}]},
+          { id:9, difficulty:'medium', marks:1,
+            question:"Determinant is defined only for:",
+            options:["Rectangular matrices","Square matrices","Row matrices","Column matrices"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Definition",content:"Determinant is a scalar function defined only for n×n (square) matrices."},
+              {title:"Answer",content:"Option B."}]},
+          { id:10, difficulty:'medium', marks:1,
+            question:"If determinant of a matrix = 0, then the matrix is:",
+            options:["Invertible","Non-singular","Singular","Identity"],
+            correctAnswer:2,
+            solutionSteps:[
+              {title:"Rule",content:"det = 0 ⇔ matrix is non-invertible (singular)."},
+              {title:"Implication",content:"Its columns/rows are linearly dependent."},
+              {title:"Answer",content:"Option C — Singular."}]},
+          { id:11, difficulty:'hard', marks:1,
+            question:"Which is a valid row operation?",
+            options:["Swap two rows","Multiply a row by a scalar","Add one row to another","All of the above"],
+            correctAnswer:3,
+            solutionSteps:[
+              {title:"Three elementary operations",content:"Swap, scale (by non-zero), and add a multiple of one row to another."},
+              {title:"Answer",content:"All of the above — option D."}]},
+          { id:12, difficulty:'hard', marks:1,
+            question:"Rank of a matrix is:",
+            options:["Number of columns","Number of rows","Number of non-zero independent rows","Sum of elements"],
+            correctAnswer:2,
+            solutionSteps:[
+              {title:"Definition",content:"Rank = maximum number of linearly independent rows (= linearly independent columns)."},
+              {title:"Answer",content:"Option C."}]},
+          { id:13, difficulty:'hard', marks:1,
+            question:"Maximum number of independent vectors in ℝ³ is:",
+            options:["1","2","3","4"],
+            correctAnswer:2,
+            solutionSteps:[
+              {title:"Concept",content:"dim(ℝ³) = 3, so any independent set has at most 3 vectors."},
+              {title:"Answer",content:"Option C."}]},
+          { id:14, difficulty:'hard', marks:1,
+            question:"The expression c₁v₁ + c₂v₂ is called:",
+            options:["Vector subtraction","Linear combination","Dot product","Cross product"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Definition",content:"Sum of scalar multiples of vectors is a linear combination."},
+              {title:"Answer",content:"Option B."}]},
+          { id:15, difficulty:'hard', marks:1,
+            question:"Two vectors are parallel if:",
+            options:["Their dot product is zero","One is scalar multiple of the other","Their sum is zero","They are equal"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Geometric meaning",content:"Parallel ⇔ same line ⇔ one is a scalar multiple of the other."},
+              {title:"Answer",content:"Option B."}]},
+          { id:16, difficulty:'hard', marks:1,
+            question:"If dot product of two vectors is zero, they are:",
+            options:["Parallel","Equal","Perpendicular","Opposite"],
+            correctAnswer:2,
+            solutionSteps:[
+              {title:"Rule",content:"u·v = |u||v|cosθ. If u·v = 0 and neither is zero, cosθ = 0, so θ = 90°."},
+              {title:"Answer",content:"Perpendicular — option C."}]},
+          { id:17, difficulty:'hard', marks:1,
+            question:"Infinite solutions occur when:",
+            options:["Equations are inconsistent","Equations are dependent","Equations have no variables","Equations are quadratic"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Reason",content:"Dependent equations describe the same relationship → free variables → infinite solutions."},
+              {title:"Answer",content:"Option B."}]},
+          { id:18, difficulty:'hard', marks:1,
+            question:"If number of vectors > dimension, then they are:",
+            options:["Always independent","Always dependent","Always equal","None"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Theorem",content:"In ℝⁿ, any set of more than n vectors is linearly dependent."},
+              {title:"Answer",content:"Always dependent — option B."}]}
         ];
 
         // Test state
@@ -8952,362 +8253,11 @@ try{
 // === simulation ===
 (function(){
 try{
+  // Simulation logic now lives inline inside the simulation page (see <script> block in section page-simulation).
+  // This stub is intentionally left empty so the SPA loader has nothing to bind here.
 
-        // Initialize the app with 3 vectors of dimension 3
-        let vectors = [
-            [1, 0, 2],
-            [0, 1, 1],
-            [2, 1, 5]
-        ];
-        
-        let dimension = 3;
-        
-        // DOM elements
-        const vectorInputsContainer = document.getElementById('vectorInputs');
-        const addVectorBtn = document.getElementById('addVectorBtn');
-        const removeVectorBtn = document.getElementById('removeVectorBtn');
-        const changeDimensionBtn = document.getElementById('changeDimensionBtn');
-        const calculateBtn = document.getElementById('calculateBtn');
-        const resultValue = document.getElementById('resultValue');
-        const explanationContent = document.getElementById('explanationContent');
-        
-        // Initialize vector inputs
-        function renderVectorInputs() {
-            vectorInputsContainer.innerHTML = '';
-            
-            vectors.forEach((vector, index) => {
-                const vectorElement = document.createElement('div');
-                vectorElement.className = 'vector-input';
-                
-                const label = document.createElement('div');
-                label.className = 'vector-label';
-                label.textContent = `v${index + 1} =`;
-                vectorElement.appendChild(label);
-                
-                // Add opening parenthesis
-                const openParen = document.createElement('span');
-                openParen.textContent = '(';
-                openParen.style.fontSize = '1.2rem';
-                vectorElement.appendChild(openParen);
-                
-                // Create input for each coordinate
-                for (let i = 0; i < dimension; i++) {
-                    const input = document.createElement('input');
-                    input.type = 'number';
-                    input.className = 'coordinate-input';
-                    input.value = vector[i] !== undefined ? vector[i] : 0;
-                    input.step = 'any';
-                    input.dataset.vectorIndex = index;
-                    input.dataset.coordinateIndex = i;
-                    
-                    input.addEventListener('input', function() {
-                        const vectorIndex = parseInt(this.dataset.vectorIndex);
-                        const coordIndex = parseInt(this.dataset.coordinateIndex);
-                        vectors[vectorIndex][coordIndex] = parseFloat(this.value) || 0;
-                    });
-                    
-                    vectorElement.appendChild(input);
-                    
-                    // Add comma separator (except for last coordinate)
-                    if (i < dimension - 1) {
-                        const comma = document.createElement('span');
-                        comma.textContent = ',';
-                        comma.style.marginRight = '5px';
-                        vectorElement.appendChild(comma);
-                    }
-                }
-                
-                // Add closing parenthesis
-                const closeParen = document.createElement('span');
-                closeParen.textContent = ')';
-                closeParen.style.fontSize = '1.2rem';
-                closeParen.style.marginLeft = '5px';
-                vectorElement.appendChild(closeParen);
-                
-                vectorInputsContainer.appendChild(vectorElement);
-            });
-        }
-        
-        // Add a new vector
-        function addVector() {
-            const newVector = new Array(dimension).fill(0);
-            vectors.push(newVector);
-            renderVectorInputs();
-        }
-        
-        // Remove the last vector
-        function removeVector() {
-            if (vectors.length > 1) {
-                vectors.pop();
-                renderVectorInputs();
-            } else {
-                alert("You need at least one vector!");
-            }
-        }
-        
-        // Change dimension
-        function changeDimension() {
-            const newDimension = prompt("Enter new dimension (number of coordinates per vector):", dimension);
-            
-            if (newDimension && !isNaN(newDimension) && parseInt(newDimension) > 0) {
-                dimension = parseInt(newDimension);
-                
-                // Adjust all vectors to the new dimension
-                vectors = vectors.map(vector => {
-                    const newVector = new Array(dimension).fill(0);
-                    for (let i = 0; i < Math.min(vector.length, dimension); i++) {
-                        newVector[i] = vector[i];
-                    }
-                    return newVector;
-                });
-                
-                renderVectorInputs();
-            }
-        }
-        
-        // Calculate linear dependence
-        function calculateDependence() {
-            // Create matrix from vectors (each vector as a column)
-            const matrix = [];
-            for (let i = 0; i < dimension; i++) {
-                matrix[i] = [];
-                for (let j = 0; j < vectors.length; j++) {
-                    matrix[i][j] = vectors[j][i];
-                }
-            }
-            
-            // Perform Gaussian elimination to find rank and check for dependence
-            const eliminationResult = gaussianElimination(matrix);
-            const rank = eliminationResult.rank;
-            const isDependent = rank < vectors.length;
-            
-            // Display result
-            if (isDependent) {
-                resultValue.textContent = "LINEARLY DEPENDENT";
-                resultValue.className = "result-value dependent";
-            } else {
-                resultValue.textContent = "LINEARLY INDEPENDENT";
-                resultValue.className = "result-value independent";
-            }
-            
-            // Generate detailed explanation
-            generateExplanation(matrix, eliminationResult, isDependent);
-        }
-        
-        // Gaussian elimination algorithm
-        function gaussianElimination(matrix) {
-            const rows = matrix.length;
-            const cols = matrix[0].length;
-            
-            // Create a copy to avoid modifying the original
-            const augmentedMatrix = matrix.map(row => [...row]);
-            
-            let rank = 0;
-            const steps = [];
-            const pivotColumns = [];
-            
-            for (let col = 0; col < cols && rank < rows; col++) {
-                // Find pivot row
-                let pivotRow = -1;
-                for (let row = rank; row < rows; row++) {
-                    if (Math.abs(augmentedMatrix[row][col]) > 1e-10) {
-                        pivotRow = row;
-                        break;
-                    }
-                }
-                
-                if (pivotRow === -1) continue;
-                
-                // Swap rows if necessary
-                if (pivotRow !== rank) {
-                    [augmentedMatrix[rank], augmentedMatrix[pivotRow]] = [augmentedMatrix[pivotRow], augmentedMatrix[rank]];
-                    steps.push(`Swapped row ${rank+1} with row ${pivotRow+1}`);
-                }
-                
-                // Normalize pivot row
-                const pivotValue = augmentedMatrix[rank][col];
-                if (Math.abs(pivotValue) > 1e-10) {
-                    for (let j = col; j < cols; j++) {
-                        augmentedMatrix[rank][j] /= pivotValue;
-                    }
-                    steps.push(`Normalized row ${rank+1} by dividing by ${pivotValue.toFixed(4)}`);
-                }
-                
-                // Eliminate other rows
-                for (let row = 0; row < rows; row++) {
-                    if (row !== rank && Math.abs(augmentedMatrix[row][col]) > 1e-10) {
-                        const factor = augmentedMatrix[row][col];
-                        for (let j = col; j < cols; j++) {
-                            augmentedMatrix[row][j] -= factor * augmentedMatrix[rank][j];
-                        }
-                        steps.push(`Eliminated row ${row+1} using row ${rank+1} with factor ${factor.toFixed(4)}`);
-                    }
-                }
-                
-                pivotColumns.push(col);
-                rank++;
-            }
-            
-            return {
-                matrix: augmentedMatrix,
-                rank,
-                steps,
-                pivotColumns
-            };
-        }
-        
-        // Generate detailed explanation
-        function generateExplanation(matrix, eliminationResult, isDependent) {
-            const { rank, steps, pivotColumns } = eliminationResult;
-            const numVectors = vectors.length;
-            
-            let explanationHTML = `
-                <div class="step">
-                    <div class="step-title"><i class="fas fa-list-ol"></i> Step 1: Input Vectors</div>
-                    <div class="step-content">
-                        <p>We have ${numVectors} vector${numVectors > 1 ? 's' : ''} in ${dimension}-dimensional space:</p>
-                        <div class="matrix">
-            `;
-            
-            // Display vectors
-            vectors.forEach((vector, idx) => {
-                explanationHTML += `<div>v<sub>${idx+1}</sub> = (${vector.map(c => c.toFixed(2)).join(', ')})</div>`;
-            });
-            
-            explanationHTML += `
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-title"><i class="fas fa-th"></i> Step 2: Create Matrix</div>
-                    <div class="step-content">
-                        <p>We create a matrix with these vectors as ${dimension > numVectors ? 'rows' : 'columns'}:</p>
-                        <div class="matrix">
-            `;
-            
-            // Display matrix
-            for (let i = 0; i < matrix.length; i++) {
-                explanationHTML += '<div class="matrix-row">';
-                for (let j = 0; j < matrix[i].length; j++) {
-                    explanationHTML += `<div class="matrix-cell">${matrix[i][j].toFixed(2)}</div>`;
-                }
-                explanationHTML += '</div>';
-            }
-            
-            explanationHTML += `
-                        </div>
-                        <p>We'll perform Gaussian elimination to find the rank of this matrix.</p>
-                    </div>
-                </div>
-            `;
-            
-            if (steps.length > 0) {
-                explanationHTML += `
-                    <div class="step">
-                        <div class="step-title"><i class="fas fa-cogs"></i> Step 3: Gaussian Elimination Steps</div>
-                        <div class="step-content">
-                            <p>Performing Gaussian elimination:</p>
-                            <ul style="padding-left: 20px; margin-top: 10px;">
-                `;
-                
-                steps.forEach((step, idx) => {
-                    explanationHTML += `<li style="margin-bottom: 5px;">${step}</li>`;
-                });
-                
-                explanationHTML += `
-                            </ul>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            explanationHTML += `
-                <div class="step">
-                    <div class="step-title"><i class="fas fa-chart-line"></i> Step 4: Rank Calculation</div>
-                    <div class="step-content">
-                        <p>The rank of the matrix is ${rank}.</p>
-                        <p>We have ${numVectors} vector${numVectors > 1 ? 's' : ''} in ${dimension}-dimensional space.</p>
-            `;
-            
-            if (isDependent) {
-                explanationHTML += `
-                        <p>Since rank (${rank}) < number of vectors (${numVectors}), the vectors are <strong>linearly dependent</strong>.</p>
-                        <p>This means at least one vector can be expressed as a linear combination of the others.</p>
-                `;
-                
-                // Try to find a dependency relation
-                const relation = findDependencyRelation(matrix, rank);
-                if (relation) {
-                    explanationHTML += `<p>One possible dependency relation: ${relation}</p>`;
-                }
-            } else {
-                explanationHTML += `
-                        <p>Since rank (${rank}) = number of vectors (${numVectors}), the vectors are <strong>linearly independent</strong>.</p>
-                        <p>This means no vector can be expressed as a linear combination of the others.</p>
-                `;
-            }
-            
-            explanationHTML += `
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-title"><i class="fas fa-lightbulb"></i> Step 5: Interpretation</div>
-                    <div class="step-content">
-            `;
-            
-            if (isDependent) {
-                explanationHTML += `
-                        <p><strong>Linear Dependence</strong> means:</p>
-                        <ul style="padding-left: 20px; margin-top: 10px;">
-                            <li>At least one vector is redundant</li>
-                            <li>The vectors span a subspace of dimension less than ${numVectors}</li>
-                            <li>There exists a non-trivial solution to c₁v₁ + c₂v₂ + ... + c<sub>${numVectors}</sub>v<sub>${numVectors}</sub> = 0</li>
-                            <li>The determinant of the matrix formed by these vectors is zero (if square)</li>
-                        </ul>
-                `;
-            } else {
-                explanationHTML += `
-                        <p><strong>Linear Independence</strong> means:</p>
-                        <ul style="padding-left: 20px; margin-top: 10px;">
-                            <li>All vectors are essential (none is redundant)</li>
-                            <li>The vectors span a subspace of dimension ${numVectors}</li>
-                            <li>The only solution to c₁v₁ + c₂v₂ + ... + c<sub>${numVectors}</sub>v<sub>${numVectors}</sub> = 0 is c₁ = c₂ = ... = 0</li>
-                            <li>The determinant of the matrix formed by these vectors is non-zero (if square)</li>
-                        </ul>
-                `;
-            }
-            
-            explanationHTML += `
-                    </div>
-                </div>
-            `;
-            
-            explanationContent.innerHTML = explanationHTML;
-        }
-        
-        // Find a dependency relation (simplified)
-        function findDependencyRelation(matrix, rank) {
-            if (vectors.length <= 1) return null;
-            
-            // For simplicity, we'll show a generic relation when dependent
-            // In a full implementation, we would solve the homogeneous system
-            return `There exist scalars c₁, c₂, ..., c${vectors.length}, not all zero, such that c₁v₁ + c₂v₂ + ... + c${vectors.length}v${vectors.length} = 0`;
-        }
-        
-        // Event listeners
-        addVectorBtn.addEventListener('click', addVector);
-        removeVectorBtn.addEventListener('click', removeVector);
-        changeDimensionBtn.addEventListener('click', changeDimension);
-        calculateBtn.addEventListener('click', calculateDependence);
-        
-        // Initialize the app
-        renderVectorInputs();
-        
-        // Perform initial calculation
-        calculateDependence();
-    
+  // (no-op)
+
 }catch(e){console.warn('[simulation]',e);}
 })();
 // === posttest ===
@@ -9316,725 +8266,149 @@ try{
 
         // Posttest Questions Data (15 Advanced Questions)
         const posttestQuestions = [
-            // Advanced Questions (1-5)
-            {
-                id: 1,
-                difficulty: 'advanced',
-                question: "Prove or disprove: If {v₁, v₂, v₃} are linearly independent in ℝ³, then {v₁ + v₂, v₂ + v₃, v₃ + v₁} are also linearly independent.",
-                matrix: null,
-                options: [
-                    "Always true - Independence is preserved under such transformations",
-                    "Always false - The sum vectors are always dependent",
-                    "True only if v₁, v₂, v₃ are orthogonal",
-                    "Depends on the specific vectors"
-                ],
-                correctAnswer: 0,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Set up the transformation matrix",
-                        content: "Let w₁ = v₁ + v₂, w₂ = v₂ + v₃, w₃ = v₃ + v₁. We can write this as a linear transformation:"
-                    },
-                    {
-                        title: "Step 2: Express in matrix form",
-                        content: "<div class='math-expression'>[w₁ w₂ w₃] = [v₁ v₂ v₃] × [[1,0,1],[1,1,0],[0,1,1]]</div>"
-                    },
-                    {
-                        title: "Step 3: Calculate determinant of transformation matrix",
-                        content: "<div class='math-expression'>det[[1,0,1],[1,1,0],[0,1,1]] = 1(1×1 - 0×1) - 0(1×1 - 0×0) + 1(1×1 - 1×0)</div><div class='math-expression'>= 1(1) - 0 + 1(1) = 1 + 1 = 2 ≠ 0</div>"
-                    },
-                    {
-                        title: "Step 4: Apply invertible matrix theorem",
-                        content: "Since the transformation matrix is invertible (det ≠ 0), it preserves linear independence."
-                    },
-                    {
-                        title: "Step 5: Formal proof",
-                        content: "Suppose c₁(v₁+v₂) + c₂(v₂+v₃) + c₃(v₃+v₁) = 0. This implies (c₁+c₃)v₁ + (c₁+c₂)v₂ + (c₂+c₃)v₃ = 0. Since v₁,v₂,v₃ independent, we get system: c₁+c₃=0, c₁+c₂=0, c₂+c₃=0. Solving gives c₁=c₂=c₃=0."
-                    },
-                    {
-                        title: "Step 6: Conclusion",
-                        content: "The transformation preserves independence. The statement is always true."
-                    }
-                ],
-                marks: 2
-            },
-            {
-                id: 2,
-                difficulty: 'advanced',
-                question: "Let V be the vector space of all 2×2 real matrices. Which of the following sets of matrices is linearly independent?",
-                matrix: null,
-                options: [
-                    "{[[1,0],[0,0]], [[0,1],[0,0]], [[0,0],[1,0]], [[0,0],[0,1]]}",
-                    "{[[1,1],[0,0]], [[1,0],[1,0]], [[0,1],[0,1]], [[1,1],[1,1]]}",
-                    "{[[1,2],[3,4]], [[2,4],[6,8]], [[3,6],[9,12]]}",
-                    "{[[1,0],[0,1]], [[0,1],[1,0]], [[1,1],[0,0]]}"
-                ],
-                correctAnswer: 0,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Understand the vector space",
-                        content: "The space of 2×2 matrices has dimension 4 over ℝ. A basis consists of 4 linearly independent matrices."
-                    },
-                    {
-                        title: "Step 2: Analyze Set A",
-                        content: "These are the standard basis matrices: E₁₁, E₁₂, E₂₁, E₂₂. Clearly independent as they're the canonical basis."
-                    },
-                    {
-                        title: "Step 3: Analyze Set B",
-                        content: "Let M₁=[[1,1],[0,0]], M₂=[[1,0],[1,0]], M₃=[[0,1],[0,1]], M₄=[[1,1],[1,1]]. Check: M₄ = M₁ + M₃ = M₂ + something. Actually, M₄ = M₁ + [[0,0],[1,1]]. More systematically:"
-                    },
-                    {
-                        title: "Step 4: Systematic check for Set B",
-                        content: "Consider c₁M₁ + c₂M₂ + c₃M₃ + c₄M₄ = 0. This gives 4 equations. Solving shows non-trivial solution exists (e.g., c₁=1, c₂=1, c₃=1, c₄=-1 gives zero matrix)."
-                    },
-                    {
-                        title: "Step 5: Analyze Set C",
-                        content: "Second matrix is 2× first, third is 3× first. Clearly dependent."
-                    },
-                    {
-                        title: "Step 6: Analyze Set D",
-                        content: "3 matrices in 4-dimensional space. While they might be independent, we need exactly 4 for basis. Actually check: I, [[0,1],[1,0]], [[1,1],[0,0]]. Test: c₁I + c₂[[0,1],[1,0]] + c₃[[1,1],[0,0]] = 0 gives system. Solving shows only trivial solution, so independent but not a basis."
-                    },
-                    {
-                        title: "Step 7: Conclusion",
-                        content: "Only Set A forms a basis (4 independent matrices). Sets B and C are dependent. Set D has 3 independent matrices but not a full basis."
-                    }
-                ],
-                marks: 2
-            },
-            {
-                id: 3,
-                difficulty: 'advanced',
-                question: "In the vector space P₃(ℝ) of polynomials of degree ≤ 3, consider the set S = {1+x, x+x², x²+x³, 1+x³}. Determine if S is linearly independent.",
-                matrix: null,
-                options: [
-                    "Yes, it forms a basis for P₃(ℝ)",
-                    "No, the fourth polynomial is dependent on the others",
-                    "No, there's a linear relationship among all four",
-                    "Only three of them are independent"
-                ],
-                correctAnswer: 0,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Represent polynomials as vectors",
-                        content: "In basis {1, x, x², x³}, we have:<br>p₁ = 1+x = (1,1,0,0)<br>p₂ = x+x² = (0,1,1,0)<br>p₃ = x²+x³ = (0,0,1,1)<br>p₄ = 1+x³ = (1,0,0,1)"
-                    },
-                    {
-                        title: "Step 2: Form the matrix",
-                        content: "A = [[1,0,0,1],[1,1,0,0],[0,1,1,0],[0,0,1,1]]"
-                    },
-                    {
-                        title: "Step 3: Calculate determinant",
-                        content: "Using cofactor expansion or row reduction:"
-                    },
-                    {
-                        title: "Step 4: Row reduction method",
-                        content: "R₂ → R₂ - R₁: [[1,0,0,1],[0,1,0,-1],[0,1,1,0],[0,0,1,1]]<br>R₃ → R₃ - R₂: [[1,0,0,1],[0,1,0,-1],[0,0,1,1],[0,0,1,1]]<br>R₄ → R₄ - R₃: [[1,0,0,1],[0,1,0,-1],[0,0,1,1],[0,0,0,0]]"
-                    },
-                    {
-                        title: "Step 5: Correct calculation",
-                        content: "Actually, careful calculation shows det(A) = 1(1(1×1-(-1)×1) - 0 + 1(0×1-1×(-1))) = 1(1+1) + 1(0+1) = 2+1 = 3 ≠ 0"
-                    },
-                    {
-                        title: "Step 6: Alternative: Solve system",
-                        content: "c₁(1+x) + c₂(x+x²) + c₃(x²+x³) + c₄(1+x³) = 0<br>⇒ (c₁+c₄) + (c₁+c₂)x + (c₂+c₃)x² + (c₃+c₄)x³ = 0"
-                    },
-                    {
-                        title: "Step 7: Solve coefficient equations",
-                        content: "c₁+c₄=0, c₁+c₂=0, c₂+c₃=0, c₃+c₄=0<br>Solving: From first, c₄=-c₁. From second, c₂=-c₁. From third, c₃=-c₂=c₁. From fourth: c₃+c₄ = c₁ + (-c₁) = 0 ✓<br>Only solution: c₁=c₂=c₃=c₄=0"
-                    },
-                    {
-                        title: "Step 8: Conclusion",
-                        content: "The set S is linearly independent and forms a basis for P₃(ℝ) (dimension 4, 4 independent vectors)."
-                    }
-                ],
-                marks: 2
-            },
-            {
-                id: 4,
-                difficulty: 'advanced',
-                question: "Let A be an n×n matrix with rank r. What is the maximum number of linearly independent solutions to Ax = 0?",
-                matrix: null,
-                options: [
-                    "r",
-                    "n - r",
-                    "n",
-                    "r - n"
-                ],
-                correctAnswer: 1,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Recall fundamental theorem",
-                        content: "For an n×n matrix A, we have: rank(A) + nullity(A) = n"
-                    },
-                    {
-                        title: "Step 2: Define nullity",
-                        content: "nullity(A) = dimension of null space = number of linearly independent solutions to Ax = 0"
-                    },
-                    {
-                        title: "Step 3: Apply the theorem",
-                        content: "From rank-nullity theorem: nullity(A) = n - rank(A) = n - r"
-                    },
-                    {
-                        title: "Step 4: Geometric interpretation",
-                        content: "rank(A) = dimension of column space = number of pivot columns<br>nullity(A) = number of free variables = n - r"
-                    },
-                    {
-                        title: "Step 5: Example verification",
-                        content: "For 3×3 matrix with rank 2: n - r = 3 - 2 = 1 independent solution<br>For 4×4 matrix with rank 3: n - r = 4 - 3 = 1 independent solution<br>For 4×4 matrix with rank 1: n - r = 4 - 1 = 3 independent solutions"
-                    },
-                    {
-                        title: "Step 6: Proof outline",
-                        content: "In row echelon form, there are r pivot columns and n-r free variables. Each free variable gives one basis vector for null space."
-                    },
-                    {
-                        title: "Step 7: Conclusion",
-                        content: "Maximum number of linearly independent solutions to Ax = 0 is n - r."
-                    }
-                ],
-                marks: 2
-            },
-            {
-                id: 5,
-                difficulty: 'advanced',
-                question: "Consider the vectors in ℂ³: v₁ = (1, i, 0), v₂ = (i, -1, 0), v₃ = (0, 0, 1). Are they linearly independent over ℂ?",
-                matrix: null,
-                options: [
-                    "Yes, they form a basis for ℂ³",
-                    "No, v₂ = i × v₁, so dependent",
-                    "No, v₃ is dependent on v₁ and v₂",
-                    "Only v₁ and v₂ are independent"
-                ],
-                correctAnswer: 1,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Check relationship between v₁ and v₂",
-                        content: "v₁ = (1, i, 0), v₂ = (i, -1, 0)<br>Compute i × v₁ = i × (1, i, 0) = (i, i², 0) = (i, -1, 0) = v₂"
-                    },
-                    {
-                        title: "Step 2: Verify the scalar multiplication",
-                        content: "i × 1 = i ✓<br>i × i = i² = -1 ✓<br>i × 0 = 0 ✓"
-                    },
-                    {
-                        title: "Step 3: Linear dependence criterion",
-                        content: "Since v₂ = i × v₁, the vectors v₁ and v₂ are linearly dependent over ℂ."
-                    },
-                    {
-                        title: "Step 4: Check v₃",
-                        content: "v₃ = (0, 0, 1) is clearly independent of v₁ and v₂ (has non-zero third component while v₁,v₂ have zero third component)."
-                    },
-                    {
-                        title: "Step 5: Overall dependence",
-                        content: "The set {v₁, v₂, v₃} contains dependent vectors (v₁ and v₂), so the entire set is linearly dependent."
-                    },
-                    {
-                        title: "Step 6: Dimension consideration",
-                        content: "ℂ³ has dimension 3 over ℂ. While we have 3 vectors, they're not all independent."
-                    },
-                    {
-                        title: "Step 7: Conclusion",
-                        content: "The vectors are linearly dependent because v₂ = i × v₁."
-                    }
-                ],
-                marks: 2
-            },
-            // Expert Questions (6-10)
-            {
-                id: 6,
-                difficulty: 'expert',
-                question: "Let T: ℝⁿ → ℝⁿ be a linear transformation with matrix A. If {v₁, v₂, ..., vₖ} are linearly independent, which condition guarantees {T(v₁), T(v₂), ..., T(vₖ)} are also linearly independent?",
-                matrix: null,
-                options: [
-                    "A is invertible",
-                    "A is symmetric",
-                    "A is orthogonal",
-                    "k ≤ rank(A)"
-                ],
-                correctAnswer: 0,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Understand the transformation",
-                        content: "T(vᵢ) = Avᵢ. We want conditions for independence preservation."
-                    },
-                    {
-                        title: "Step 2: Analyze condition A: A invertible",
-                        content: "If A is invertible, then T is an isomorphism. Isomorphisms preserve all linear relationships, including independence."
-                    },
-                    {
-                        title: "Step 3: Proof for invertible case",
-                        content: "Suppose ΣcᵢT(vᵢ) = 0 ⇒ ΣcᵢAvᵢ = 0 ⇒ A(Σcᵢvᵢ) = 0. Since A invertible, Σcᵢvᵢ = 0. Since vᵢ independent, all cᵢ = 0."
-                    },
-                    {
-                        title: "Step 4: Counterexample for other conditions",
-                        content: "B (symmetric): A = [[1,1],[1,1]] symmetric, v₁=(1,0), v₂=(0,1) independent, but T(v₁)=(1,1), T(v₂)=(1,1) dependent.<br>C (orthogonal): Orthogonal matrices are invertible, so this works but is a subset of A.<br>D: Not sufficient. Example: A with rank 2, k=2, but A could map independent vectors to dependent ones."
-                    },
-                    {
-                        title: "Step 5: Necessary and sufficient condition",
-                        content: "The necessary and sufficient condition is that the restriction of T to span{v₁,...,vₖ} is injective, which is equivalent to these vectors being in the complement of null space of A."
-                    },
-                    {
-                        title: "Step 6: Special case",
-                        content: "When k = n and {vᵢ} is a basis, then {T(vᵢ)} is independent iff A is invertible."
-                    },
-                    {
-                        title: "Step 7: Conclusion",
-                        content: "Only A invertible guarantees independence preservation for all sets of independent vectors. Orthogonal matrices work (being invertible) but symmetric matrices don't guarantee it."
-                    }
-                ],
-                marks: 2
-            },
-            {
-                id: 7,
-                difficulty: 'expert',
-                question: "For which values of α, β ∈ ℝ is the set {(1,α,β), (α,1,β), (β,α,1)} linearly independent in ℝ³?",
-                matrix: null,
-                options: [
-                    "α ≠ 1, β ≠ 1, α ≠ β",
-                    "α ≠ 1, β ≠ 1, and αβ ≠ 1",
-                    "α ≠ β and α + β ≠ 1",
-                    "The determinant of the matrix formed by these vectors must be non-zero"
-                ],
-                correctAnswer: 3,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Form the matrix",
-                        content: "A = [[1, α, β],[α, 1, α],[β, α, 1]]"
-                    },
-                    {
-                        title: "Step 2: Calculate determinant",
-                        content: "det(A) = 1(1×1 - α×α) - α(α×1 - α×β) + β(α×α - 1×β)<br>= (1 - α²) - α(α - αβ) + β(α² - β)<br>= 1 - α² - α² + α²β + α²β - β²<br>= 1 - 2α² + 2α²β - β²"
-                    },
-                    {
-                        title: "Step 3: Simplify determinant",
-                        content: "det(A) = 1 - β² - 2α²(1 - β)<br>= (1-β)(1+β) - 2α²(1-β)<br>= (1-β)[(1+β) - 2α²]<br>= (1-β)(1+β - 2α²)"
-                    },
-                    {
-                        title: "Step 4: Set independence condition",
-                        content: "Vectors independent ⇔ det(A) ≠ 0 ⇔ (1-β)(1+β-2α²) ≠ 0"
-                    },
-                    {
-                        title: "Step 5: Solve conditions",
-                        content: "Condition 1: β ≠ 1<br>Condition 2: 1+β-2α² ≠ 0 ⇒ 2α² ≠ 1+β ⇒ α² ≠ (1+β)/2"
-                    },
-                    {
-                        title: "Step 6: Analyze special cases",
-                        content: "If β = 1: det = 0 regardless of α (first factor zero).<br>If α² = (1+β)/2: det = 0 (second factor zero)."
-                    },
-                    {
-                        title: "Step 7: Geometric interpretation",
-                        content: "The condition describes a curve in α-β plane excluding β=1 line and the parabola α² = (1+β)/2."
-                    },
-                    {
-                        title: "Step 8: Conclusion",
-                        content: "The vectors are linearly independent when det(A) ≠ 0, which is the most precise condition. The other options are either insufficient or incomplete."
-                    }
-                ],
-                marks: 2
-            },
-            {
-                id: 8,
-                difficulty: 'expert',
-                question: "In the vector space of continuous functions C[0,1], consider the set {eˣ, e²ˣ, e³ˣ}. Are these functions linearly independent?",
-                matrix: null,
-                options: [
-                    "Yes, they're independent for all x ∈ [0,1]",
-                    "No, they're always dependent",
-                    "Only independent for certain x values",
-                    "Cannot be determined without more information"
-                ],
-                correctAnswer: 0,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Set up the Wronskian",
-                        content: "For functions f₁(x)=eˣ, f₂(x)=e²ˣ, f₃(x)=e³ˣ, compute Wronskian determinant:"
-                    },
-                    {
-                        title: "Step 2: Compute derivatives",
-                        content: "f₁=eˣ, f₁'=eˣ, f₁''=eˣ<br>f₂=e²ˣ, f₂'=2e²ˣ, f₂''=4e²ˣ<br>f₃=e³ˣ, f₃'=3e³ˣ, f₃''=9e³ˣ"
-                    },
-                    {
-                        title: "Step 3: Form Wronskian matrix",
-                        content: "W(x) = det[[eˣ, e²ˣ, e³ˣ],[eˣ, 2e²ˣ, 3e³ˣ],[eˣ, 4e²ˣ, 9e³ˣ]]"
-                    },
-                    {
-                        title: "Step 4: Factor out exponentials",
-                        content: "W(x) = eˣ·e²ˣ·e³ˣ · det[[1,1,1],[1,2,3],[1,4,9]]<br>= e⁶ˣ · det[[1,1,1],[1,2,3],[1,4,9]]"
-                    },
-                    {
-                        title: "Step 5: Compute the constant determinant",
-                        content: "det[[1,1,1],[1,2,3],[1,4,9]] = 1(2×9-3×4) - 1(1×9-3×1) + 1(1×4-2×1)<br>= 1(18-12) - 1(9-3) + 1(4-2)<br>= 6 - 6 + 2 = 2"
-                    },
-                    {
-                        title: "Step 6: Final Wronskian",
-                        content: "W(x) = 2e⁶ˣ ≠ 0 for all x (in fact > 0 for all x)"
-                    },
-                    {
-                        title: "Step 7: Apply Wronskian theorem",
-                        content: "If Wronskian is non-zero at any point in the interval, the functions are linearly independent on that interval."
-                    },
-                    {
-                        title: "Step 8: Alternative proof",
-                        content: "Suppose c₁eˣ + c₂e²ˣ + c₃e³ˣ = 0 for all x ∈ [0,1]. Divide by eˣ: c₁ + c₂eˣ + c₃e²ˣ = 0. This is a polynomial in eˣ that must be identically zero, forcing c₁=c₂=c₃=0."
-                    },
-                    {
-                        title: "Step 9: Conclusion",
-                        content: "The functions are linearly independent on [0,1] (and in fact on any interval)."
-                    }
-                ],
-                marks: 2
-            },
-            {
-                id: 9,
-                difficulty: 'expert',
-                question: "Let V be an n-dimensional vector space. If {v₁, v₂, ..., vₙ} are linearly independent and {w₁, w₂, ..., wₙ} are also linearly independent, what can be said about {v₁+w₁, v₂+w₂, ..., vₙ+wₙ}?",
-                matrix: null,
-                options: [
-                    "Always linearly independent",
-                    "Always linearly dependent",
-                    "May be independent or dependent",
-                    "Independent only if vᵢ and wᵢ are orthogonal"
-                ],
-                correctAnswer: 2,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Consider counterexamples",
-                        content: "Example 1: In ℝ², let v₁=(1,0), v₂=(0,1); w₁=(0,1), w₂=(1,0). Then v₁+w₁=(1,1), v₂+w₂=(1,1) are dependent."
-                    },
-                    {
-                        title: "Step 2: Another counterexample",
-                        content: "Example 2: Same v₁,v₂; w₁=(1,0), w₂=(0,1). Then v₁+w₁=(2,0), v₂+w₂=(0,2) are independent."
-                    },
-                    {
-                        title: "Step 3: Formal analysis",
-                        content: "Consider the sum transformation S: V×V → V defined by S(v,w) = v+w. The set {(v₁,w₁), ..., (vₙ,wₙ)} in V×V has dimension at most 2n. Their sum images in V (dimension n) may or may not be independent."
-                    },
-                    {
-                        title: "Step 4: Necessary condition",
-                        content: "For {vᵢ+wᵢ} to be independent, the linear map taking (vᵢ,wᵢ) to vᵢ+wᵢ must be injective on their span. This requires certain relationships between {vᵢ} and {wᵢ}."
-                    },
-                    {
-                        title: "Step 5: Matrix formulation",
-                        content: "In coordinates, if V = ℝⁿ, let A = [v₁ ... vₙ], B = [w₁ ... wₙ] (n×n matrices). Then [v₁+w₁ ... vₙ+wₙ] = A+B."
-                    },
-                    {
-                        title: "Step 6: Determinant condition",
-                        content: "{vᵢ+wᵢ} independent ⇔ det(A+B) ≠ 0. Even if det(A)≠0 and det(B)≠0, det(A+B) could be zero or non-zero."
-                    },
-                    {
-                        title: "Step 7: Example with determinants",
-                        content: "A = I (det=1), B = -I (det=(-1)ⁿ≠0), then A+B = 0 (det=0).<br>A = I, B = I, then A+B = 2I (det=2ⁿ≠0)."
-                    },
-                    {
-                        title: "Step 8: Conclusion",
-                        content: "The sum of two sets of independent vectors may be independent or dependent depending on the specific vectors. No general guarantee exists."
-                    }
-                ],
-                marks: 2
-            },
-            {
-                id: 10,
-                difficulty: 'expert',
-                question: "Consider the vectors in ℝ⁴: v₁ = (1,1,0,0), v₂ = (0,1,1,0), v₃ = (0,0,1,1), v₄ = (1,0,0,a). For what values of a are these vectors linearly independent?",
-                matrix: null,
-                options: [
-                    "a ≠ 0",
-                    "a ≠ 1",
-                    "a ≠ -1",
-                    "a ≠ 1 and a ≠ -1"
-                ],
-                correctAnswer: 1,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Form the matrix",
-                        content: "A = [[1,0,0,1],[1,1,0,0],[0,1,1,0],[0,0,1,a]]"
-                    },
-                    {
-                        title: "Step 2: Compute determinant",
-                        content: "Using cofactor expansion along first row:<br>det(A) = 1·det[[1,0,0],[1,1,0],[0,1,a]] - 0 + 0 - 1·det[[1,1,0],[0,1,1],[0,0,1]]"
-                    },
-                    {
-                        title: "Step 3: Compute first determinant",
-                        content: "det[[1,0,0],[1,1,0],[0,1,a]] = 1·det[[1,0],[1,a]] - 0 + 0 = 1(1·a - 0·1) = a"
-                    },
-                    {
-                        title: "Step 4: Compute second determinant",
-                        content: "det[[1,1,0],[0,1,1],[0,0,1]] = 1·det[[1,1],[0,1]] - 1·det[[0,1],[0,1]] + 0<br>= 1(1·1 - 1·0) - 1(0·1 - 1·0) = 1 - 0 = 1"
-                    },
-                    {
-                        title: "Step 5: Combine results",
-                        content: "det(A) = 1·a - 1·1 = a - 1"
-                    },
-                    {
-                        title: "Step 6: Set independence condition",
-                        content: "Vectors independent ⇔ det(A) ≠ 0 ⇔ a - 1 ≠ 0 ⇔ a ≠ 1"
-                    },
-                    {
-                        title: "Step 7: Verify with examples",
-                        content: "If a = 1: v₄ = (1,0,0,1). Notice v₄ = v₁ - v₂ + v₃? Check: (1,1,0,0) - (0,1,1,0) + (0,0,1,1) = (1,0,0,1) ✓ So dependent.<br>If a = 0: v₄ = (1,0,0,0). Check independence: det = -1 ≠ 0, so independent.<br>If a = 2: det = 1 ≠ 0, independent."
-                    },
-                    {
-                        title: "Step 8: Conclusion",
-                        content: "The vectors are linearly independent for all a ≠ 1."
-                    }
-                ],
-                marks: 2
-            },
-            // Theoretical Questions (11-15)
-            {
-                id: 11,
-                difficulty: 'theoretical',
-                question: "Prove or provide counterexample: If {v₁, v₂, ..., vₖ} are linearly independent and T is a linear transformation, then {T(v₁), T(v₂), ..., T(vₖ)} are linearly independent if and only if T is injective on span{v₁,...,vₖ}.",
-                matrix: null,
-                options: [
-                    "True - This is a fundamental theorem",
-                    "False - Injectivity is sufficient but not necessary",
-                    "False - The images are always independent",
-                    "False - Additional conditions are needed"
-                ],
-                correctAnswer: 0,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Understand the statement",
-                        content: "We need to prove equivalence: {T(vᵢ)} independent ⇔ T is injective on U = span{v₁,...,vₖ}."
-                    },
-                    {
-                        title: "Step 2: (⇒) Prove necessity",
-                        content: "Assume {T(vᵢ)} independent. Suppose u ∈ U with T(u)=0. Write u = Σcᵢvᵢ. Then T(u) = ΣcᵢT(vᵢ) = 0. Since {T(vᵢ)} independent, all cᵢ=0, so u=0. Thus T is injective on U."
-                    },
-                    {
-                        title: "Step 3: (⇐) Prove sufficiency",
-                        content: "Assume T injective on U. Suppose ΣcᵢT(vᵢ) = 0. Then T(Σcᵢvᵢ) = 0. Since T injective on U and Σcᵢvᵢ ∈ U, we get Σcᵢvᵢ = 0. Since {vᵢ} independent, all cᵢ=0. Thus {T(vᵢ)} independent."
-                    },
-                    {
-                        title: "Step 4: Reformulation",
-                        content: "This is equivalent to: The restriction T|_U: U → W is injective if and only if it sends some basis of U to an independent set in W."
-                    },
-                    {
-                        title: "Step 5: Connection to null space",
-                        content: "T injective on U ⇔ U ∩ null(T) = {0}. When this holds, independence is preserved."
-                    },
-                    {
-                        title: "Step 6: Example for clarity",
-                        content: "T: ℝ³→ℝ², T(x,y,z)=(x,y). v₁=(1,0,0), v₂=(0,1,0) independent. T(v₁)=(1,0), T(v₂)=(0,1) independent. T is injective on span{v₁,v₂} (the xy-plane)."
-                    },
-                    {
-                        title: "Step 7: Counterexample if not injective",
-                        content: "Same T, v₃=(0,0,1). {v₁,v₂,v₃} independent but T(v₃)=(0,0) dependent with others. T not injective on full ℝ³."
-                    },
-                    {
-                        title: "Step 8: Conclusion",
-                        content: "The statement is true and represents an important characterization of when linear transformations preserve independence."
-                    }
-                ],
-                marks: 2
-            },
-            {
-                id: 12,
-                difficulty: 'theoretical',
-                question: "In the vector space of all real-valued functions on ℝ, consider the set {sin(x), sin(2x), sin(3x)}. Are these functions linearly independent?",
-                matrix: null,
-                options: [
-                    "Yes, they're independent for all x",
-                    "No, they satisfy a linear relationship",
-                    "Only independent on certain intervals",
-                    "Cannot be determined without Wronskian"
-                ],
-                correctAnswer: 0,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Set up the problem",
-                        content: "We need to check if c₁sin(x) + c₂sin(2x) + c₃sin(3x) = 0 for all x implies c₁=c₂=c₃=0."
-                    },
-                    {
-                        title: "Step 2: Use trigonometric identities",
-                        content: "sin(2x) = 2sin(x)cos(x)<br>sin(3x) = 3sin(x) - 4sin³(x) = sin(x)(3 - 4sin²(x))"
-                    },
-                    {
-                        title: "Step 3: Assume linear dependence",
-                        content: "Suppose c₁sin(x) + c₂sin(2x) + c₃sin(3x) = 0 ∀x. Then for x where sin(x) ≠ 0, we can divide by sin(x):<br>c₁ + 2c₂cos(x) + c₃(3 - 4sin²(x)) = 0"
-                    },
-                    {
-                        title: "Step 4: Use sin²(x) = 1 - cos²(x)",
-                        content: "c₁ + 2c₂cos(x) + c₃(3 - 4(1-cos²(x))) = 0<br>⇒ c₁ + 2c₂cos(x) + c₃(4cos²(x) - 1) = 0<br>⇒ (c₁ - c₃) + 2c₂cos(x) + 4c₃cos²(x) = 0"
-                    },
-                    {
-                        title: "Step 5: Polynomial in cos(x)",
-                        content: "This is a quadratic in cos(x): 4c₃(cos(x))² + 2c₂cos(x) + (c₁-c₃) = 0 for all x where sin(x)≠0."
-                    },
-                    {
-                        title: "Step 6: Polynomial must be identically zero",
-                        content: "A polynomial that is zero at infinitely many points (cos(x) takes many values) must have all coefficients zero:<br>4c₃ = 0 ⇒ c₃ = 0<br>2c₂ = 0 ⇒ c₂ = 0<br>c₁ - c₃ = 0 ⇒ c₁ = 0"
-                    },
-                    {
-                        title: "Step 7: Check x where sin(x)=0",
-                        content: "At x=0,π,2π,...: sin(x)=sin(2x)=sin(3x)=0, so equation holds automatically."
-                    },
-                    {
-                        title: "Step 8: Wronskian approach",
-                        content: "Compute Wronskian W(x) = det[[sinx, sin2x, sin3x],[cosx, 2cos2x, 3cos3x],[-sinx, -4sin2x, -9sin3x]]. Evaluate at x=π/6: W(π/6) = det[[1/2, √3/2, 1],[√3/2, 1, 0],[-1/2, -2√3, -9]] = non-zero calculation shows ≠ 0."
-                    },
-                    {
-                        title: "Step 9: Conclusion",
-                        content: "The functions are linearly independent on ℝ."
-                    }
-                ],
-                marks: 2
-            },
-            {
-                id: 13,
-                difficulty: 'theoretical',
-                question: "Let V be a vector space over field F with char(F) ≠ 2. If {v₁, v₂, v₃} are linearly independent, prove that {v₁+v₂, v₂+v₃, v₃+v₁} are also linearly independent.",
-                matrix: null,
-                options: [
-                    "True for any field with char≠2",
-                    "True only for ℝ and ℂ",
-                    "False in some fields",
-                    "Depends on dimension of V"
-                ],
-                correctAnswer: 0,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Set up in arbitrary field",
-                        content: "Let F be a field with characteristic not 2 (i.e., 2 ≠ 0 in F). Assume {v₁,v₂,v₃} independent in V over F."
-                    },
-                    {
-                        title: "Step 2: Suppose linear combination zero",
-                        content: "Let a(v₁+v₂) + b(v₂+v₃) + c(v₃+v₁) = 0, where a,b,c ∈ F."
-                    },
-                    {
-                        title: "Step 3: Rearrange terms",
-                        content: "(a+c)v₁ + (a+b)v₂ + (b+c)v₃ = 0"
-                    },
-                    {
-                        title: "Step 4: Use independence of original set",
-                        content: "Since {v₁,v₂,v₃} independent, we get system:<br>a + c = 0  ...(1)<br>a + b = 0  ...(2)<br>b + c = 0  ...(3)"
-                    },
-                    {
-                        title: "Step 5: Solve the system",
-                        content: "From (1): c = -a<br>From (2): b = -a<br>From (3): b + c = (-a) + (-a) = -2a = 0"
-                    },
-                    {
-                        title: "Step 6: Use characteristic condition",
-                        content: "Since char(F) ≠ 2, we have 2 ≠ 0 in F, so 2 is invertible. Thus -2a = 0 ⇒ a = 0."
-                    },
-                    {
-                        title: "Step 7: Complete solution",
-                        content: "Then b = -0 = 0, c = -0 = 0. So only trivial solution a=b=c=0."
-                    },
-                    {
-                        title: "Step 8: Counterexample for char(F)=2",
-                        content: "If char(F)=2, then 2=0. Example in 𝔽₂²: v₁=(1,0), v₂=(0,1), v₃=(1,1). These are independent over 𝔽₂. But v₁+v₂=(1,1)=v₃, v₂+v₃=(1,0)=v₁, v₃+v₁=(0,1)=v₂, so the sums are actually the same set, thus dependent."
-                    },
-                    {
-                        title: "Step 9: Conclusion",
-                        content: "The statement is true for any field with characteristic not equal to 2."
-                    }
-                ],
-                marks: 2
-            },
-            {
-                id: 14,
-                difficulty: 'theoretical',
-                question: "What is the relationship between linear independence and the concept of basis in an infinite-dimensional vector space?",
-                matrix: null,
-                options: [
-                    "Every maximal linearly independent set is a basis",
-                    "Every linearly independent set can be extended to a basis",
-                    "Both A and B are true using Zorn's Lemma",
-                    "Neither A nor B holds in infinite dimensions"
-                ],
-                correctAnswer: 2,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Recall definitions",
-                        content: "In any vector space V (finite or infinite dimensional):<br>- A set is linearly independent if no finite non-trivial combination gives zero.<br>- A basis is a linearly independent set that spans V."
-                    },
-                    {
-                        title: "Step 2: Statement A analysis",
-                        content: "A maximal linearly independent set (one that cannot be enlarged while remaining independent) always spans the space. Proof: If it didn't span, there exists v not in its span, adding v preserves independence, contradicting maximality."
-                    },
-                    {
-                        title: "Step 3: Statement B analysis",
-                        content: "Any linearly independent set can be extended to a maximal independent set (using Zorn's Lemma in infinite case). This maximal set is a basis."
-                    },
-                    {
-                        title: "Step 4: Zorn's Lemma application",
-                        content: "For infinite-dimensional spaces, we need Zorn's Lemma (equivalent to Axiom of Choice) to prove existence of bases and extension of independent sets to bases."
-                    },
-                    {
-                        title: "Step 5: Counterexamples without choice",
-                        content: "Without Axiom of Choice, there exist vector spaces with no basis. But with standard set theory (ZFC), both statements hold."
-                    },
-                    {
-                        title: "Step 6: Finite-dimensional case",
-                        content: "In finite dimensions, these are standard theorems: any independent set can be extended to a basis, and any maximal independent set is a basis."
-                    },
-                    {
-                        title: "Step 7: Example in infinite dimensions",
-                        content: "In ℝ^ℕ (sequences of real numbers), the standard basis {eᵢ} where eᵢ has 1 in i-th position, 0 elsewhere, is a maximal independent set and a basis for the space of finitely supported sequences."
-                    },
-                    {
-                        title: "Step 8: Caution about spanning",
-                        content: "In infinite dimensions, 'span' means finite linear combinations. Some vectors may require infinite combinations, which aren't allowed in standard vector space definition."
-                    },
-                    {
-                        title: "Step 9: Conclusion",
-                        content: "Both statements A and B are true in any vector space (finite or infinite dimensional) when using Zorn's Lemma/Axiom of Choice."
-                    }
-                ],
-                marks: 2
-            },
-            {
-                id: 15,
-                difficulty: 'theoretical',
-                question: "Prove: If A is an m×n matrix with m < n, then the columns of A are always linearly dependent in ℝᵐ.",
-                matrix: null,
-                options: [
-                    "True - Pigeonhole principle for dimensions",
-                    "False - They can be independent if rank = m",
-                    "False - They can be independent if m < n/2",
-                    "Depends on the specific entries of A"
-                ],
-                correctAnswer: 0,
-                solutionSteps: [
-                    {
-                        title: "Step 1: Understand the setup",
-                        content: "A is m×n with m < n. Columns are vectors in ℝᵐ. There are n columns, each in ℝᵐ."
-                    },
-                    {
-                        title: "Step 2: Dimension considerations",
-                        content: "ℝᵐ has dimension m. Any set of more than m vectors in an m-dimensional space must be linearly dependent."
-                    },
-                    {
-                        title: "Step 3: Formal proof by contradiction",
-                        content: "Suppose columns of A are linearly independent. Then they form a basis for their span, which has dimension n. But span ⊆ ℝᵐ, so n ≤ dim(ℝᵐ) = m. Contradiction since m < n."
-                    },
-                    {
-                        title: "Step 4: Alternative proof via rank",
-                        content: "rank(A) ≤ min(m,n) = m. If columns were independent, rank would equal n. But n > m, impossible."
-                    },
-                    {
-                        title: "Step 5: Geometric interpretation",
-                        content: "In ℝᵐ (m-dimensional space), you can have at most m directions that are linearly independent. Having n > m vectors means at least one is redundant."
-                    },
-                    {
-                        title: "Step 6: Example for clarity",
-                        content: "In ℝ² (m=2), take 3 vectors (n=3). No matter what vectors you choose, they must be linearly dependent. You can find a non-trivial combination giving zero."
-                    },
-                    {
-                        title: "Step 7: Connection to systems of equations",
-                        content: "Ax = 0 has n unknowns, m equations with m < n. By rank-nullity, nullity = n - rank ≥ n - m > 0, so non-trivial solutions exist, meaning columns are dependent."
-                    },
-                    {
-                        title: "Step 8: Special case consideration",
-                        content: "Even if rank = m (maximum possible), we still have n > m columns, so they must be dependent. The maximum number of independent columns is m."
-                    },
-                    {
-                        title: "Step 9: Conclusion",
-                        content: "The statement is always true: when m < n, the n columns in ℝᵐ are necessarily linearly dependent."
-                    }
-                ],
-                marks: 2
-            }
+          { id:1, difficulty:'advanced', marks:1,
+            question:"Vectors v₁, v₂, v₃ are linearly independent if:",
+            options:["One vector is zero","One vector is sum of others","Only the trivial solution exists for c₁v₁+c₂v₂+c₃v₃=0","Determinant is zero"],
+            correctAnswer:2,
+            solutionSteps:[
+              {title:"Definition",content:"Independence ⇔ c₁v₁+c₂v₂+c₃v₃=0 forces c₁=c₂=c₃=0."},
+              {title:"Why others fail",content:"A zero vector or one written as a sum of others gives a non-trivial solution → dependence."},
+              {title:"Answer",content:"Option C."}]},
+          { id:2, difficulty:'advanced', marks:1,
+            question:"A set of vectors is always linearly dependent if it contains:",
+            options:["Unit vector","Zero vector","Orthogonal vectors","Parallel vectors"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Reason",content:"If vₖ = 0, take cₖ=1, others=0 → c₁v₁+…+cₖvₖ = 0 with not-all-zero coefficients."},
+              {title:"Answer",content:"Option B."}]},
+          { id:3, difficulty:'advanced', marks:1,
+            question:"In ℝ³, any set containing 4 vectors is:",
+            options:["Independent","Dependent","Orthogonal","Unit"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Theorem",content:"In ℝⁿ, more than n vectors must be dependent."},
+              {title:"Answer",content:"Option B."}]},
+          { id:4, difficulty:'advanced', marks:1,
+            question:"Vectors (2,4,6) and (1,2,3) are:",
+            options:["Independent","Dependent","Orthogonal","Unit vectors"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Check",content:"(2,4,6) = 2·(1,2,3) — one is a scalar multiple of the other."},
+              {title:"Answer",content:"Dependent — option B."}]},
+          { id:5, difficulty:'advanced', marks:1,
+            question:"If determinant of a 3×3 matrix formed by vectors is non-zero, then vectors are:",
+            options:["Dependent","Independent","Parallel","Equal"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Rule",content:"For n vectors in ℝⁿ: det ≠ 0 ⇒ independent."},
+              {title:"Answer",content:"Option B."}]},
+          { id:6, difficulty:'advanced', marks:1,
+            question:"If rank of matrix = number of vectors, then vectors are:",
+            options:["Dependent","Independent","Orthogonal","Zero"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Rank test",content:"rank(A) = n ⇒ no redundant vector ⇒ independent."},
+              {title:"Answer",content:"Option B."}]},
+          { id:7, difficulty:'advanced', marks:1,
+            question:"If rank < number of vectors, then vectors are:",
+            options:["Independent","Dependent","Unit","Orthogonal"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Rank test",content:"rank(A) < n ⇒ at least one vector is redundant."},
+              {title:"Answer",content:"Option B."}]},
+          { id:8, difficulty:'expert', marks:1,
+            question:"If one vector can be expressed as a combination of others, the set is:",
+            options:["Independent","Dependent","Orthogonal","Normalized"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Definition",content:"Existence of such a combination is exactly the definition of dependence."},
+              {title:"Answer",content:"Option B."}]},
+          { id:9, difficulty:'expert', marks:1,
+            question:"In a linearly independent set, the representation of a vector is:",
+            options:["Not possible","Unique","Infinite","Zero"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Theorem",content:"If {v_i} is independent, the coefficients c_i giving any vector v in span are unique."},
+              {title:"Answer",content:"Option B."}]},
+          { id:10, difficulty:'expert', marks:1,
+            question:"Two vectors in ℝ² are linearly dependent if they lie on:",
+            options:["Different planes","The same line","The same point","The same axis only"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Geometry",content:"Dependence ⇔ collinear ⇔ on the same line through the origin."},
+              {title:"Answer",content:"Option B."}]},
+          { id:11, difficulty:'expert', marks:1,
+            question:"Three vectors in ℝ³ are dependent if they lie in:",
+            options:["Different spaces","The same plane","The same origin","The same axis"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Geometry",content:"Three vectors fail to span ℝ³ exactly when they are coplanar through the origin."},
+              {title:"Answer",content:"Option B."}]},
+          { id:12, difficulty:'expert', marks:1,
+            question:"Trivial solution means:",
+            options:["All constants are 1","All constants are 0","One constant is zero","No constants"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Definition",content:"Trivial solution of Σcᵢvᵢ = 0 sets every cᵢ = 0."},
+              {title:"Answer",content:"Option B."}]},
+          { id:13, difficulty:'expert', marks:1,
+            question:"Non-trivial solution implies:",
+            options:["All coefficients are zero","At least one coefficient is non-zero","All coefficients are equal","No solution"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Definition",content:"Non-trivial = at least one cᵢ ≠ 0 in Σcᵢvᵢ = 0 → vectors are dependent."},
+              {title:"Answer",content:"Option B."}]},
+          { id:14, difficulty:'theoretical', marks:1,
+            question:"A basis of a vector space must be:",
+            options:["Dependent","Independent","Zero vectors","Parallel"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Definition",content:"A basis is a linearly independent spanning set."},
+              {title:"Answer",content:"Option B."}]},
+          { id:15, difficulty:'theoretical', marks:1,
+            question:"Maximum number of linearly independent vectors in ℝ⁴ is:",
+            options:["2","3","4","5"],
+            correctAnswer:2,
+            solutionSteps:[
+              {title:"Reason",content:"dim(ℝ⁴) = 4, so any independent set has ≤ 4 vectors."},
+              {title:"Answer",content:"Option C."}]},
+          { id:16, difficulty:'theoretical', marks:1,
+            question:"If columns of a matrix are dependent, then:",
+            options:["Rank equals number of columns","Rank < number of columns","Rank is zero","Matrix is identity"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Reason",content:"Column rank = max independent columns. Dependence ⇒ this is strictly less than the column count."},
+              {title:"Answer",content:"Option B."}]},
+          { id:17, difficulty:'theoretical', marks:1,
+            question:"A homogeneous system Ax = 0 has a non-trivial solution when:",
+            options:["Rank = number of variables","Rank < number of variables","Rank = 1","Rank = 0"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Rank-nullity",content:"nullity = variables − rank. For a non-trivial solution we need nullity > 0 ⇒ rank < variables."},
+              {title:"Answer",content:"Option B."}]},
+          { id:18, difficulty:'theoretical', marks:1,
+            question:"Orthogonal vectors are always:",
+            options:["Dependent","Independent (if non-zero)","Equal","Parallel"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Theorem",content:"Mutually orthogonal non-zero vectors are linearly independent."},
+              {title:"Proof sketch",content:"If Σcᵢvᵢ = 0, take inner product with vⱼ: cⱼ‖vⱼ‖² = 0 ⇒ cⱼ = 0."},
+              {title:"Answer",content:"Option B."}]},
+          { id:19, difficulty:'theoretical', marks:1,
+            question:"Determinant = 0 implies:",
+            options:["Independent vectors","Dependent vectors","Orthogonal vectors","Unit vectors"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Rule",content:"For n vectors in ℝⁿ, det = 0 ⇔ they are linearly dependent."},
+              {title:"Answer",content:"Option B."}]},
+          { id:20, difficulty:'theoretical', marks:1,
+            question:"If a·v₁ + b·v₂ = 0 has solution a = 2, b = −1, then vectors are:",
+            options:["Independent","Dependent","Orthogonal","Unit"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Reason",content:"A non-trivial solution (a,b) ≠ (0,0) exists, so by definition the set is dependent."},
+              {title:"Concretely",content:"2v₁ = v₂ — v₂ is a scalar multiple of v₁."},
+              {title:"Answer",content:"Option B."}]}
         ];
 
         // Test state
@@ -10287,7 +8661,7 @@ try{
         function calculateResults() {
             let correctCount = 0;
             let totalMarks = 0;
-            let maxMarks = posttestQuestions.length * 2; // Each question is 2 marks
+            let maxMarks = posttestQuestions.length * 1; // Each question is 1 mark
             
             posttestQuestions.forEach((question, index) => {
                 if (userAnswers[index] === question.correctAnswer) {
