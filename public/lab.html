@@ -5892,10 +5892,16 @@ body { margin:0; }
 
           // ============ TOOL 1 — vector input ============
           function buildGrid(){
-            const n = Math.max(1, Math.min(8, parseInt($('numVecInput').value)||3));
-            const d = Math.max(1, Math.min(8, parseInt($('dimInput').value)||3));
+            const nRaw = parseInt($('numVecInput').value);
+            const dRaw = parseInt($('dimInput').value);
+            if(!nRaw || !dRaw || nRaw<1 || dRaw<1){
+              $('vecSimOutput').innerHTML = `<div class="feedback-wrong"><i class="fas fa-exclamation-circle"></i> Please enter valid numbers for rows (n) and columns (d) — both must be ≥ 1.</div>`;
+              return;
+            }
+            const n = Math.min(8, nRaw);
+            const d = Math.min(8, dRaw);
             $('numVecInput').value = n; $('dimInput').value = d;
-            let h = '<div style="overflow-x:auto;"><table style="border-collapse:separate;border-spacing:6px;">';
+            let h = '<div style="overflow-x:auto;"><p style="margin:0 0 10px 0;color:#475569;font-weight:600;">Step 2 — Fill in your '+n+' vector(s) of dimension '+d+':</p><table style="border-collapse:separate;border-spacing:6px;">';
             h += '<tr><th></th>';
             for(let j=0;j<d;j++) h += `<th style="padding:4px 6px;color:#475569;font-weight:600;">x<sub>${j+1}</sub></th>`;
             h += '</tr>';
@@ -5909,6 +5915,9 @@ body { margin:0; }
             }
             h += '</table></div>';
             $('vectorGrid').innerHTML = h;
+            $('vectorGrid').style.display = 'block';
+            $('runVecSimBtn').style.display = 'inline-flex';
+            $('vecSimOutput').innerHTML = `<p class="empty-hint"><i class="fas fa-edit"></i> Fill in the values above, then click <strong>Get Hints &amp; Try It Yourself</strong>.</p>`;
           }
           function readVectors(){
             const n = parseInt($('numVecInput').value), d = parseInt($('dimInput').value);
@@ -5918,29 +5927,100 @@ body { margin:0; }
             });
             return {V,n,d};
           }
-          function fillGrid(V){
-            $('numVecInput').value = V.length;
-            $('dimInput').value = V[0].length;
-            buildGrid();
-            document.querySelectorAll('#vectorGrid .vec-cell').forEach(inp=>{
-              inp.value = V[+inp.dataset.i][+inp.dataset.j];
-            });
-          }
+
+          // Show hints + ask user for rank + verdict, then on submit reveal full step-by-step
           function runVecSim(){
             const {V,n,d} = readVectors();
+            // Pre-compute the truth (used only on submission)
+            const A = Array.from({length:d},(_,i)=>V.map(v=>v[i]));
+            const truth = gaussianElimination(A);
+            const trueRank = truth.rank;
+            const trueDep = trueRank < n;
+
             const html = [];
-            html.push(`<div class="sim-step s-1"><h3><span class="step-num">1</span> Read inputs</h3>`);
+            // STEP 1 - Recap inputs
+            html.push(`<div class="sim-step s-1"><h3><span class="step-num">1</span> Your inputs</h3>`);
             html.push(`<p>You entered <strong>n = ${n}</strong> vectors in <strong>ℝ<sup>${d}</sup></strong>:</p>`);
             V.forEach((v,i)=>{ html.push(`<p style="font-family:monospace;">v<sub>${i+1}</sub> = (${v.join(', ')})</p>`); });
             html.push(`</div>`);
 
+            // STEP 2 - Form matrix A (visible because needed for hints)
             html.push(`<div class="sim-step s-2"><h3><span class="step-num">2</span> Form matrix A (vectors as columns)</h3>`);
-            const A = Array.from({length:d},(_,i)=>V.map(v=>v[i]));
             html.push(matToHTML(A, `A is a ${d}×${n} matrix:`));
             html.push(`</div>`);
 
-            html.push(`<div class="sim-step s-3"><h3><span class="step-num">3</span> Perform Gaussian elimination — step by step</h3>`);
-            const {rref, steps, rank} = gaussianElimination(A);
+            // STEP 3 - Hints
+            html.push(`<div class="hint-box"><h4><i class="fas fa-lightbulb"></i> Hints — try to find the rank yourself</h4>`);
+            html.push(`<ul>
+              <li>Use <strong>elementary row operations</strong> (swap, scale, add a multiple of another row) to reduce A to row-echelon form.</li>
+              <li>The <strong>rank</strong> = number of <strong>non-zero rows</strong> in the reduced matrix.</li>
+              <li>If any row becomes all zeros, that row was a linear combination of the others.</li>
+              <li>Quick check: rank can <em>never</em> exceed min(rows, cols) = min(${d}, ${n}) = <strong>${Math.min(d,n)}</strong>.</li>
+              ${n>d?`<li><strong>Shortcut:</strong> you have more vectors (${n}) than the dimension (${d}), so the set is automatically dependent. But still try to find the rank!</li>`:''}
+            </ul></div>`);
+
+            // STEP 4 - Ask user for rank
+            html.push(`<div class="interactive-step" id="rankStep">
+              <h4><i class="fas fa-question-circle"></i> Step 3 — What is the rank of matrix A?</h4>
+              <p style="color:#475569;">Try the row reduction on paper using the hints, then enter your answer below.</p>
+              <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px;">
+                <input type="number" id="userRankInput" class="sim-input" min="0" max="${Math.min(d,n)}" placeholder="Enter rank" style="width:140px;">
+                <button class="sim-btn primary" id="submitRankBtn"><i class="fas fa-check"></i> Submit Rank</button>
+              </div>
+              <div id="rankFeedback"></div>
+            </div>`);
+
+            $('vecSimOutput').innerHTML = html.join('');
+
+            // Wire up rank submission
+            $('submitRankBtn').addEventListener('click', ()=>{
+              const userRank = parseInt($('userRankInput').value);
+              if(isNaN(userRank)){
+                $('rankFeedback').innerHTML = `<div class="feedback-wrong"><i class="fas fa-exclamation-circle"></i> Please enter a valid number.</div>`;
+                return;
+              }
+              if(userRank === trueRank){
+                $('rankFeedback').innerHTML = `<div class="feedback-correct"><i class="fas fa-check-circle"></i> Correct! Rank = ${trueRank}. Now predict the verdict below.</div>`;
+              } else {
+                $('rankFeedback').innerHTML = `<div class="feedback-wrong"><i class="fas fa-times-circle"></i> Not quite — your answer was ${userRank}, but the actual rank is <strong>${trueRank}</strong>. Don't worry, predict the verdict using rank = ${trueRank}.</div>`;
+              }
+              // Now show the verdict-choice step
+              showVerdictChoice(trueRank, n, d, V, A, truth, trueDep);
+            }, {once:true});
+          }
+
+          function showVerdictChoice(trueRank, n, d, V, A, truth, trueDep){
+            const choiceHTML = `
+              <div class="interactive-step" id="verdictStep">
+                <h4><i class="fas fa-balance-scale"></i> Step 4 — What's your verdict?</h4>
+                <p style="color:#475569;">You found rank = <strong>${trueRank}</strong> and n = <strong>${n}</strong>. Based on this, are the vectors:</p>
+                <div class="choice-row">
+                  <button class="choice-btn dep" data-pick="dep"><i class="fas fa-unlink"></i> Linearly Dependent</button>
+                  <button class="choice-btn ind" data-pick="ind"><i class="fas fa-check"></i> Linearly Independent</button>
+                </div>
+                <div id="verdictFeedback"></div>
+              </div>`;
+            $('vecSimOutput').insertAdjacentHTML('beforeend', choiceHTML);
+
+            document.querySelectorAll('#verdictStep .choice-btn').forEach(btn=>{
+              btn.addEventListener('click', ()=>{
+                const pick = btn.dataset.pick;
+                const correct = (pick==='dep' && trueDep) || (pick==='ind' && !trueDep);
+                const fb = correct
+                  ? `<div class="feedback-correct"><i class="fas fa-trophy"></i> Excellent! That's correct. Here's the full step-by-step solution:</div>`
+                  : `<div class="feedback-wrong"><i class="fas fa-times-circle"></i> Not quite. The correct answer is <strong>${trueDep?'Linearly Dependent':'Linearly Independent'}</strong>. See the detailed solution below to understand why.</div>`;
+                $('verdictFeedback').innerHTML = fb;
+                document.querySelectorAll('#verdictStep .choice-btn').forEach(b=>b.disabled=true);
+                revealFullSolution(n, d, A, truth, trueDep);
+              }, {once:true});
+            });
+          }
+
+          function revealFullSolution(n, d, A, truth, dep){
+            const {rref, steps, rank} = truth;
+            const html = [];
+            html.push(`<div class="sim-step s-3"><h3><span class="step-num">5</span> Detailed solution — Gaussian elimination, step by step</h3>`);
+            html.push(`<p style="color:#475569;">Each step shows the row operation applied and the resulting matrix.</p>`);
             steps.forEach((s,i)=>{
               html.push(`<div class="sim-op">${i===0?'Initial matrix':'Op '+i+': '+s.op}</div>`);
               html.push(matToHTML(s.M,''));
@@ -5948,12 +6028,11 @@ body { margin:0; }
             html.push(`<div style="margin-top:10px;">${matToHTML(rref,'Final reduced matrix (RREF):')}</div>`);
             html.push(`</div>`);
 
-            html.push(`<div class="sim-step s-4"><h3><span class="step-num">4</span> Find the rank</h3>`);
+            html.push(`<div class="sim-step s-4"><h3><span class="step-num">6</span> Read off the rank</h3>`);
             html.push(`<p>Rank = number of non-zero rows in RREF = <strong style="color:#f59e0b;font-size:1.15rem;">${rank}</strong></p>`);
             html.push(`</div>`);
 
-            html.push(`<div class="sim-step s-5"><h3><span class="step-num">5</span> Compare rank with n</h3>`);
-            const dep = rank < n;
+            html.push(`<div class="sim-step s-5"><h3><span class="step-num">7</span> Conclusion — compare rank with n</h3>`);
             const verdict = dep ? 'LINEARLY DEPENDENT' : 'LINEARLY INDEPENDENT';
             html.push(`<p>n = <strong>${n}</strong>, &nbsp; rank = <strong>${rank}</strong> &nbsp;⇒&nbsp; rank ${dep?'&lt;':'='} n</p>`);
             html.push(`<div class="verdict ${dep?'dep':'ind'}">
@@ -5968,13 +6047,11 @@ body { margin:0; }
                 You have more vectors (${n}) than the dimension (${d}). Such a set is <strong>always dependent</strong>.</p>`);
             }
             html.push(`</div>`);
-            $('vecSimOutput').innerHTML = html.join('');
+            $('vecSimOutput').insertAdjacentHTML('beforeend', html.join(''));
           }
+
           $('buildGridBtn').addEventListener('click', buildGrid);
           $('runVecSimBtn').addEventListener('click', runVecSim);
-          $('loadDepBtn').addEventListener('click', ()=> fillGrid([[1,2,3],[2,4,6],[3,6,9]]));
-          $('loadIndBtn').addEventListener('click', ()=> fillGrid([[1,0,0],[0,1,0],[0,0,1]]));
-          buildGrid();
 
           // ============ TOOL 2 — characteristic equation ============
           function parsePolynomial(eq){
