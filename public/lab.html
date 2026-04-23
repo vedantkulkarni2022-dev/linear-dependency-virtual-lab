@@ -5831,16 +5831,15 @@ body { margin:0; }
             const n = Math.max(1, Math.min(8, parseInt($('numVecInput').value)||3));
             const d = Math.max(1, Math.min(8, parseInt($('dimInput').value)||3));
             $('numVecInput').value = n; $('dimInput').value = d;
-            let h = '<div style="overflow-x:auto;"><table style="border-collapse:collapse;">';
-            h += '<tr><th style="padding:6px 10px;"></th>';
-            for(let j=0;j<d;j++) h += `<th style="padding:6px 10px;color:#2c3e50;">x<sub>${j+1}</sub></th>`;
+            let h = '<div style="overflow-x:auto;"><table style="border-collapse:separate;border-spacing:6px;">';
+            h += '<tr><th></th>';
+            for(let j=0;j<d;j++) h += `<th style="padding:4px 6px;color:#475569;font-weight:600;">x<sub>${j+1}</sub></th>`;
             h += '</tr>';
             for(let i=0;i<n;i++){
-              h += `<tr><td style="padding:6px 10px;font-weight:600;color:#2c3e50;">v<sub>${i+1}</sub></td>`;
+              h += `<tr><td style="padding:6px 10px;font-weight:700;color:#4f46e5;">v<sub>${i+1}</sub></td>`;
               for(let j=0;j<d;j++){
-                h += `<td style="padding:4px;"><input type="number" step="any" data-i="${i}" data-j="${j}"
-                       class="vec-cell" value="0"
-                       style="width:70px;padding:6px;border:1px solid #bbd;border-radius:6px;font-family:monospace;text-align:center;"></td>`;
+                h += `<td><input type="number" step="any" data-i="${i}" data-j="${j}"
+                       class="vec-cell" value="0"></td>`;
               }
               h += '</tr>';
             }
