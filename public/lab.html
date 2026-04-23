@@ -5785,37 +5785,35 @@ body { margin:0; }
         <!-- ============== TOOL 1: USER VECTOR INPUT ============== -->
         <section class="sim-card">
             <div class="card-title"><span class="badge-num">1</span> Vector Dependence Test</div>
-            <p class="card-sub">Enter <strong>n</strong> vectors of dimension <strong>d</strong>. The simulator forms matrix A, performs Gaussian elimination row-by-row, finds the rank, and compares it with n.</p>
+            <p class="card-sub">Step 1 — Choose how many vectors (rows) and the dimension (columns). Then click <strong>Build Input Grid</strong> to enter values.</p>
 
             <div class="sim-controls">
-                <label>Number of vectors (n):</label>
-                <input id="numVecInput" class="sim-input" type="number" min="1" max="8" value="3" style="width:80px;">
-                <label>Dimension (d):</label>
-                <input id="dimInput" class="sim-input" type="number" min="1" max="8" value="3" style="width:80px;">
+                <label>Number of vectors (n / rows):</label>
+                <input id="numVecInput" class="sim-input" type="number" min="1" max="8" placeholder="e.g. 3" style="width:90px;">
+                <label>Dimension (d / columns):</label>
+                <input id="dimInput" class="sim-input" type="number" min="1" max="8" placeholder="e.g. 3" style="width:90px;">
                 <button class="sim-btn primary" id="buildGridBtn"><i class="fas fa-table"></i> Build Input Grid</button>
-                <button class="sim-btn ghost" id="loadDepBtn"><i class="fas fa-link"></i> Load Dependent Example</button>
-                <button class="sim-btn ghost" id="loadIndBtn"><i class="fas fa-unlink"></i> Load Independent Example</button>
             </div>
 
-            <div class="sim-grid-table" id="vectorGrid" style="margin-bottom:16px;padding:14px;"></div>
+            <div class="sim-grid-table" id="vectorGrid" style="margin-bottom:16px;padding:14px;display:none;"></div>
 
-            <button class="sim-btn run" id="runVecSimBtn">
-                <i class="fas fa-play-circle"></i> Run Step-by-Step Simulation
+            <button class="sim-btn run" id="runVecSimBtn" style="display:none;">
+                <i class="fas fa-lightbulb"></i> Get Hints &amp; Try It Yourself
             </button>
 
             <div id="vecSimOutput" class="sim-output">
-                <p class="empty-hint"><i class="fas fa-arrow-up"></i> Build the grid, fill in the vectors, then click <strong>Run Step-by-Step Simulation</strong>.</p>
+                <p class="empty-hint"><i class="fas fa-arrow-up"></i> Enter rows &amp; columns above, click <strong>Build Input Grid</strong>, fill in your vectors, then click <strong>Get Hints</strong>.</p>
             </div>
         </section>
 
         <!-- ============== TOOL 2: CHARACTERISTIC EQUATION ============== -->
         <section class="sim-card">
             <div class="card-title"><span class="badge-num">2</span> Characteristic Equation Check</div>
-            <p class="card-sub">Enter a characteristic equation in <em>λ</em> (or <em>x</em>). The simulator solves it, builds an eigenvector set (distinct λ → independent basis vector; repeated λ → forced repeat), forms matrix A, performs Gaussian elimination, and reports the verdict.</p>
+            <p class="card-sub">Enter a characteristic equation in <em>λ</em> (or <em>x</em>). You'll be guided with hints, asked for the rank, and given a chance to predict the verdict before the full step-by-step solution is revealed.</p>
 
             <div class="sim-controls">
                 <label>Characteristic Equation:</label>
-                <input id="charEqInput" class="sim-input" type="text" value="x^3 - 6x^2 + 11x - 6 = 0" style="flex:1;min-width:260px;">
+                <input id="charEqInput" class="sim-input" type="text" placeholder="e.g. x^3 - 6x^2 + 11x - 6 = 0" style="flex:1;min-width:260px;">
             </div>
             <div class="preset-row">
                 <button class="sim-btn ghost" data-eq="x^2 - 5x + 6 = 0">x²−5x+6=0</button>
@@ -5824,11 +5822,11 @@ body { margin:0; }
                 <button class="sim-btn ghost" data-eq="x^3 - 3x^2 + 3x - 1 = 0">(x−1)³</button>
             </div>
             <button class="sim-btn run" id="runStepSimBtn">
-                <i class="fas fa-play-circle"></i> Run Characteristic Simulation
+                <i class="fas fa-lightbulb"></i> Get Hints &amp; Try It Yourself
             </button>
 
             <div id="stepSimOutput" class="sim-output">
-                <p class="empty-hint"><i class="fas fa-arrow-up"></i> Enter a characteristic equation and click <strong>Run</strong>.</p>
+                <p class="empty-hint"><i class="fas fa-arrow-up"></i> Enter a characteristic equation and click <strong>Get Hints</strong>.</p>
             </div>
         </section>
 
