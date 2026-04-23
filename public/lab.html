@@ -5569,67 +5569,52 @@ body { margin:0; }
 
     <div class="container">
         <header>
-            <h1><i class="fas fa-vector-square"></i> Linear Dependence Calculator</h1>
-            <p class="subtitle">Check if vectors are linearly dependent or independent with detailed step-by-step solution</p>
+            <h1><i class="fas fa-vector-square"></i> Linear Dependence Simulator</h1>
+            <p class="subtitle">Step-by-step input-driven test for linear dependence / independence</p>
         </header>
-        
+
         <div class="info-box">
-            <div class="info-title">
-                <i class="fas fa-info-circle"></i> How to use
-            </div>
-            <p>Enter vectors in the input fields below. Each vector should have the same dimension (number of coordinates). 
-            Click "Calculate" to check linear dependence/independence. You can add/remove vectors or change dimension using the controls.</p>
-        </div>
-        
-        <div class="main-content">
-            <section class="input-section">
-                <h2 class="section-title"><i class="fas fa-edit"></i> Input Vectors</h2>
-                
-                <div class="dimension-controls">
-                    <button class="control-btn" id="addVectorBtn">
-                        <i class="fas fa-plus"></i> Add Vector
-                    </button>
-                    <button class="control-btn" id="removeVectorBtn">
-                        <i class="fas fa-minus"></i> Remove Vector
-                    </button>
-                    <button class="control-btn" id="changeDimensionBtn">
-                        <i class="fas fa-arrows-alt-h"></i> Change Dimension
-                    </button>
-                </div>
-                
-                <div class="vector-input-container" id="vectorInputs">
-                    <!-- Vector inputs will be generated here -->
-                </div>
-                
-                <button class="calculate-btn" id="calculateBtn">
-                    <i class="fas fa-calculator"></i> Calculate Linear Dependence
-                </button>
-            </section>
-            
-            <section class="result-section">
-                <h2 class="section-title"><i class="fas fa-chart-bar"></i> Result & Explanation</h2>
-                
-                <div class="result-box">
-                    <div class="result-title">Result:</div>
-                    <div class="result-value" id="resultValue">Enter vectors and click "Calculate"</div>
-                    
-                    <div class="explanation-box">
-                        <div id="explanationContent">
-                            <p>The solution will appear here after calculation.</p>
-                            <p>Linear dependence means one vector can be expressed as a linear combination of the others.</p>
-                            <p>Linear independence means no vector can be written as a linear combination of the others.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <div class="info-title"><i class="fas fa-info-circle"></i> What this simulator does</div>
+            <p>Choose how many vectors and the dimension, type each vector's components, and watch the full
+            workflow: <strong>Form matrix A → Row-reduce → Find rank → Compare with n</strong>. A second tool
+            takes a <strong>characteristic equation</strong>, finds the eigenvalues, builds an eigenvector set,
+            and runs the same dependence test on it.</p>
         </div>
 
-        <!-- ================= STEP-BY-STEP CHARACTERISTIC EQUATION SIMULATOR ================= -->
-        <section class="input-section" style="margin-top:30px;">
-            <h2 class="section-title"><i class="fas fa-shoe-prints"></i> Step-by-Step Simulation (Characteristic Equation)</h2>
+        <!-- ============== TOOL 1: USER VECTOR INPUT ============== -->
+        <section class="input-section" style="padding:20px;border:1px solid #d6e4f5;border-radius:12px;background:#fff;margin-bottom:24px;">
+            <h2 class="section-title"><i class="fas fa-edit"></i> Tool 1 — Vector Dependence Test</h2>
+
+            <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:16px;">
+                <label style="font-weight:600;">Number of vectors (n):</label>
+                <input id="numVecInput" type="number" min="1" max="8" value="3"
+                       style="width:80px;padding:8px;border:2px solid #3498db;border-radius:8px;font-size:1rem;">
+                <label style="font-weight:600;">Dimension (d):</label>
+                <input id="dimInput" type="number" min="1" max="8" value="3"
+                       style="width:80px;padding:8px;border:2px solid #3498db;border-radius:8px;font-size:1rem;">
+                <button class="control-btn" id="buildGridBtn"><i class="fas fa-table"></i> Build Input Grid</button>
+                <button class="control-btn" id="loadDepBtn">Load Dependent Example</button>
+                <button class="control-btn" id="loadIndBtn">Load Independent Example</button>
+            </div>
+
+            <div id="vectorGrid" style="margin-bottom:16px;"></div>
+
+            <button class="calculate-btn" id="runVecSimBtn">
+                <i class="fas fa-play"></i> Run Step-by-Step Simulation
+            </button>
+
+            <div id="vecSimOutput" style="background:#f8fbff;border:1px solid #d6e4f5;border-radius:10px;padding:20px;min-height:120px;margin-top:18px;">
+                <p style="color:#777;">Build the grid, fill in vectors, and click <strong>Run Step-by-Step Simulation</strong>.</p>
+            </div>
+        </section>
+
+        <!-- ============== TOOL 2: CHARACTERISTIC EQUATION ============== -->
+        <section class="input-section" style="padding:20px;border:1px solid #d6e4f5;border-radius:12px;background:#fff;">
+            <h2 class="section-title"><i class="fas fa-superscript"></i> Tool 2 — Characteristic Equation Check</h2>
             <p style="margin-bottom:15px;color:#555;">
-                Enter a <strong>characteristic equation</strong> in <em>λ</em> (or <em>x</em>). The simulator will solve it,
-                build the eigenvector matrix, and walk through a linear dependence/independence test step by step.
+                Enter a characteristic equation in <em>λ</em> (or <em>x</em>). The simulator solves it,
+                builds an eigenvector set (distinct λ → independent basis vector; repeated λ → forced repeat),
+                forms matrix A, performs Gaussian elimination, and reports the verdict.
             </p>
 
             <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:15px;">
@@ -5638,51 +5623,170 @@ body { margin:0; }
                        style="flex:1;min-width:260px;padding:10px 14px;border:2px solid #3498db;border-radius:8px;font-size:1rem;font-family:monospace;">
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px;">
-                <button class="control-btn" data-eq="x^2 - 5x + 6 = 0">Example: x²−5x+6=0</button>
-                <button class="control-btn" data-eq="x^3 - 6x^2 + 11x - 6 = 0">Example: x³−6x²+11x−6=0</button>
-                <button class="control-btn" data-eq="x^2 - 4x + 4 = 0">Example: (x−2)² (repeated)</button>
-                <button class="control-btn" data-eq="x^3 - 3x^2 + 3x - 1 = 0">Example: (x−1)³</button>
+                <button class="control-btn" data-eq="x^2 - 5x + 6 = 0">x²−5x+6=0</button>
+                <button class="control-btn" data-eq="x^3 - 6x^2 + 11x - 6 = 0">x³−6x²+11x−6=0</button>
+                <button class="control-btn" data-eq="x^2 - 4x + 4 = 0">(x−2)² (repeated)</button>
+                <button class="control-btn" data-eq="x^3 - 3x^2 + 3x - 1 = 0">(x−1)³</button>
             </div>
             <button class="calculate-btn" id="runStepSimBtn" style="margin-bottom:20px;">
-                <i class="fas fa-play"></i> Run Step-by-Step Simulation
+                <i class="fas fa-play"></i> Run Characteristic Simulation
             </button>
 
             <div id="stepSimOutput" style="background:#f8fbff;border:1px solid #d6e4f5;border-radius:10px;padding:20px;min-height:120px;">
-                <p style="color:#777;">Enter a characteristic equation and click <strong>Run Step-by-Step Simulation</strong>.</p>
+                <p style="color:#777;">Enter a characteristic equation and click <strong>Run</strong>.</p>
             </div>
         </section>
 
+        <!-- ===== ALL SIMULATION JS (single self-contained block) ===== -->
         <script>
         (function(){
           const $ = id => document.getElementById(id);
-          const out = () => $('stepSimOutput');
-          if(!$('runStepSimBtn')) return;
+          if(!$('runVecSimBtn')) return;
 
-          // ---------- helpers ----------
+          // ============ shared math helpers ============
+          function matToHTML(M, label){
+            if(!M || !M.length){ return ''; }
+            const n = M.length, m = M[0].length;
+            let h = `<div style="margin:8px 0;"><strong>${label}</strong><table style="border-collapse:collapse;margin-top:6px;">`;
+            for(let i=0;i<n;i++){
+              h += '<tr>';
+              for(let j=0;j<m;j++){
+                const v = M[i][j];
+                const s = Math.abs(v)<1e-9?'0':(Number.isInteger(v)?v:(+v.toFixed(4)).toString());
+                h += `<td style="border:1px solid #aac;padding:6px 12px;text-align:center;font-family:monospace;min-width:38px;">${s}</td>`;
+              }
+              h += '</tr>';
+            }
+            h += '</table></div>';
+            return h;
+          }
+          function gaussianElimination(A){
+            const M = A.map(r=>r.slice());
+            const n = M.length, m = M[0].length;
+            const steps = [];
+            steps.push({op:'Initial matrix', M: M.map(r=>r.slice())});
+            let row = 0;
+            for(let col=0; col<m && row<n; col++){
+              let piv = row;
+              for(let i=row;i<n;i++) if(Math.abs(M[i][col])>Math.abs(M[piv][col])) piv=i;
+              if(Math.abs(M[piv][col])<1e-9) continue;
+              if(piv!==row){
+                [M[row],M[piv]] = [M[piv],M[row]];
+                steps.push({op:`Swap R${row+1} ↔ R${piv+1}`, M: M.map(r=>r.slice())});
+              }
+              const pv = M[row][col];
+              if(Math.abs(pv-1)>1e-9){
+                for(let j=0;j<m;j++) M[row][j] /= pv;
+                steps.push({op:`R${row+1} → R${row+1} / (${(+pv.toFixed(4))})`, M: M.map(r=>r.slice())});
+              }
+              for(let i=0;i<n;i++){
+                if(i===row) continue;
+                const f = M[i][col];
+                if(Math.abs(f)<1e-9) continue;
+                for(let j=0;j<m;j++) M[i][j] -= f*M[row][j];
+                steps.push({op:`R${i+1} → R${i+1} − (${(+f.toFixed(4))})·R${row+1}`, M: M.map(r=>r.slice())});
+              }
+              row++;
+            }
+            let rank = 0;
+            for(const r of M) if(r.some(v=>Math.abs(v)>1e-9)) rank++;
+            return {rref:M, steps, rank};
+          }
+
+          // ============ TOOL 1 — vector input ============
+          function buildGrid(){
+            const n = Math.max(1, Math.min(8, parseInt($('numVecInput').value)||3));
+            const d = Math.max(1, Math.min(8, parseInt($('dimInput').value)||3));
+            $('numVecInput').value = n; $('dimInput').value = d;
+            let h = '<div style="overflow-x:auto;"><table style="border-collapse:collapse;">';
+            h += '<tr><th style="padding:6px 10px;"></th>';
+            for(let j=0;j<d;j++) h += `<th style="padding:6px 10px;color:#2c3e50;">x<sub>${j+1}</sub></th>`;
+            h += '</tr>';
+            for(let i=0;i<n;i++){
+              h += `<tr><td style="padding:6px 10px;font-weight:600;color:#2c3e50;">v<sub>${i+1}</sub></td>`;
+              for(let j=0;j<d;j++){
+                h += `<td style="padding:4px;"><input type="number" step="any" data-i="${i}" data-j="${j}"
+                       class="vec-cell" value="0"
+                       style="width:70px;padding:6px;border:1px solid #bbd;border-radius:6px;font-family:monospace;text-align:center;"></td>`;
+              }
+              h += '</tr>';
+            }
+            h += '</table></div>';
+            $('vectorGrid').innerHTML = h;
+          }
+          function readVectors(){
+            const n = parseInt($('numVecInput').value), d = parseInt($('dimInput').value);
+            const V = Array.from({length:n},()=>new Array(d).fill(0));
+            document.querySelectorAll('#vectorGrid .vec-cell').forEach(inp=>{
+              V[+inp.dataset.i][+inp.dataset.j] = parseFloat(inp.value)||0;
+            });
+            return {V,n,d};
+          }
+          function fillGrid(V){
+            $('numVecInput').value = V.length;
+            $('dimInput').value = V[0].length;
+            buildGrid();
+            document.querySelectorAll('#vectorGrid .vec-cell').forEach(inp=>{
+              inp.value = V[+inp.dataset.i][+inp.dataset.j];
+            });
+          }
+          function runVecSim(){
+            const {V,n,d} = readVectors();
+            const html = [];
+            html.push(`<h3 style="color:#2c3e50;">Step 1 — Read inputs</h3>`);
+            html.push(`<p>You entered <strong>n = ${n}</strong> vectors in <strong>ℝ<sup>${d}</sup></strong>:</p>`);
+            V.forEach((v,i)=>{ html.push(`<p>v<sub>${i+1}</sub> = (${v.join(', ')})</p>`); });
+
+            html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 2 — Form matrix A (vectors as columns)</h3>`);
+            const A = Array.from({length:d},(_,i)=>V.map(v=>v[i]));
+            html.push(matToHTML(A, `A (${d}×${n})`));
+
+            html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 3 — Perform row reduction (Gaussian elimination)</h3>`);
+            const {rref, steps, rank} = gaussianElimination(A);
+            steps.forEach((s,i)=>{
+              html.push(`<p style="margin-top:8px;"><strong>${i===0?'':'Op '+i+': '}${s.op}</strong></p>`);
+              html.push(matToHTML(s.M,''));
+            });
+            html.push(matToHTML(rref,'Final reduced matrix (RREF)'));
+
+            html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 4 — Find the rank</h3>`);
+            html.push(`<p>Rank = number of non-zero rows in RREF = <strong>${rank}</strong></p>`);
+
+            html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 5 — Compare rank with n</h3>`);
+            const dep = rank < n;
+            const color = dep ? '#e74c3c' : '#27ae60';
+            const verdict = dep ? 'LINEARLY DEPENDENT' : 'LINEARLY INDEPENDENT';
+            html.push(`<p>n = <strong>${n}</strong>, rank = <strong>${rank}</strong> ⇒ rank ${dep?'&lt;':'='} n</p>`);
+            html.push(`<div style="padding:15px;border-radius:10px;background:${color}15;border-left:6px solid ${color};font-size:1.1rem;margin-top:8px;">
+              <strong style="color:${color};">${verdict}</strong><br>
+              ${dep
+                ? `Because rank (${rank}) &lt; n (${n}), at least one vector is a linear combination of the others. The set is <strong>redundant</strong> and does not span ℝ<sup>${n>d?d:n}</sup>.`
+                : `Because rank (${rank}) = n (${n}), no vector can be written as a combination of the others. The set is a <strong>basis</strong> for the subspace it spans.`}
+            </div>`);
+            if(n > d){
+              html.push(`<p style="margin-top:10px;color:#555;"><i class="fas fa-lightbulb" style="color:#f39c12;"></i>
+                Note: you have more vectors (${n}) than the dimension (${d}). Such a set is <strong>always dependent</strong>.</p>`);
+            }
+            $('vecSimOutput').innerHTML = html.join('');
+          }
+          $('buildGridBtn').addEventListener('click', buildGrid);
+          $('runVecSimBtn').addEventListener('click', runVecSim);
+          $('loadDepBtn').addEventListener('click', ()=> fillGrid([[1,2,3],[2,4,6],[3,6,9]]));
+          $('loadIndBtn').addEventListener('click', ()=> fillGrid([[1,0,0],[0,1,0],[0,0,1]]));
+          buildGrid();
+
+          // ============ TOOL 2 — characteristic equation ============
           function parsePolynomial(eq){
-            // Normalize: remove spaces, lowercase, replace λ -> x, ** -> ^, × -> *
             let s = eq.replace(/\s+/g,'').toLowerCase()
                        .replace(/λ/g,'x').replace(/\*\*/g,'^').replace(/×/g,'*');
-            // Move RHS to LHS
-            if(s.includes('=')){
-              const [l,r] = s.split('=');
-              s = l + '-(' + r + ')';
-            }
-            // Expand a leading minus inside parens minimally — for our use the RHS is "0" or constant
-            // Insert explicit * between number and x:  6x -> 6*x
+            if(s.includes('=')){ const [l,r]=s.split('='); s = l + '-(' + r + ')'; }
             s = s.replace(/(\d)x/g,'$1*x');
-            // Build coefficient array via regex term scan:  ([+-]?[\d.]*)\*?x(\^(\d+))?  | ([+-]?[\d.]+)
-            const coeffs = {}; // power -> value
-            // Insert leading + if needed
+            const coeffs = {};
             if(s[0] !== '-' && s[0] !== '+') s = '+' + s;
-            // Strip outer "-(...)" added above by expanding:
-            // Replace "-(...)" with each inner term sign-flipped
             s = s.replace(/-\(([^()]*)\)/g, (_,inner)=>{
-              // flip signs of leading + or -
               if(inner[0] !== '+' && inner[0] !== '-') inner = '+' + inner;
-              return inner.replace(/([+-])/g, (m)=> m==='+'?'-':'+');
+              return inner.replace(/([+-])/g, m => m==='+'?'-':'+');
             });
-            // Now scan tokens
             const re = /([+-])([\d.]*)\*?(x(?:\^(\d+))?)?/g;
             let m, found=false;
             while((m = re.exec(s)) !== null){
@@ -5695,16 +5799,14 @@ body { margin:0; }
               const val = sign*parseFloat(numStr);
               if(isNaN(val)) continue;
               if(!hasX && numStr==='0' && !m[2]) continue;
-              coeffs[pow] = (coeffs[pow]||0) + val;
-              found = true;
+              coeffs[pow] = (coeffs[pow]||0) + val; found = true;
             }
             if(!found) throw new Error('Could not parse equation.');
             const deg = Math.max(...Object.keys(coeffs).map(Number));
             const arr = [];
             for(let i=deg;i>=0;i--) arr.push(coeffs[i]||0);
-            return arr; // highest degree first
+            return arr;
           }
-
           function fmtPoly(c){
             const deg = c.length-1;
             return c.map((v,i)=>{
@@ -5717,23 +5819,17 @@ body { margin:0; }
               return s + av + xp;
             }).join('').replace(/^ \+ /,'') || '0';
           }
-
-          // Find all real roots numerically (durand-kerner-ish + simple scan + deflation for rationals)
           function findRoots(coeffs){
             const roots = [];
             let poly = coeffs.slice();
-            // Try integer roots in [-20,20] (rational root style)
             const tryDeflate = (r)=>{
-              // synthetic division
               const out = [poly[0]];
               for(let i=1;i<poly.length;i++) out.push(poly[i] + out[i-1]*r);
               const rem = out.pop();
               if(Math.abs(rem) < 1e-6){ poly = out; return true; }
               return false;
             };
-            const evalAt = (r)=>{
-              let v=0; for(const c of poly) v = v*r + c; return v;
-            };
+            const evalAt = (r)=>{ let v=0; for(const c of poly) v = v*r + c; return v; };
             let guard = 0;
             while(poly.length>2 && guard<50){
               guard++;
@@ -5742,19 +5838,16 @@ body { margin:0; }
                 if(Math.abs(evalAt(r))<1e-6){ foundRoot = r; break; }
               }
               if(foundRoot===null){
-                // bisection scan
                 let prev = evalAt(-50), prevX=-50;
                 for(let x=-49.5;x<=50;x+=0.5){
                   const v = evalAt(x);
                   if(prev*v < 0){
-                    // bisect
-                    let lo=prevX, hi=x, flo=prev, fhi=v;
+                    let lo=prevX, hi=x, flo=prev;
                     for(let k=0;k<60;k++){
                       const mid=(lo+hi)/2, fm=evalAt(mid);
-                      if(flo*fm<0){hi=mid;fhi=fm;} else {lo=mid;flo=fm;}
+                      if(flo*fm<0){hi=mid;} else {lo=mid;flo=fm;}
                     }
-                    foundRoot = (lo+hi)/2;
-                    break;
+                    foundRoot = (lo+hi)/2; break;
                   }
                   prev=v; prevX=x;
                 }
@@ -5763,185 +5856,96 @@ body { margin:0; }
               roots.push(foundRoot);
               tryDeflate(foundRoot);
             }
-            // remaining quadratic / linear
             if(poly.length===3){
               const [a,b,c]=poly, d=b*b-4*a*c;
               if(d>=-1e-9){
                 const sd=Math.sqrt(Math.max(d,0));
                 roots.push((-b+sd)/(2*a)); roots.push((-b-sd)/(2*a));
               }
-            } else if(poly.length===2){
-              roots.push(-poly[1]/poly[0]);
-            }
-            // Round near-integers
+            } else if(poly.length===2){ roots.push(-poly[1]/poly[0]); }
             return roots.map(r => Math.abs(r-Math.round(r))<1e-4 ? Math.round(r) : +r.toFixed(4));
           }
-
-          // Build a sample matrix from roots: diag-ish basis — for demo, use eigenvectors
-          // For each distinct eigenvalue λi we generate column vector e_i; for repeated we duplicate.
-          function buildVectors(roots){
+          function buildVectorsFromRoots(roots){
             const n = roots.length;
-            const cols = [];
-            const seen = {};
+            const cols = []; const seen = {};
             for(let i=0;i<n;i++){
-              const r = roots[i];
-              const key = r.toFixed(4);
-              const dup = seen[key]||0;
-              seen[key] = dup+1;
-              // distinct -> standard basis e_i; repeated -> duplicate previous (creates dependence)
+              const r = roots[i]; const key = r.toFixed(4);
+              const dup = seen[key]||0; seen[key] = dup+1;
               const v = new Array(n).fill(0);
               if(dup===0){ v[i] = 1; }
               else {
-                // copy previous column with same eigenvalue (forces dependence)
                 const prevIdx = cols.findIndex((_,k)=> roots[k].toFixed(4)===key);
                 for(let k=0;k<n;k++) v[k] = cols[prevIdx][k];
               }
               cols.push(v);
             }
-            return cols; // array of column vectors
+            return cols;
           }
-
-          function matToHTML(M, label){
-            const n = M.length, m = M[0].length;
-            let h = `<div style="margin:10px 0;"><strong>${label}</strong><table style="border-collapse:collapse;margin-top:6px;">`;
-            for(let i=0;i<n;i++){
-              h += '<tr>';
-              for(let j=0;j<m;j++){
-                const v = M[i][j];
-                const s = Math.abs(v)<1e-9?'0':(Number.isInteger(v)?v:v.toFixed(3));
-                h += `<td style="border:1px solid #aac;padding:6px 12px;text-align:center;font-family:monospace;">${s}</td>`;
-              }
-              h += '</tr>';
-            }
-            h += '</table></div>';
-            return h;
-          }
-
-          function gaussianElimination(A){
-            const M = A.map(r=>r.slice());
-            const n = M.length, m = M[0].length;
-            const steps = [];
-            let row = 0;
-            for(let col=0; col<m && row<n; col++){
-              // find pivot
-              let piv = row;
-              for(let i=row;i<n;i++) if(Math.abs(M[i][col])>Math.abs(M[piv][col])) piv=i;
-              if(Math.abs(M[piv][col])<1e-9) continue;
-              if(piv!==row){
-                [M[row],M[piv]] = [M[piv],M[row]];
-                steps.push({op:`Swap R${row+1} ↔ R${piv+1}`, M: M.map(r=>r.slice())});
-              }
-              // normalize
-              const pv = M[row][col];
-              if(Math.abs(pv-1)>1e-9){
-                for(let j=0;j<m;j++) M[row][j] /= pv;
-                steps.push({op:`R${row+1} → R${row+1} / ${pv.toFixed(3)}`, M: M.map(r=>r.slice())});
-              }
-              // eliminate
-              for(let i=0;i<n;i++){
-                if(i===row) continue;
-                const f = M[i][col];
-                if(Math.abs(f)<1e-9) continue;
-                for(let j=0;j<m;j++) M[i][j] -= f*M[row][j];
-                steps.push({op:`R${i+1} → R${i+1} − (${f.toFixed(3)})·R${row+1}`, M: M.map(r=>r.slice())});
-              }
-              row++;
-            }
-            // rank = number of nonzero rows
-            let rank = 0;
-            for(const r of M) if(r.some(v=>Math.abs(v)>1e-9)) rank++;
-            return {rref:M, steps, rank};
-          }
-
-          function transpose(M){
-            const n=M.length, m=M[0].length;
-            const T = Array.from({length:m},()=>new Array(n).fill(0));
-            for(let i=0;i<n;i++) for(let j=0;j<m;j++) T[j][i]=M[i][j];
-            return T;
-          }
-
-          function run(eq){
+          function runCharSim(eq){
             try{
               const html = [];
-              html.push(`<h3 style="color:#2c3e50;"><i class="fas fa-1"></i> Step 1 — Read & parse the characteristic equation</h3>`);
+              html.push(`<h3 style="color:#2c3e50;">Step 1 — Parse the characteristic equation</h3>`);
               html.push(`<p>Input: <code>${eq}</code></p>`);
               const coeffs = parsePolynomial(eq);
               html.push(`<p>Standard form: <strong>${fmtPoly(coeffs)} = 0</strong></p>`);
-              html.push(`<p>Coefficient vector (high → low degree): <code>[${coeffs.join(', ')}]</code></p>`);
+              html.push(`<p>Coefficients (high → low): <code>[${coeffs.join(', ')}]</code></p>`);
 
-              html.push(`<h3 style="color:#2c3e50;margin-top:18px;"><i class="fas fa-2"></i> Step 2 — Solve for the roots (eigenvalues λ)</h3>`);
+              html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 2 — Solve for eigenvalues λ</h3>`);
               const roots = findRoots(coeffs);
               if(roots.length===0) throw new Error('No real roots found.');
-              html.push(`<p>Real roots found: <strong>${roots.map(r=>'λ='+r).join(',&nbsp; ')}</strong></p>`);
+              html.push(`<p>Real roots: <strong>${roots.map(r=>'λ='+r).join(',&nbsp; ')}</strong></p>`);
               const distinct = [...new Set(roots.map(r=>r.toFixed(4)))];
-              html.push(`<p>Distinct eigenvalues: <strong>${distinct.length}</strong> &nbsp;|&nbsp; Total (with multiplicity): <strong>${roots.length}</strong></p>`);
+              html.push(`<p>Distinct λ: <strong>${distinct.length}</strong> | Total (with multiplicity): <strong>${roots.length}</strong></p>`);
 
-              html.push(`<h3 style="color:#2c3e50;margin-top:18px;"><i class="fas fa-3"></i> Step 3 — Build candidate eigenvector set</h3>`);
-              const cols = buildVectors(roots);
-              html.push(`<p>For each eigenvalue we attach a representative vector. Distinct eigenvalues get independent basis vectors; repeated eigenvalues reuse the previous vector (which is what produces dependence).</p>`);
-              cols.forEach((v,i)=>{
-                html.push(`<p>v<sub>${i+1}</sub> (for λ=${roots[i]}) = <code>[${v.join(', ')}]<sup>T</sup></code></p>`);
-              });
+              html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 3 — Build candidate eigenvector set</h3>`);
+              const cols = buildVectorsFromRoots(roots);
+              html.push(`<p>Distinct λ → independent basis vector. Repeated λ → reuse the previous vector (forces dependence).</p>`);
+              cols.forEach((v,i)=> html.push(`<p>v<sub>${i+1}</sub> (λ=${roots[i]}) = [${v.join(', ')}]<sup>T</sup></p>`));
 
-              html.push(`<h3 style="color:#2c3e50;margin-top:18px;"><i class="fas fa-4"></i> Step 4 — Form matrix A (vectors as columns)</h3>`);
-              // rows of A from columns
-              const A = transpose(cols); // cols is array of column-vectors; transpose treats them as rows -> need actual matrix
-              // Build A directly: A[i][j] = cols[j][i]
+              html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 4 — Form matrix A (vectors as columns)</h3>`);
               const n = roots.length;
               const Mat = Array.from({length:n},(_,i)=>cols.map(c=>c[i]));
               html.push(matToHTML(Mat, `A (${n}×${n})`));
 
-              html.push(`<h3 style="color:#2c3e50;margin-top:18px;"><i class="fas fa-5"></i> Step 5 — Apply Gaussian elimination</h3>`);
+              html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 5 — Gaussian elimination</h3>`);
               const {rref, steps, rank} = gaussianElimination(Mat);
-              if(steps.length===0){
-                html.push(`<p>Matrix already in reduced form.</p>`);
-              } else {
-                steps.forEach((s,i)=>{
-                  html.push(`<p style="margin-top:10px;"><strong>Op ${i+1}:</strong> ${s.op}</p>`);
-                  html.push(matToHTML(s.M,'Resulting matrix'));
-                });
-              }
+              steps.forEach((s,i)=>{
+                html.push(`<p style="margin-top:8px;"><strong>${i===0?'':'Op '+i+': '}${s.op}</strong></p>`);
+                html.push(matToHTML(s.M,''));
+              });
               html.push(matToHTML(rref,'Final RREF'));
 
-              html.push(`<h3 style="color:#2c3e50;margin-top:18px;"><i class="fas fa-6"></i> Step 6 — Compare rank with number of vectors</h3>`);
-              html.push(`<p>Number of vectors n = <strong>${n}</strong></p>`);
-              html.push(`<p>Rank(A) = <strong>${rank}</strong> (count of non-zero rows in RREF)</p>`);
-
-              html.push(`<h3 style="color:#2c3e50;margin-top:18px;"><i class="fas fa-flag-checkered"></i> Step 7 — Conclusion</h3>`);
+              html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 6 — Compare rank with n</h3>`);
+              html.push(`<p>n = <strong>${n}</strong>, rank = <strong>${rank}</strong></p>`);
               const dependent = rank < n;
               const color = dependent ? '#e74c3c' : '#27ae60';
               const verdict = dependent ? 'LINEARLY DEPENDENT' : 'LINEARLY INDEPENDENT';
-              html.push(`<div style="padding:15px;border-radius:10px;background:${color}15;border-left:6px solid ${color};font-size:1.15rem;">
+              html.push(`<div style="padding:15px;border-radius:10px;background:${color}15;border-left:6px solid ${color};font-size:1.1rem;margin-top:8px;">
                 <strong style="color:${color};">${verdict}</strong><br>
                 ${dependent
-                  ? `Because rank (${rank}) &lt; number of vectors (${n}), at least one vector is a linear combination of the others. Geometrically, the vectors do not span ℝ<sup>${n}</sup>.`
-                  : `Because rank (${rank}) = number of vectors (${n}), no vector can be expressed as a combination of the others. The set is a basis of ℝ<sup>${n}</sup>.`}
+                  ? `Because rank (${rank}) &lt; n (${n}), the eigenvector set built from this characteristic equation is dependent (caused by repeated eigenvalues).`
+                  : `Because rank (${rank}) = n (${n}), the eigenvectors form an independent set — a basis of ℝ<sup>${n}</sup>.`}
               </div>`);
-
               if(distinct.length < roots.length){
-                html.push(`<p style="margin-top:12px;color:#555;"><i class="fas fa-lightbulb" style="color:#f39c12;"></i>
-                  Note: the characteristic equation has <strong>repeated roots</strong>, which is why the constructed eigenvector set turned out dependent. Try one of the equations with all-distinct roots to see an independent set.</p>`);
+                html.push(`<p style="margin-top:10px;color:#555;"><i class="fas fa-lightbulb" style="color:#f39c12;"></i>
+                  The equation has <strong>repeated roots</strong>, which is why the set is dependent. Try one with all distinct roots.</p>`);
               }
-
-              out().innerHTML = html.join('');
+              $('stepSimOutput').innerHTML = html.join('');
             } catch(err){
-              out().innerHTML = `<div style="color:#c0392b;padding:12px;background:#fdecea;border-radius:8px;">
+              $('stepSimOutput').innerHTML = `<div style="color:#c0392b;padding:12px;background:#fdecea;border-radius:8px;">
                 <strong>Error:</strong> ${err.message}<br>
                 Try a form like <code>x^3 - 6x^2 + 11x - 6 = 0</code> or <code>x^2 - 5x + 6 = 0</code>.</div>`;
             }
           }
-
-          $('runStepSimBtn').addEventListener('click', ()=> run($('charEqInput').value));
+          $('runStepSimBtn').addEventListener('click', ()=> runCharSim($('charEqInput').value));
           document.querySelectorAll('[data-eq]').forEach(b=>{
-            b.addEventListener('click', ()=>{ $('charEqInput').value = b.dataset.eq; run(b.dataset.eq); });
+            b.addEventListener('click', ()=>{ $('charEqInput').value = b.dataset.eq; runCharSim(b.dataset.eq); });
           });
         })();
         </script>
-        <!-- ================= END STEP-BY-STEP SIMULATOR ================= -->
 
         <footer>
-            <p>Linear Dependence Calculator | Created for GitHub Pages | Uses Gaussian Elimination Method</p>
-            <p>Vectors are considered linearly dependent if the determinant of the matrix is zero OR if Gaussian elimination reveals free variables.</p>
+            <p>Linear Dependence Simulator | Step-by-step row reduction + characteristic equation check</p>
         </footer>
     </div>
 
