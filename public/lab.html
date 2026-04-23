@@ -5865,40 +5865,45 @@ body { margin:0; }
           function runVecSim(){
             const {V,n,d} = readVectors();
             const html = [];
-            html.push(`<h3 style="color:#2c3e50;">Step 1 — Read inputs</h3>`);
+            html.push(`<div class="sim-step s-1"><h3><span class="step-num">1</span> Read inputs</h3>`);
             html.push(`<p>You entered <strong>n = ${n}</strong> vectors in <strong>ℝ<sup>${d}</sup></strong>:</p>`);
-            V.forEach((v,i)=>{ html.push(`<p>v<sub>${i+1}</sub> = (${v.join(', ')})</p>`); });
+            V.forEach((v,i)=>{ html.push(`<p style="font-family:monospace;">v<sub>${i+1}</sub> = (${v.join(', ')})</p>`); });
+            html.push(`</div>`);
 
-            html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 2 — Form matrix A (vectors as columns)</h3>`);
+            html.push(`<div class="sim-step s-2"><h3><span class="step-num">2</span> Form matrix A (vectors as columns)</h3>`);
             const A = Array.from({length:d},(_,i)=>V.map(v=>v[i]));
-            html.push(matToHTML(A, `A (${d}×${n})`));
+            html.push(matToHTML(A, `A is a ${d}×${n} matrix:`));
+            html.push(`</div>`);
 
-            html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 3 — Perform row reduction (Gaussian elimination)</h3>`);
+            html.push(`<div class="sim-step s-3"><h3><span class="step-num">3</span> Perform Gaussian elimination — step by step</h3>`);
             const {rref, steps, rank} = gaussianElimination(A);
             steps.forEach((s,i)=>{
-              html.push(`<p style="margin-top:8px;"><strong>${i===0?'':'Op '+i+': '}${s.op}</strong></p>`);
+              html.push(`<div class="sim-op">${i===0?'Initial matrix':'Op '+i+': '+s.op}</div>`);
               html.push(matToHTML(s.M,''));
             });
-            html.push(matToHTML(rref,'Final reduced matrix (RREF)'));
+            html.push(`<div style="margin-top:10px;">${matToHTML(rref,'Final reduced matrix (RREF):')}</div>`);
+            html.push(`</div>`);
 
-            html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 4 — Find the rank</h3>`);
-            html.push(`<p>Rank = number of non-zero rows in RREF = <strong>${rank}</strong></p>`);
+            html.push(`<div class="sim-step s-4"><h3><span class="step-num">4</span> Find the rank</h3>`);
+            html.push(`<p>Rank = number of non-zero rows in RREF = <strong style="color:#f59e0b;font-size:1.15rem;">${rank}</strong></p>`);
+            html.push(`</div>`);
 
-            html.push(`<h3 style="color:#2c3e50;margin-top:14px;">Step 5 — Compare rank with n</h3>`);
+            html.push(`<div class="sim-step s-5"><h3><span class="step-num">5</span> Compare rank with n</h3>`);
             const dep = rank < n;
-            const color = dep ? '#e74c3c' : '#27ae60';
             const verdict = dep ? 'LINEARLY DEPENDENT' : 'LINEARLY INDEPENDENT';
-            html.push(`<p>n = <strong>${n}</strong>, rank = <strong>${rank}</strong> ⇒ rank ${dep?'&lt;':'='} n</p>`);
-            html.push(`<div style="padding:15px;border-radius:10px;background:${color}15;border-left:6px solid ${color};font-size:1.1rem;margin-top:8px;">
-              <strong style="color:${color};">${verdict}</strong><br>
-              ${dep
-                ? `Because rank (${rank}) &lt; n (${n}), at least one vector is a linear combination of the others. The set is <strong>redundant</strong> and does not span ℝ<sup>${n>d?d:n}</sup>.`
-                : `Because rank (${rank}) = n (${n}), no vector can be written as a combination of the others. The set is a <strong>basis</strong> for the subspace it spans.`}
+            html.push(`<p>n = <strong>${n}</strong>, &nbsp; rank = <strong>${rank}</strong> &nbsp;⇒&nbsp; rank ${dep?'&lt;':'='} n</p>`);
+            html.push(`<div class="verdict ${dep?'dep':'ind'}">
+              <div class="v-icon"><i class="fas fa-${dep?'unlink':'check'}"></i></div>
+              <div><strong style="font-size:1.15rem;">${verdict}</strong><br>
+              <span style="font-size:.95rem;">${dep
+                ? `Because rank (${rank}) &lt; n (${n}), at least one vector is a linear combination of the others. The set is <strong>redundant</strong>.`
+                : `Because rank (${rank}) = n (${n}), no vector is a combination of the others. The set is a <strong>basis</strong> of the subspace it spans.`}</span></div>
             </div>`);
             if(n > d){
-              html.push(`<p style="margin-top:10px;color:#555;"><i class="fas fa-lightbulb" style="color:#f39c12;"></i>
-                Note: you have more vectors (${n}) than the dimension (${d}). Such a set is <strong>always dependent</strong>.</p>`);
+              html.push(`<p style="margin-top:12px;color:#92400e;background:#fef3c7;padding:10px 14px;border-radius:8px;"><i class="fas fa-lightbulb"></i>
+                You have more vectors (${n}) than the dimension (${d}). Such a set is <strong>always dependent</strong>.</p>`);
             }
+            html.push(`</div>`);
             $('vecSimOutput').innerHTML = html.join('');
           }
           $('buildGridBtn').addEventListener('click', buildGrid);
