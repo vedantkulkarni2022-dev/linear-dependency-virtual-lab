@@ -5444,8 +5444,8 @@ body { margin:0; }
         <div class="instructions">
             <h3><i class="fas fa-info-circle"></i> Instructions</h3>
             <ul>
-                <li>This pretest contains <strong>15 questions</strong> with varying difficulty levels.</li>
-                <li>Each question carries <strong>1 mark</strong>. Total marks: 15.</li>
+                <li>This pretest contains <strong>18 questions</strong> with varying difficulty levels.</li>
+                <li>Each question carries <strong>1 mark</strong>. Total marks: 18.</li>
                 <li>Select your answer by clicking on the option. You can change your answer before submission.</li>
                 <li>Use the question navigation buttons to move between questions.</li>
                 <li>Click "Submit Test" when you have completed all questions.</li>
@@ -5459,7 +5459,7 @@ body { margin:0; }
                 <div class="test-meta">
                     <div class="meta-item">
                         <i class="fas fa-question"></i>
-                        <span>15 Questions</span>
+                        <span>18 Questions</span>
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-clock"></i>
@@ -5524,7 +5524,7 @@ body { margin:0; }
             <div class="result-details">
                 <div class="result-item">
                     <span>Total Questions:</span>
-                    <strong>15</strong>
+                    <strong>18</strong>
                 </div>
                 <div class="result-item">
                     <span>Correct Answers:</span>
@@ -6024,8 +6024,8 @@ body { margin:0; }
         <div class="instructions">
             <h3><i class="fas fa-info-circle"></i> Instructions</h3>
             <ul>
-                <li>This posttest contains <strong>15 advanced-level questions</strong> to test your mastery.</li>
-                <li>Each question carries <strong>2 marks</strong>. Total marks: 30.</li>
+                <li>This posttest contains <strong>20 advanced-level questions</strong> to test your mastery.</li>
+                <li>Each question carries <strong>1 mark</strong>. Total marks: 20.</li>
                 <li>Questions involve proofs, theoretical concepts, and complex applications.</li>
                 <li>Select your answer by clicking on the option. You can change your answer before submission.</li>
                 <li>Click "Submit Test" when you have completed all questions.</li>
@@ -6039,7 +6039,7 @@ body { margin:0; }
                 <div class="test-meta">
                     <div class="meta-item">
                         <i class="fas fa-question"></i>
-                        <span>15 Questions</span>
+                        <span>20 Questions</span>
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-clock"></i>
@@ -6047,7 +6047,7 @@ body { margin:0; }
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-star"></i>
-                        <span>Total Marks: 30</span>
+                        <span>Total Marks: 20</span>
                     </div>
                 </div>
                 <div class="timer" id="timer">
@@ -6104,7 +6104,7 @@ body { margin:0; }
             <div class="result-details">
                 <div class="result-item">
                     <span>Total Questions:</span>
-                    <strong>15</strong>
+                    <strong>20</strong>
                 </div>
                 <div class="result-item">
                     <span>Correct Answers:</span>
@@ -8661,7 +8661,7 @@ try{
         function calculateResults() {
             let correctCount = 0;
             let totalMarks = 0;
-            let maxMarks = posttestQuestions.length * 2; // Each question is 2 marks
+            let maxMarks = posttestQuestions.length * 1; // Each question is 1 mark
             
             posttestQuestions.forEach((question, index) => {
                 if (userAnswers[index] === question.correctAnswer) {
