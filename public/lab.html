@@ -8096,18 +8096,21 @@ try{
 
         // Update question navigation highlights
         function updateQuestionNav() {
-            const navButtons = document.querySelectorAll('.q-nav-btn');
+            const sectionEl = document.querySelector('.spa-page.page-pretest');
+            if(!sectionEl) return;
+            const navButtons = sectionEl.querySelectorAll('.q-nav-btn');
             navButtons.forEach((button, index) => {
                 button.classList.remove('active', 'answered');
-                
-                if (index === currentQuestion) {
-                    button.classList.add('active');
-                }
-                
-                if (userAnswers[index] !== null) {
-                    button.classList.add('answered');
-                }
+                if (index === currentQuestion) button.classList.add('active');
+                if (userAnswers[index] !== null) button.classList.add('answered');
             });
+            // Update progress bar
+            const total = pretestQuestions.length;
+            const answered = userAnswers.filter(a=>a!==null).length;
+            const fill = sectionEl.querySelector('#progressFill');
+            const lbl  = sectionEl.querySelector('#progressLabel');
+            if(fill) fill.style.width = ((answered/total)*100)+'%';
+            if(lbl)  lbl.textContent  = `${answered} / ${total} answered`;
         }
 
         // Load a specific question
