@@ -4543,18 +4543,27 @@ body { margin:0; }
             gap: 25px;
             margin-bottom: 40px;
         }
+        @media (min-width: 1100px) {
+            .contributors-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 700px) {
+            .contributors-grid { grid-template-columns: 1fr; }
+        }
 
         .contributor-card {
             background: #f8f9fa;
-            border-radius: 10px;
-            padding: 25px;
+            border-radius: 14px;
+            padding: 28px 22px;
             transition: all 0.3s;
-            border-left: 5px solid #3498db;
+            border-top: 5px solid #3498db;
+            border-left: none;
             position: relative;
             overflow: hidden;
             height: 100%;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .contributor-card:hover {
@@ -4562,17 +4571,9 @@ body { margin:0; }
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .contributor-card.lead {
-            border-left-color: #2ecc71;
-        }
-
-        .contributor-card.guide {
-            border-left-color: #9b59b6;
-        }
-
-        .contributor-card.hod {
-            border-left-color: #f39c12;
-        }
+        .contributor-card.lead { border-top-color: #2ecc71; }
+        .contributor-card.guide { border-top-color: #9b59b6; }
+        .contributor-card.hod { border-top-color: #f39c12; }
 
         .contributor-role {
             position: absolute;
@@ -4583,42 +4584,38 @@ body { margin:0; }
             padding: 5px 15px;
             font-size: 0.8rem;
             font-weight: 600;
-            border-radius: 0 10px 0 10px;
+            border-radius: 0 14px 0 14px;
         }
 
-        .contributor-card.lead .contributor-role {
-            background: #2ecc71;
-        }
+        .contributor-card.lead .contributor-role { background: #2ecc71; }
+        .contributor-card.guide .contributor-role { background: #9b59b6; }
+        .contributor-card.hod .contributor-role { background: #f39c12; }
 
-        .contributor-card.guide .contributor-role {
-            background: #9b59b6;
-        }
-
-        .contributor-card.hod .contributor-role {
-            background: #f39c12;
-        }
-
-        /* Contributor Photo Section */
+        /* Contributor Photo Section — centered layout */
         .contributor-header {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 18px;
+            margin-bottom: 18px;
+            width: 100%;
         }
 
         .contributor-photo-container {
             position: relative;
             flex-shrink: 0;
+            margin-top: 8px;
         }
 
         .contributor-photo {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #3498db;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
             transition: all 0.3s ease;
+            display: block;
         }
 
         .contributor-card:hover .contributor-photo {
@@ -4626,28 +4623,23 @@ body { margin:0; }
             transform: scale(1.05);
         }
 
-        .contributor-card.lead .contributor-photo {
-            border-color: #2ecc71;
-        }
-
-        .contributor-card.guide .contributor-photo {
-            border-color: #9b59b6;
-        }
-
-        .contributor-card.hod .contributor-photo {
-            border-color: #f39c12;
-        }
+        .contributor-card.lead .contributor-photo { border-color: #2ecc71; }
+        .contributor-card.guide .contributor-photo { border-color: #9b59b6; }
+        .contributor-card.hod .contributor-photo { border-color: #f39c12; }
 
         .photo-placeholder {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             background: linear-gradient(135deg, #3498db, #2c3e50);
             display: flex;
             align-items: center;
             justify-content: center;
             border: 4px solid #3498db;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            color: #fff;
+            font-size: 2.4rem;
+            font-weight: 700;
         }
 
         .contributor-card.lead .photo-placeholder {
@@ -4662,14 +4654,19 @@ body { margin:0; }
 
         .contributor-info {
             flex-grow: 1;
+            width: 100%;
+            text-align: center;
         }
 
         .contributor-name {
             color: #2c3e50;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            font-weight: 600;
+            font-size: 1.3rem;
+            margin: 4px 0 10px;
+            font-weight: 700;
         }
+
+        .contributor-card .contributor-details { text-align: left; }
+        .contributor-card .contributor-bio { text-align: center; }
 
         .contributor-details {
             margin: 15px 0;
