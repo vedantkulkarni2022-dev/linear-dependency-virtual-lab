@@ -8804,22 +8804,25 @@ try{
         let userAnswers = new Array(posttestQuestions.length).fill(null);
         let testSubmitted = false;
 
-        // DOM Elements
-        const questionsContainer = document.getElementById('questionsContainer');
-        const questionNav = document.getElementById('questionNav');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const submitBtn = document.getElementById('submitBtn');
-        const resultModal = document.getElementById('resultModal');
-        const scoreDisplay = document.getElementById('scoreDisplay');
-        const correctAnswersSpan = document.getElementById('correctAnswers');
-        const incorrectAnswersSpan = document.getElementById('incorrectAnswers');
-        const percentageSpan = document.getElementById('percentage');
-        const masteryLevelSpan = document.getElementById('masteryLevel');
-        const feedbackDiv = document.getElementById('feedback');
-        const retryBtn = document.getElementById('retryBtn');
-        const continueBtn = document.getElementById('continueBtn');
-        const closeModalBtn = document.getElementById('closeModalBtn');
+        // DOM Elements (scoped to the posttest section to avoid ID collisions with the pretest section)
+        const ptSection = document.querySelector('.spa-page.page-posttest');
+        if(!ptSection){ throw new Error('Posttest section not found'); }
+        const $pt = (sel) => ptSection.querySelector(sel);
+        const questionsContainer = $pt('#questionsContainer');
+        const questionNav = $pt('#questionNav');
+        const prevBtn = $pt('#prevBtn');
+        const nextBtn = $pt('#nextBtn');
+        const submitBtn = $pt('#submitBtn');
+        const resultModal = $pt('#resultModal');
+        const scoreDisplay = $pt('#scoreDisplay');
+        const correctAnswersSpan = $pt('#correctAnswers');
+        const incorrectAnswersSpan = $pt('#incorrectAnswers');
+        const percentageSpan = $pt('#percentage');
+        const masteryLevelSpan = $pt('#masteryLevel');
+        const feedbackDiv = $pt('#feedback');
+        const retryBtn = $pt('#retryBtn');
+        const continueBtn = $pt('#continueBtn');
+        const closeModalBtn = $pt('#closeModalBtn');
 
         // Initialize the test
         function initializeTest() {
@@ -8975,7 +8978,7 @@ try{
             
             // Add event listeners to options
             if (!testSubmitted) {
-                document.querySelectorAll('.option').forEach(option => {
+                questionsContainer.querySelectorAll('.option').forEach(option => {
                     option.addEventListener('click', function() {
                         const selectedOption = parseInt(this.dataset.option);
                         selectOption(index, selectedOption);
