@@ -7820,6 +7820,43 @@ body { margin:0; }
 (function(){
   const btns = document.querySelectorAll('.spa-nav-btn');
   const pages = document.querySelectorAll('.spa-page');
+
+  // Sequential flow: which page comes after which
+  const sequence = {
+    aim:        { key:'theory',      label:'Go to Theory',       icon:'fa-book' },
+    theory:     { key:'pretest',     label:'Go to Pretest',      icon:'fa-clipboard-question' },
+    pretest:    { key:'simulation',  label:'Go to Simulation',   icon:'fa-flask' },
+    simulation: { key:'posttest',    label:'Go to Posttest',     icon:'fa-clipboard-check' },
+    posttest:   { key:'reference',   label:'Go to References',   icon:'fa-list' },
+    reference:  { key:'feedback',    label:'Go to Feedback',     icon:'fa-comment' },
+    feedback:   { key:'contributor', label:'Go to Contributors', icon:'fa-users' }
+  };
+
+  // Inject the floating "Go to Home" pill + bottom "Next" banner into each non-home page
+  pages.forEach(p => {
+    const key = p.dataset.page;
+    if(key === 'home') return;
+
+    // Top-left Go Home pill
+    if(!p.querySelector('.go-home-pill')){
+      const pill = document.createElement('button');
+      pill.className = 'go-home-pill';
+      pill.innerHTML = '<i class="fas fa-home"></i> Go to Home';
+      pill.addEventListener('click', () => show('home'));
+      p.appendChild(pill);
+    }
+
+    // Bottom sequential next button
+    const next = sequence[key];
+    if(next && !p.querySelector('.seq-next-banner')){
+      const banner = document.createElement('div');
+      banner.className = 'seq-next-banner';
+      banner.innerHTML = `<button class="seq-next-btn" data-next="${next.key}">${next.label} <i class="fas ${next.icon}"></i></button>`;
+      banner.querySelector('button').addEventListener('click', () => show(next.key));
+      p.appendChild(banner);
+    }
+  });
+
   function show(key){
     pages.forEach(p => p.hidden = (p.dataset.page !== key));
     btns.forEach(b => b.classList.toggle('active', b.dataset.target === key));
