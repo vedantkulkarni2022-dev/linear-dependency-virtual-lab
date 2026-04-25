@@ -24,6 +24,32 @@ body { margin:0; }
 .spa-page[hidden] { display:none !important; }
 /* Hide each page's own internal top-nav since we provide one */
 .spa-page .top-nav, .spa-page .header-container .top-nav { display:none !important; }
+/* Floating "Go to Home" pill on every non-home section */
+.go-home-pill {
+  position: fixed; top: 70px; left: 16px; z-index: 999;
+  background: linear-gradient(135deg,#3498db,#2980b9);
+  color:#fff; border:none; padding:10px 18px; border-radius:30px;
+  font-size:.9rem; font-weight:600; cursor:pointer;
+  box-shadow:0 6px 18px rgba(52,152,219,.4);
+  display:flex; align-items:center; gap:8px;
+  transition:all .25s;
+}
+.go-home-pill:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(52,152,219,.55); }
+/* Sequential bottom nav banner */
+.seq-next-banner {
+  margin: 30px auto 60px; max-width: 1100px; padding: 0 20px;
+  display:flex; justify-content:flex-end;
+}
+.seq-next-btn {
+  background: linear-gradient(135deg,#27ae60,#219150);
+  color:#fff; border:none; padding:14px 28px; border-radius:10px;
+  font-size:1rem; font-weight:700; cursor:pointer;
+  box-shadow:0 6px 20px rgba(39,174,96,.35);
+  display:inline-flex; align-items:center; gap:10px;
+  transition:all .25s;
+}
+.seq-next-btn:hover { transform:translateY(-2px); box-shadow:0 10px 26px rgba(39,174,96,.5); background:linear-gradient(135deg,#2ecc71,#27ae60); }
+.seq-next-btn i { font-size:1.05rem; }
 /* === home === */
 
         * {
@@ -6370,9 +6396,8 @@ body { margin:0; }
 
         <!-- Difficulty Indicators -->
         <div class="difficulty-tags">
-            <div class="difficulty-tag advanced">Advanced: Questions 1-7</div>
-            <div class="difficulty-tag expert">Expert: Questions 8-13</div>
-            <div class="difficulty-tag theoretical">Theoretical: Questions 14-20</div>
+            <div class="difficulty-tag advanced">Advanced: Questions 1-6</div>
+            <div class="difficulty-tag expert">Expert: Questions 7-10</div>
         </div>
 
         <!-- Page Title -->
@@ -6385,8 +6410,8 @@ body { margin:0; }
         <div class="instructions">
             <h3><i class="fas fa-info-circle"></i> Instructions</h3>
             <ul>
-                <li>This posttest contains <strong>20 advanced-level questions</strong> to test your mastery.</li>
-                <li>Each question carries <strong>1 mark</strong>. Total marks: 20.</li>
+                <li>This posttest contains <strong>10 questions</strong> to test your mastery.</li>
+                <li>Each question carries <strong>1 mark</strong>. Total marks: 10.</li>
                 <li>Questions involve proofs, theoretical concepts, and complex applications.</li>
                 <li>Select your answer by clicking on the option. You can change your answer before submission.</li>
                 <li>Click "Submit Test" when you have completed all questions.</li>
@@ -6400,15 +6425,15 @@ body { margin:0; }
                 <div class="test-meta">
                     <div class="meta-item">
                         <i class="fas fa-question"></i>
-                        <span>20 Questions</span>
+                        <span>10 Questions</span>
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-clock"></i>
-                        <span>45 Minutes Recommended</span>
+                        <span>20 Minutes Recommended</span>
                     </div>
                     <div class="meta-item">
                         <i class="fas fa-star"></i>
-                        <span>Total Marks: 20</span>
+                        <span>Total Marks: 10</span>
                     </div>
                 </div>
                 <div class="timer" id="timer">
@@ -6418,7 +6443,7 @@ body { margin:0; }
             </div>
             
             <!-- Live Progress -->
-            <div class="test-progress-label"><span>Your progress</span><span id="progressLabel">0 / 20 answered</span></div>
+            <div class="test-progress-label"><span>Your progress</span><span id="progressLabel">0 / 10 answered</span></div>
             <div class="test-progress-bar"><div id="progressFill"></div></div>
 
             <!-- Question Navigation -->
@@ -6469,7 +6494,7 @@ body { margin:0; }
             <div class="result-details">
                 <div class="result-item">
                     <span>Total Questions:</span>
-                    <strong>20</strong>
+                    <strong>10</strong>
                 </div>
                 <div class="result-item">
                     <span>Correct Answers:</span>
@@ -7335,26 +7360,30 @@ body { margin:0; }
                 </div>
             </div>
             
-            <!-- Embedded Microsoft Form -->
+            <!-- Embedded Google Form -->
             <div class="form-container">
-                <iframe class="form-iframe" 
-                        src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAADVWIN9UOE9NTVQ5Qk1BNFlIQ1dPNVFYU0VQU0lCOS4u"
+                <iframe class="form-iframe"
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSfRPUiJjj71XOuFoX1M4UYPvHQhGv67s-L5V1JBIakMeMlq-Q/viewform?embedded=true"
                         title="Feedback Form"
+                        frameborder="0"
+                        marginheight="0"
+                        marginwidth="0"
                         allow="fullscreen">
+                    Loading…
                 </iframe>
             </div>
-            
+
             <!-- Alternative Link -->
             <div class="alternative-link">
                 <div class="link-title">
                     <i class="fas fa-external-link-alt"></i> Alternative Access
                 </div>
-                <p>If the embedded form above isn't working properly, you can access it directly via:</p>
-                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAADVWIN9UOE9NTVQ5Qk1BNFlIQ1dPNVFYU0VQU0lCOS4u" 
-                   class="form-link" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> Open Form in New Tab
+                <p>If the embedded form above isn't loading properly, you can open it directly:</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfRPUiJjj71XOuFoX1M4UYPvHQhGv67s-L5V1JBIakMeMlq-Q/viewform"
+                   class="form-link" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i> Open Google Form in New Tab
                 </a>
-                <p class="link-note">Note: This will open the form in a new browser tab/window.</p>
+                <p class="link-note">Your responses are sent directly to our Google Forms backend and stored securely.</p>
             </div>
             
             <!-- Navigation Buttons -->
@@ -7373,7 +7402,7 @@ body { margin:0; }
             <p>Linear Dependence Calculator Virtual Lab | Engineering Mathematics | 
                Pimpri Chinchwad College of Engineering</p>
             <p>© 2025 Virtual Labs Project | All Rights Reserved</p>
-            <p>Feedback collected via Microsoft Forms | Responses are anonymous</p>
+            <p>Feedback collected via Google Forms | Responses are stored securely</p>
         </footer>
     </div>
 
@@ -7794,6 +7823,43 @@ body { margin:0; }
 (function(){
   const btns = document.querySelectorAll('.spa-nav-btn');
   const pages = document.querySelectorAll('.spa-page');
+
+  // Sequential flow: which page comes after which
+  const sequence = {
+    aim:        { key:'theory',      label:'Go to Theory',       icon:'fa-book' },
+    theory:     { key:'pretest',     label:'Go to Pretest',      icon:'fa-clipboard-question' },
+    pretest:    { key:'simulation',  label:'Go to Simulation',   icon:'fa-flask' },
+    simulation: { key:'posttest',    label:'Go to Posttest',     icon:'fa-clipboard-check' },
+    posttest:   { key:'reference',   label:'Go to References',   icon:'fa-list' },
+    reference:  { key:'feedback',    label:'Go to Feedback',     icon:'fa-comment' },
+    feedback:   { key:'contributor', label:'Go to Contributors', icon:'fa-users' }
+  };
+
+  // Inject the floating "Go to Home" pill + bottom "Next" banner into each non-home page
+  pages.forEach(p => {
+    const key = p.dataset.page;
+    if(key === 'home') return;
+
+    // Top-left Go Home pill
+    if(!p.querySelector('.go-home-pill')){
+      const pill = document.createElement('button');
+      pill.className = 'go-home-pill';
+      pill.innerHTML = '<i class="fas fa-home"></i> Go to Home';
+      pill.addEventListener('click', () => show('home'));
+      p.appendChild(pill);
+    }
+
+    // Bottom sequential next button
+    const next = sequence[key];
+    if(next && !p.querySelector('.seq-next-banner')){
+      const banner = document.createElement('div');
+      banner.className = 'seq-next-banner';
+      banner.innerHTML = `<button class="seq-next-btn" data-next="${next.key}">${next.label} <i class="fas ${next.icon}"></i></button>`;
+      banner.querySelector('button').addEventListener('click', () => show(next.key));
+      p.appendChild(banner);
+    }
+  });
+
   function show(key){
     pages.forEach(p => p.hidden = (p.dataset.page !== key));
     btns.forEach(b => b.classList.toggle('active', b.dataset.target === key));
@@ -8635,148 +8701,101 @@ try{
         // Posttest Questions Data (15 Advanced Questions)
         const posttestQuestions = [
           { id:1, difficulty:'advanced', marks:1,
-            question:"Vectors v₁, v₂, v₃ are linearly independent if:",
-            options:["One vector is zero","One vector is sum of others","Only the trivial solution exists for c₁v₁+c₂v₂+c₃v₃=0","Determinant is zero"],
+            question:"A set of vectors is linearly independent if:",
+            options:[
+              "Their dot product is zero",
+              "They are all perpendicular",
+              "The only solution to the linear combination equals zero is the trivial solution",
+              "They have the same magnitude"
+            ],
             correctAnswer:2,
             solutionSteps:[
-              {title:"Definition",content:"Independence ⇔ c₁v₁+c₂v₂+c₃v₃=0 forces c₁=c₂=c₃=0."},
-              {title:"Why others fail",content:"A zero vector or one written as a sum of others gives a non-trivial solution → dependence."},
+              {title:"Definition",content:"{v₁,…,vₙ} is independent iff c₁v₁+…+cₙvₙ = 0 forces c₁=…=cₙ=0 (the trivial solution)."},
+              {title:"Why others fail",content:"Perpendicularity and equal magnitude are extra geometric properties — they do not define independence."},
               {title:"Answer",content:"Option C."}]},
           { id:2, difficulty:'advanced', marks:1,
-            question:"A set of vectors is always linearly dependent if it contains:",
-            options:["Unit vector","Zero vector","Orthogonal vectors","Parallel vectors"],
+            question:"Which of the following sets is linearly dependent?",
+            options:[
+              "{(1, 0), (0, 1)}",
+              "{(1, 2), (2, 4)}",
+              "{(1, 0, 0), (0, 1, 0), (0, 0, 1)}",
+              "{(1, 1), (1, -1)}"
+            ],
             correctAnswer:1,
             solutionSteps:[
-              {title:"Reason",content:"If vₖ = 0, take cₖ=1, others=0 → c₁v₁+…+cₖvₖ = 0 with not-all-zero coefficients."},
+              {title:"Check",content:"(2, 4) = 2·(1, 2) — one vector is a scalar multiple of the other."},
+              {title:"Why others are independent",content:"Standard basis sets (A and C) and (D) all have non-zero determinant."},
               {title:"Answer",content:"Option B."}]},
           { id:3, difficulty:'advanced', marks:1,
-            question:"In ℝ³, any set containing 4 vectors is:",
-            options:["Independent","Dependent","Orthogonal","Unit"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Theorem",content:"In ℝⁿ, more than n vectors must be dependent."},
-              {title:"Answer",content:"Option B."}]},
-          { id:4, difficulty:'advanced', marks:1,
-            question:"Vectors (2,4,6) and (1,2,3) are:",
-            options:["Independent","Dependent","Orthogonal","Unit vectors"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Check",content:"(2,4,6) = 2·(1,2,3) — one is a scalar multiple of the other."},
-              {title:"Answer",content:"Dependent — option B."}]},
-          { id:5, difficulty:'advanced', marks:1,
-            question:"If determinant of a 3×3 matrix formed by vectors is non-zero, then vectors are:",
-            options:["Dependent","Independent","Parallel","Equal"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Rule",content:"For n vectors in ℝⁿ: det ≠ 0 ⇒ independent."},
-              {title:"Answer",content:"Option B."}]},
-          { id:6, difficulty:'advanced', marks:1,
-            question:"If rank of matrix = number of vectors, then vectors are:",
-            options:["Dependent","Independent","Orthogonal","Zero"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Rank test",content:"rank(A) = n ⇒ no redundant vector ⇒ independent."},
-              {title:"Answer",content:"Option B."}]},
-          { id:7, difficulty:'advanced', marks:1,
-            question:"If rank < number of vectors, then vectors are:",
-            options:["Independent","Dependent","Unit","Orthogonal"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Rank test",content:"rank(A) < n ⇒ at least one vector is redundant."},
-              {title:"Answer",content:"Option B."}]},
-          { id:8, difficulty:'expert', marks:1,
-            question:"If one vector can be expressed as a combination of others, the set is:",
-            options:["Independent","Dependent","Orthogonal","Normalized"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Definition",content:"Existence of such a combination is exactly the definition of dependence."},
-              {title:"Answer",content:"Option B."}]},
-          { id:9, difficulty:'expert', marks:1,
-            question:"In a linearly independent set, the representation of a vector is:",
-            options:["Not possible","Unique","Infinite","Zero"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Theorem",content:"If {v_i} is independent, the coefficients c_i giving any vector v in span are unique."},
-              {title:"Answer",content:"Option B."}]},
-          { id:10, difficulty:'expert', marks:1,
-            question:"Two vectors in ℝ² are linearly dependent if they lie on:",
-            options:["Different planes","The same line","The same point","The same axis only"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Geometry",content:"Dependence ⇔ collinear ⇔ on the same line through the origin."},
-              {title:"Answer",content:"Option B."}]},
-          { id:11, difficulty:'expert', marks:1,
-            question:"Three vectors in ℝ³ are dependent if they lie in:",
-            options:["Different spaces","The same plane","The same origin","The same axis"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Geometry",content:"Three vectors fail to span ℝ³ exactly when they are coplanar through the origin."},
-              {title:"Answer",content:"Option B."}]},
-          { id:12, difficulty:'expert', marks:1,
-            question:"Trivial solution means:",
-            options:["All constants are 1","All constants are 0","One constant is zero","No constants"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Definition",content:"Trivial solution of Σcᵢvᵢ = 0 sets every cᵢ = 0."},
-              {title:"Answer",content:"Option B."}]},
-          { id:13, difficulty:'expert', marks:1,
-            question:"Non-trivial solution implies:",
-            options:["All coefficients are zero","At least one coefficient is non-zero","All coefficients are equal","No solution"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Definition",content:"Non-trivial = at least one cᵢ ≠ 0 in Σcᵢvᵢ = 0 → vectors are dependent."},
-              {title:"Answer",content:"Option B."}]},
-          { id:14, difficulty:'theoretical', marks:1,
-            question:"A basis of a vector space must be:",
-            options:["Dependent","Independent","Zero vectors","Parallel"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Definition",content:"A basis is a linearly independent spanning set."},
-              {title:"Answer",content:"Option B."}]},
-          { id:15, difficulty:'theoretical', marks:1,
-            question:"Maximum number of linearly independent vectors in ℝ⁴ is:",
-            options:["2","3","4","5"],
+            question:"If one vector in a set can be written as a scalar multiple of another, the set is:",
+            options:["Independent","Orthogonal","Dependent","Unit"],
             correctAnswer:2,
             solutionSteps:[
-              {title:"Reason",content:"dim(ℝ⁴) = 4, so any independent set has ≤ 4 vectors."},
+              {title:"Reason",content:"v₂ = k·v₁ ⇒ k·v₁ − 1·v₂ = 0 with coefficients (k, −1) ≠ (0,0). A non-trivial combination equals zero ⇒ dependent."},
               {title:"Answer",content:"Option C."}]},
-          { id:16, difficulty:'theoretical', marks:1,
-            question:"If columns of a matrix are dependent, then:",
-            options:["Rank equals number of columns","Rank < number of columns","Rank is zero","Matrix is identity"],
+          { id:4, difficulty:'advanced', marks:1,
+            question:"The vectors (1, 2, 3) and (2, 4, 6) are:",
+            options:["Linearly independent","Linearly dependent","Orthogonal","Unit vectors"],
             correctAnswer:1,
             solutionSteps:[
-              {title:"Reason",content:"Column rank = max independent columns. Dependence ⇒ this is strictly less than the column count."},
+              {title:"Check",content:"(2, 4, 6) = 2·(1, 2, 3) — exact scalar multiple."},
+              {title:"Conclusion",content:"Two collinear vectors are always dependent."},
               {title:"Answer",content:"Option B."}]},
-          { id:17, difficulty:'theoretical', marks:1,
-            question:"A homogeneous system Ax = 0 has a non-trivial solution when:",
-            options:["Rank = number of variables","Rank < number of variables","Rank = 1","Rank = 0"],
+          { id:5, difficulty:'advanced', marks:1,
+            question:"In ℝ², how many vectors can be linearly independent at most?",
+            options:["1","2","3","Infinite"],
             correctAnswer:1,
             solutionSteps:[
-              {title:"Rank-nullity",content:"nullity = variables − rank. For a non-trivial solution we need nullity > 0 ⇒ rank < variables."},
+              {title:"Theorem",content:"In ℝⁿ, the maximum size of an independent set equals n. Here n = 2."},
               {title:"Answer",content:"Option B."}]},
-          { id:18, difficulty:'theoretical', marks:1,
-            question:"Orthogonal vectors are always:",
-            options:["Dependent","Independent (if non-zero)","Equal","Parallel"],
+          { id:6, difficulty:'advanced', marks:1,
+            question:"Consider vectors (1, 0, 0), (0, 1, 0), (1, 1, 0). This set is:",
+            options:["Linearly independent","Linearly dependent","Orthogonal","None of the above"],
             correctAnswer:1,
             solutionSteps:[
-              {title:"Theorem",content:"Mutually orthogonal non-zero vectors are linearly independent."},
-              {title:"Proof sketch",content:"If Σcᵢvᵢ = 0, take inner product with vⱼ: cⱼ‖vⱼ‖² = 0 ⇒ cⱼ = 0."},
+              {title:"Check",content:"(1, 1, 0) = (1, 0, 0) + (0, 1, 0) — third vector is the sum of the first two."},
+              {title:"Conclusion",content:"A non-trivial combination yields 0 ⇒ dependent."},
               {title:"Answer",content:"Option B."}]},
-          { id:19, difficulty:'theoretical', marks:1,
-            question:"Determinant = 0 implies:",
-            options:["Independent vectors","Dependent vectors","Orthogonal vectors","Unit vectors"],
-            correctAnswer:1,
-            solutionSteps:[
-              {title:"Rule",content:"For n vectors in ℝⁿ, det = 0 ⇔ they are linearly dependent."},
-              {title:"Answer",content:"Option B."}]},
-          { id:20, difficulty:'theoretical', marks:1,
-            question:"If a·v₁ + b·v₂ = 0 has solution a = 2, b = −1, then vectors are:",
+          { id:7, difficulty:'expert', marks:1,
+            question:"If the determinant of a square matrix formed by vectors is zero, then the vectors are:",
             options:["Independent","Dependent","Orthogonal","Unit"],
             correctAnswer:1,
             solutionSteps:[
-              {title:"Reason",content:"A non-trivial solution (a,b) ≠ (0,0) exists, so by definition the set is dependent."},
-              {title:"Concretely",content:"2v₁ = v₂ — v₂ is a scalar multiple of v₁."},
-              {title:"Answer",content:"Option B."}]}
+              {title:"Rule",content:"For n vectors in ℝⁿ arranged as columns of A: det(A) = 0 ⇔ rank(A) < n ⇔ vectors are dependent."},
+              {title:"Answer",content:"Option B."}]},
+          { id:8, difficulty:'expert', marks:1,
+            question:"Which condition guarantees linear independence?",
+            options:[
+              "Vectors have equal length",
+              "Determinant ≠ 0",
+              "Sum of vectors is zero",
+              "All vectors lie on the same line"
+            ],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Rule",content:"For n vectors in ℝⁿ, det ≠ 0 ⇔ full rank ⇔ independent."},
+              {title:"Why others fail",content:"Equal length is irrelevant; sum = 0 is a non-trivial relation (dependent); collinear vectors are always dependent."},
+              {title:"Answer",content:"Option B."}]},
+          { id:9, difficulty:'expert', marks:1,
+            question:"The set {(0, 0), (1, 2)} is:",
+            options:["Linearly independent","Linearly dependent","Orthogonal","Cannot be determined"],
+            correctAnswer:1,
+            solutionSteps:[
+              {title:"Zero-vector rule",content:"Any set containing the zero vector is linearly dependent: take c₁=1, c₂=0 — then 1·(0,0) + 0·(1,2) = 0 with not-all-zero coefficients."},
+              {title:"Answer",content:"Option B."}]},
+          { id:10, difficulty:'expert', marks:1,
+            question:"Three vectors in ℝ³ are linearly independent if they:",
+            options:[
+              "Lie on the same plane",
+              "Are scalar multiples",
+              "Form a basis of ℝ³",
+              "Have zero magnitude"
+            ],
+            correctAnswer:2,
+            solutionSteps:[
+              {title:"Definition",content:"A basis of ℝ³ is exactly an independent set of 3 vectors that spans ℝ³."},
+              {title:"Why others fail",content:"Coplanar or scalar-multiple vectors give a non-trivial zero combination; the zero vector forces dependence."},
+              {title:"Answer",content:"Option C."}]}
         ];
 
         // Test state
